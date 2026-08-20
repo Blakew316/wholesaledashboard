@@ -102,13 +102,9 @@
 
     <div class="filters reveal rd-1">
       <div class="field"><label for="dtFrom">Ranking Date (from)</label>
-        <input type="month" id="dtFrom" name="dtFrom" value="2026-08" disabled title="Static capture — only the captured period is included"><span class="field__hint">captured period only</span></div>
+        <select id="dtFrom" name="dtFrom" title="August 2026 capture"><option value="2026-08" selected>August 2026</option></select></div>
       <div class="field"><label for="dtTo">Ranking Date (to)</label>
-        <input type="month" id="dtTo" name="dtTo" value="2026-08" disabled title="Static capture — only the captured period is included"><span class="field__hint">captured period only</span></div>
-      <div class="field"><label for="apprFrom">Approved (from)</label>
-        <input type="date" id="apprFrom" name="apprFrom" value="" disabled title="Static capture — only the captured period is included"><span class="field__hint">captured period only</span></div>
-      <div class="field"><label for="apprTo">Approved (to)</label>
-        <input type="date" id="apprTo" name="apprTo" value="" disabled title="Static capture — only the captured period is included"><span class="field__hint">captured period only</span></div>
+        <select id="dtTo" name="dtTo" title="August 2026 capture"><option value="2026-08" selected>August 2026</option></select></div>
       <div class="field"><label for="salesTeam">Team</label>
         <select id="salesTeam" name="team" data-filter-select="#rs1,#rs2,#rs3">
           <option value="ALL" selected>ALL</option>
@@ -299,17 +295,9 @@
           </optgroup>
         </select></div>
       <div class="field"><label for="processingFlag">Processing?</label>
-        <select id="processingFlag" name="p" disabled title="Static capture — only the captured period is included">
-          <option value="ALL" selected>ALL</option>
-          <option value="Not Processing">Not Processing</option>
-          <option value="Processing">Processing</option>
-        </select><span class="field__hint">captured period only</span></div>
+        <select id="processingFlag" name="p" title="August 2026 capture"><option value="ALL" selected>ALL</option></select></div>
       <div class="field"><label for="processor">Processor</label>
-        <select id="processor" name="proc" disabled title="Static capture — only the captured period is included">
-          <option value="ALL" selected>ALL</option>
-          <option value="TSYS">FSP</option>
-          <option value="PPS">PPS</option>
-        </select><span class="field__hint">captured period only</span></div>
+        <select id="processor" name="proc" title="August 2026 capture"><option value="ALL" selected>ALL</option></select></div>
     </div>
 
     <div class="stack">
