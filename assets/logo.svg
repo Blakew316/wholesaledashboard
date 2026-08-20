@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 72" role="img" aria-label="Wholesale Payments">
-  <g>
-    <rect x="18" y="8"  width="30" height="10" rx="5" fill="#077AE8"/>
-    <rect x="10" y="24" width="46" height="10" rx="5" fill="#3399F3"/>
-    <rect x="18" y="40" width="30" height="10" rx="5" fill="#80CD86"/>
-  </g>
-  <text x="72" y="33" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="27" font-weight="700" letter-spacing="-0.5" fill="#0B1C2C">wholesale</text>
-  <text x="73" y="56" font-family="-apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif" font-size="19" font-weight="500" letter-spacing="2" fill="#077AE8">payments</text>
-</svg>

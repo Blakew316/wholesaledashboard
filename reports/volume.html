@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Volume Difference Report — Wholesale Payments</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/wpi.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="shell topbar__inner">
+    <a class="brand" href="../index.html" aria-label="Wholesale Payments — dashboard home">
+      <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs>
+          <linearGradient id="bm" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#00A2EC"/>
+            <stop offset=".38" stop-color="#00B868"/>
+            <stop offset="1" stop-color="#50E878"/>
+          </linearGradient>
+        </defs>
+        <rect x="4"  y="12" width="8"  height="25" rx="4" fill="#0095E4"/>
+        <rect x="17" y="4"  width="14" height="40" rx="5" fill="url(#bm)"/>
+        <rect x="36" y="15" width="8"  height="22" rx="4" fill="#00C878"/>
+      </svg>
+      <span class="brand__text"><strong>wholesale</strong><span>payments</span></span>
+    </a>
+
+    <nav class="mainnav" id="mainnav" aria-label="Primary">
+      <a class="mainnav__link" href="../index.html">Dashboard</a>
+      <a class="mainnav__link" href="../Rankings.html">Rankings</a>
+      <a class="mainnav__link" href="../merchants/search.html">Merchants</a>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Products
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="https://kloser.wholesalepayments.org">Kloser<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpiuniversity.com/session/new">WPI University<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://customerconnectwp.com/">Customer Connect<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpirewards.com/login/">WPI Rewards<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <div class="drop__sep"></div>
+          <a href="../payverification/detail.html">Kaching</a>
+          <a href="../payverification/roster.html">Kaching (Roster)</a>
+        </div>
+      </div>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Reports
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="../reports/nonprocessing.html">Nonprocessing</a>
+          <a href="../reports/volume.html">Volume Difference</a>
+          <a href="../reports/gainloss.html">Gain/Loss</a>
+          <a href="../reports/pendingdeals.html">Pended Deals</a>
+          <a href="../reports/volumeavg.html">Avg Merchant Volume</a>
+          <a href="../reports/threshold__p_0.html">Threshold</a>
+          <a href="../reports/weeklyprocessing.html">Weekly Processing</a>
+          <a href="../reports/hpar.html">HPAR</a>
+          <a href="../reports/carcontest2025.html">Car Contest</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="topbar__user">
+      <div class="userchip">
+        <span class="userchip__avatar">JW</span>
+        <span class="userchip__meta">
+          <span class="userchip__name">justin.woodruff</span><br>
+          <span class="userchip__org">@ wholesalepayments.com</span>
+        </span>
+      </div>
+      <button class="btn-logout" type="button">Logout</button>
+    </div>
+
+    <button class="topbar__burger" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main class="page" id="main">
+  <div class="shell">
+
+    <div class="pagehead reveal">
+      <div>
+        <div class="pagehead__pre">Reports</div>
+        <h1 class="pagehead__title">Volume Difference Report</h1>
+      </div>
+    </div>
+
+    <div class="filters reveal rd-1">
+      <div class="field"><label for="reportDate">Report date</label>
+        <select id="reportDate">
+            <option value="2026-08" selected="selected">Aug 2026</option>
+            <option value="2026-07">Jul 2026</option>
+            <option value="2026-06">Jun 2026</option>
+            <option value="2026-05">May 2026</option>
+            <option value="2026-04">Apr 2026</option>
+            <option value="2026-03">Mar 2026</option>
+            <option value="2026-02">Feb 2026</option>
+            <option value="2026-01">Jan 2026</option>
+            <option value="2025-12">Dec 2025</option>
+            <option value="2025-11">Nov 2025</option>
+            <option value="2025-10">Oct 2025</option>
+            <option value="2025-09">Sep 2025</option>
+            <option value="2025-08">Aug 2025</option>
+        </select></div>
+      <div class="field"><label for="salesTeam">Team</label>
+        <select id="salesTeam" data-filter-select="#rs2">
+                            <option value="ALL" selected="selected">ALL</option>
+    <optgroup label="Divisions">
+            <option value="*** Lightning">Lightning</option>
+            <option value="*** Thunder">Thunder</option>
+    </optgroup>
+    <optgroup label="General Managers">
+            <option value="** ICE">ICE</option>
+            <option value="** FIRE">FIRE</option>
+            <option value="** STEEL">STEEL</option>
+            <option value="** GALAXY">GALAXY</option>
+            <option value="** SPARTA">SPARTA</option>
+            <option value="** OLYMPUS">OLYMPUS</option>
+    </optgroup>
+    <optgroup label="Teams">
+            <option value="Achilles">Achilles</option>
+            <option value="Affiliated Distributors">Affiliated Distributors</option>
+            <option value="Agis">Agis</option>
+            <option value="Ajax">Ajax</option>
+            <option value="ALCHEMY">ALCHEMY</option>
+            <option value="Alkamene">Alkamene</option>
+            <option value="Aluminum">Aluminum</option>
+            <option value="Amethyst">Amethyst</option>
+            <option value="AMS">AMS</option>
+            <option value="Anaxandros">Anaxandros</option>
+            <option value="Andromeda">Andromeda</option>
+            <option value="Apex">Apex</option>
+            <option value="Apollo">Apollo</option>
+            <option value="Aqua">Aqua</option>
+            <option value="Archidamus">Archidamus</option>
+            <option value="Ares">Ares</option>
+            <option value="ARETE">ARETE</option>
+            <option value="Areus">Areus</option>
+            <option value="Argonauts">Argonauts</option>
+            <option value="ARTEMIS">ARTEMIS</option>
+            <option value="ASHES">ASHES</option>
+            <option value="Athena">Athena</option>
+            <option value="Atlas">Atlas</option>
+            <option value="Authotrans">Authotrans</option>
+            <option value="AYTCH">AYTCH</option>
+            <option value="BCG">BCG</option>
+            <option value="Black">Black</option>
+            <option value="Black Eye">Black Eye</option>
+            <option value="Blaze">Blaze</option>
+            <option value="Blue Diamond">Blue Diamond</option>
+            <option value="Bourbon">Bourbon</option>
+            <option value="Brass">Brass</option>
+            <option value="Bronze">Bronze</option>
+            <option value="Brown">Brown</option>
+            <option value="Capella">Capella</option>
+            <option value="CHAOS">CHAOS</option>
+            <option value="Cheddar">Cheddar</option>
+            <option value="CHILLY">CHILLY</option>
+            <option value="Chrome">Chrome</option>
+            <option value="Cigar">Cigar</option>
+            <option value="Cobalt">Cobalt</option>
+            <option value="Coin">Coin</option>
+            <option value="COLDSTEEL">COLDSTEEL</option>
+            <option value="Copper">Copper</option>
+            <option value="Coral">Coral</option>
+            <option value="Crimson">Crimson</option>
+            <option value="CRONUS">CRONUS</option>
+            <option value="Cyan">Cyan</option>
+            <option value="Dagobah">Dagobah</option>
+            <option value="Diamond">Diamond</option>
+            <option value="Draco">Draco</option>
+            <option value="Draco">Draco</option>
+            <option value="DYNAMITE">DYNAMITE</option>
+            <option value="ECLIPSE">ECLIPSE</option>
+            <option value="Emerald">Emerald</option>
+            <option value="Evinos">Evinos</option>
+            <option value="FORGED">FORGED</option>
+            <option value="Frost">Frost</option>
+            <option value="Fuchsia">Fuchsia</option>
+            <option value="Glacier">Glacier</option>
+            <option value="Gold">Gold</option>
+            <option value="Green">Green</option>
+            <option value="Grey">Grey</option>
+            <option value="Hades">Hades</option>
+            <option value="Hazel">Hazel</option>
+            <option value="Helios">Helios</option>
+            <option value="HELLFIRE">HELLFIRE</option>
+            <option value="Hephaestus">Hephaestus</option>
+            <option value="Hercules">Hercules</option>
+            <option value="Hermes">Hermes</option>
+            <option value="Hippocratides">Hippocratides</option>
+            <option value="Hot Pink">Hot Pink</option>
+            <option value="House">House</option>
+            <option value="Hyperion">Hyperion</option>
+            <option value="ICE KANNON">ICE KANNON</option>
+            <option value="Iceberg">Iceberg</option>
+            <option value="Indigo">Indigo</option>
+            <option value="INFERNO">INFERNO</option>
+            <option value="IRIDIUM">IRIDIUM</option>
+            <option value="Iron">Iron</option>
+            <option value="Ivory">Ivory</option>
+            <option value="Kevlar">Kevlar</option>
+            <option value="Kyros">Kyros</option>
+            <option value="Lavender">Lavender</option>
+            <option value="Lead">Lead</option>
+            <option value="Leo">Leo</option>
+            <option value="Leon">Leon</option>
+            <option value="Leonidas">Leonidas</option>
+            <option value="Lime">Lime</option>
+            <option value="Lithium">Lithium</option>
+            <option value="Mahogany">Mahogany</option>
+            <option value="Mars">Mars</option>
+            <option value="MAVERICK">MAVERICK</option>
+            <option value="Mercury">Mercury</option>
+            <option value="Milky Way">Milky Way</option>
+            <option value="Morpheus">Morpheus</option>
+            <option value="Mystic">Mystic</option>
+            <option value="Navy">Navy</option>
+            <option value="Nebula">Nebula</option>
+            <option value="NEXSELL">NEXSELL</option>
+            <option value="NICKEL">NICKEL</option>
+            <option value="NIKE">NIKE</option>
+            <option value="Niobium">Niobium</option>
+            <option value="Nomad">Nomad</option>
+            <option value="Nova">Nova</option>
+            <option value="Oceanus">Oceanus</option>
+            <option value="ODIN">ODIN</option>
+            <option value="ODYSSEUS">ODYSSEUS</option>
+            <option value="Old Blue">Old Blue</option>
+            <option value="Old Titanium">Old Titanium</option>
+            <option value="Old Yellow">Old Yellow</option>
+            <option value="Olive">Olive</option>
+            <option value="Onyx">Onyx</option>
+            <option value="Opal">Opal</option>
+            <option value="Orange">Orange</option>
+            <option value="ORESTES">ORESTES</option>
+            <option value="Orion">Orion</option>
+            <option value="Palladium">Palladium</option>
+            <option value="Peach">Peach</option>
+            <option value="Pegasus">Pegasus</option>
+            <option value="Pink">Pink</option>
+            <option value="Platinum">Platinum</option>
+            <option value="Pleistoanax">Pleistoanax</option>
+            <option value="Pluto">Pluto</option>
+            <option value="Plutonium">Plutonium</option>
+            <option value="Plutus">Plutus</option>
+            <option value="Poseidon">Poseidon</option>
+            <option value="PULSAR">PULSAR</option>
+            <option value="Purple">Purple</option>
+            <option value="Quasar">Quasar</option>
+            <option value="Radium">Radium</option>
+            <option value="RIGEL">RIGEL</option>
+            <option value="Royal">Royal</option>
+            <option value="Ruby">Ruby</option>
+            <option value="Sapphire">Sapphire</option>
+            <option value="Scarlet">Scarlet</option>
+            <option value="Shadow">Shadow</option>
+            <option value="Silver">Silver</option>
+            <option value="Sky">Sky</option>
+            <option value="Snow">Snow</option>
+            <option value="Stainless">Stainless</option>
+            <option value="Stelios">Stelios</option>
+            <option value="Striker">Striker</option>
+            <option value="Subzero">Subzero</option>
+            <option value="Summit">Summit</option>
+            <option value="Sun">Sun</option>
+            <option value="Taurus">Taurus</option>
+            <option value="Teal">Teal</option>
+            <option value="Team Andromeda">Team Andromeda</option>
+            <option value="TEAM ASHES">TEAM ASHES</option>
+            <option value="TEAM AYTCH">TEAM AYTCH</option>
+            <option value="Team Hephaestus">Team Hephaestus</option>
+            <option value="TEAM INFERNO">TEAM INFERNO</option>
+            <option value="Team Lithium">Team Lithium</option>
+            <option value="Team Tm">Team Tm</option>
+            <option value="Thor">Thor</option>
+            <option value="Tiger Eye">Tiger Eye</option>
+            <option value="Titan">Titan</option>
+            <option value="Titanium">Titanium</option>
+            <option value="Triton">Triton</option>
+            <option value="Tungsten">Tungsten</option>
+            <option value="Turquoise">Turquoise</option>
+            <option value="Ultra">Ultra</option>
+            <option value="White">White</option>
+            <option value="Xerxes">Xerxes</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Zenith">Zenith</option>
+            <option value="Zerogravity">Zerogravity</option>
+            <option value="Zeus">Zeus</option>
+            <option value="Zinc">Zinc</option>
+    </optgroup>
+        </select></div>
+      <div class="field"><label for="processor">Processor</label>
+        <select id="processor">
+            <option value="ALL" selected="selected">ALL</option>
+            <option value="TSYS">FSP</option>
+            <option value="PPS">PPS</option>
+        </select></div>
+    </div>
+
+    <section class="card card--accent card--lift reveal rd-1">
+      <div class="card__head">
+        <h2 class="card__title">By GM</h2>
+        <div class="card__side">
+          <a class="btn" href="volume.html">(back to All Teams)</a>
+        </div>
+      </div>
+      <div class="card__body card__body--flush">
+        <div class="tblwrap">
+          <table class="tbl sortable" id="rs1">
+            <thead>
+              <tr>
+                <th>GM</th>
+                <th class="num">Jul 2026</th>
+                <th class="num">Aug 2026 MTD</th>
+                <th class="num">Aug 2026 Projected</th>
+                <th class="num">Difference</th>
+              </tr>
+            </thead>
+            <tbody>
+          <tr>
+            <td>Ice</td>
+            <td class="num">$ 127,438,336</td>
+            <td class="num">$ 78,089,243</td>
+            <td class="num">$ 127,408,765</td>
+            <td class="num neg">$ -29,571</td>
+          </tr>
+          <tr>
+            <td>Galaxy</td>
+            <td class="num">$ 29,299,823</td>
+            <td class="num">$ 16,817,709</td>
+            <td class="num">$ 27,439,420</td>
+            <td class="num neg">$ -1,860,403</td>
+          </tr>
+          <tr>
+            <td>Sparta</td>
+            <td class="num">$ 42,254,094</td>
+            <td class="num">$ 24,015,063</td>
+            <td class="num">$ 39,182,471</td>
+            <td class="num neg">$ -3,071,622</td>
+          </tr>
+          <tr>
+            <td>Olympus</td>
+            <td class="num">$ 48,270,969</td>
+            <td class="num">$ 27,235,700</td>
+            <td class="num">$ 44,437,195</td>
+            <td class="num neg">$ -3,833,774</td>
+          </tr>
+          <tr>
+            <td>Steel</td>
+            <td class="num">$ 57,578,105</td>
+            <td class="num">$ 32,672,490</td>
+            <td class="num">$ 53,307,747</td>
+            <td class="num neg">$ -4,270,358</td>
+          </tr>
+          <tr>
+            <td>Fire</td>
+            <td class="num">$ 101,728,298</td>
+            <td class="num">$ 58,474,332</td>
+            <td class="num">$ 95,405,489</td>
+            <td class="num neg">$ -6,322,810</td>
+          </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>Total</th>
+                <th class="num">$ 406,569,625</th>
+                <th class="num">$ 237,304,537</th>
+                <th class="num">$ 387,181,087</th>
+                <th class="num neg">$ -19,388,537</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="card card--lift reveal rd-2">
+      <div class="card__head">
+        <h2 class="card__title">By Team</h2>
+        <div class="card__side">
+          <a class="btn" href="volume.html">(back to All Teams)</a>
+        </div>
+      </div>
+      <div class="card__body card__body--flush">
+        <div class="tblwrap">
+          <table class="tbl sortable" id="rs2">
+            <thead>
+              <tr>
+                <th>Team</th>
+                <th class="num">Jul 2026</th>
+                <th class="num">Aug 2026 MTD</th>
+                <th class="num">Aug 2026 Projected</th>
+                <th class="num">Difference</th>
+              </tr>
+            </thead>
+            <tbody>
+          <tr>
+            <td>Green</td>
+            <td class="num">$ 9,167,274</td>
+            <td class="num">$ 10,771,835</td>
+            <td class="num">$ 17,575,099</td>
+            <td class="num pos">$ 8,407,825</td>
+          </tr>
+          <tr>
+            <td>Brown</td>
+            <td class="num">$ 2,097,342</td>
+            <td class="num">$ 1,513,938</td>
+            <td class="num">$ 2,470,110</td>
+            <td class="num pos">$ 372,768</td>
+          </tr>
+          <tr>
+            <td>FORGED</td>
+            <td class="num">$ 711,074</td>
+            <td class="num">$ 606,019</td>
+            <td class="num">$ 988,767</td>
+            <td class="num pos">$ 277,693</td>
+          </tr>
+          <tr>
+            <td>Draco</td>
+            <td class="num">$ 1,702,546</td>
+            <td class="num">$ 1,165,364</td>
+            <td class="num">$ 1,901,383</td>
+            <td class="num pos">$ 198,838</td>
+          </tr>
+          <tr>
+            <td>ODYSSEUS</td>
+            <td class="num">$ 284,545</td>
+            <td class="num">$ 274,605</td>
+            <td class="num">$ 448,039</td>
+            <td class="num pos">$ 163,494</td>
+          </tr>
+          <tr>
+            <td>House</td>
+            <td class="num">$ 1,103,835</td>
+            <td class="num">$ 756,182</td>
+            <td class="num">$ 1,233,771</td>
+            <td class="num pos">$ 129,935</td>
+          </tr>
+          <tr>
+            <td>Grey</td>
+            <td class="num">$ 257,702</td>
+            <td class="num">$ 235,794</td>
+            <td class="num">$ 384,717</td>
+            <td class="num pos">$ 127,015</td>
+          </tr>
+          <tr>
+            <td>ARTEMIS</td>
+            <td class="num">$ 814,670</td>
+            <td class="num">$ 571,585</td>
+            <td class="num">$ 932,586</td>
+            <td class="num pos">$ 117,916</td>
+          </tr>
+          <tr>
+            <td>ALCHEMY</td>
+            <td class="num">$ 372,839</td>
+            <td class="num">$ 282,020</td>
+            <td class="num">$ 460,138</td>
+            <td class="num pos">$ 87,299</td>
+          </tr>
+          <tr>
+            <td>MAVERICK</td>
+            <td class="num">$ 660,893</td>
+            <td class="num">$ 454,545</td>
+            <td class="num">$ 741,627</td>
+            <td class="num pos">$ 80,734</td>
+          </tr>
+          <tr>
+            <td>INFERNO</td>
+            <td class="num">$ 764,058</td>
+            <td class="num">$ 508,457</td>
+            <td class="num">$ 829,588</td>
+            <td class="num pos">$ 65,530</td>
+          </tr>
+          <tr>
+            <td>Atlas</td>
+            <td class="num">$ 107,434</td>
+            <td class="num">$ 104,570</td>
+            <td class="num">$ 170,615</td>
+            <td class="num pos">$ 63,181</td>
+          </tr>
+          <tr>
+            <td>Cheddar</td>
+            <td class="num">$ 396,279</td>
+            <td class="num">$ 274,014</td>
+            <td class="num">$ 447,076</td>
+            <td class="num pos">$ 50,797</td>
+          </tr>
+          <tr>
+            <td>Pleistoanax</td>
+            <td class="num">$ 120,483</td>
+            <td class="num">$ 98,512</td>
+            <td class="num">$ 160,730</td>
+            <td class="num pos">$ 40,247</td>
+          </tr>
+          <tr>
+            <td>NIKE</td>
+            <td class="num">$ 34,526</td>
+            <td class="num">$ 39,060</td>
+            <td class="num">$ 63,730</td>
+            <td class="num pos">$ 29,204</td>
+          </tr>
+          <tr>
+            <td>Zerogravity</td>
+            <td class="num">$ 148,435</td>
+            <td class="num">$ 108,312</td>
+            <td class="num">$ 176,719</td>
+            <td class="num pos">$ 28,285</td>
+          </tr>
+          <tr>
+            <td>Leo</td>
+            <td class="num">$ 35,776</td>
+            <td class="num">$ 38,446</td>
+            <td class="num">$ 62,728</td>
+            <td class="num pos">$ 26,952</td>
+          </tr>
+          <tr>
+            <td>DYNAMITE</td>
+            <td class="num">$ 193,116</td>
+            <td class="num">$ 134,763</td>
+            <td class="num">$ 219,877</td>
+            <td class="num pos">$ 26,761</td>
+          </tr>
+          <tr>
+            <td>Diamond</td>
+            <td class="num">$ 80,917</td>
+            <td class="num">$ 64,039</td>
+            <td class="num">$ 104,484</td>
+            <td class="num pos">$ 23,568</td>
+          </tr>
+          <tr>
+            <td>ODIN</td>
+            <td class="num">$ 327,887</td>
+            <td class="num">$ 215,040</td>
+            <td class="num">$ 350,854</td>
+            <td class="num pos">$ 22,968</td>
+          </tr>
+          <tr>
+            <td>Palladium</td>
+            <td class="num">$ 1,998,034</td>
+            <td class="num">$ 1,238,276</td>
+            <td class="num">$ 2,020,346</td>
+            <td class="num pos">$ 22,311</td>
+          </tr>
+          <tr>
+            <td>RIGEL</td>
+            <td class="num">$ 41,389</td>
+            <td class="num">$ 38,780</td>
+            <td class="num">$ 63,273</td>
+            <td class="num pos">$ 21,884</td>
+          </tr>
+          <tr>
+            <td>ICE KANNON</td>
+            <td class="num">$ 20,691</td>
+            <td class="num">$ 25,388</td>
+            <td class="num">$ 41,422</td>
+            <td class="num pos">$ 20,731</td>
+          </tr>
+          <tr>
+            <td>Old Yellow</td>
+            <td class="num">$ 256,636</td>
+            <td class="num">$ 169,455</td>
+            <td class="num">$ 276,479</td>
+            <td class="num pos">$ 19,843</td>
+          </tr>
+          <tr>
+            <td>Olive</td>
+            <td class="num">$ 26,721</td>
+            <td class="num">$ 28,278</td>
+            <td class="num">$ 46,138</td>
+            <td class="num pos">$ 19,418</td>
+          </tr>
+          <tr>
+            <td>Amethyst</td>
+            <td class="num">$ 387,801</td>
+            <td class="num">$ 249,373</td>
+            <td class="num">$ 406,871</td>
+            <td class="num pos">$ 19,070</td>
+          </tr>
+          <tr>
+            <td>Archidamus</td>
+            <td class="num">$ 184,730</td>
+            <td class="num">$ 124,420</td>
+            <td class="num">$ 203,002</td>
+            <td class="num pos">$ 18,272</td>
+          </tr>
+          <tr>
+            <td>Coin</td>
+            <td class="num">$ 229,078</td>
+            <td class="num">$ 148,877</td>
+            <td class="num">$ 242,905</td>
+            <td class="num pos">$ 13,827</td>
+          </tr>
+          <tr>
+            <td>Evinos</td>
+            <td class="num">$ 195,872</td>
+            <td class="num">$ 126,825</td>
+            <td class="num">$ 206,924</td>
+            <td class="num pos">$ 11,052</td>
+          </tr>
+          <tr>
+            <td>Black Eye</td>
+            <td class="num">$ 89,146</td>
+            <td class="num">$ 60,932</td>
+            <td class="num">$ 99,415</td>
+            <td class="num pos">$ 10,268</td>
+          </tr>
+          <tr>
+            <td>Hippocratides</td>
+            <td class="num">$ 196,712</td>
+            <td class="num">$ 126,673</td>
+            <td class="num">$ 206,677</td>
+            <td class="num pos">$ 9,966</td>
+          </tr>
+          <tr>
+            <td>Radium</td>
+            <td class="num">$ 58,097</td>
+            <td class="num">$ 41,195</td>
+            <td class="num">$ 67,213</td>
+            <td class="num pos">$ 9,116</td>
+          </tr>
+          <tr>
+            <td>Andromeda</td>
+            <td class="num">$ 50,004</td>
+            <td class="num">$ 35,384</td>
+            <td class="num">$ 57,732</td>
+            <td class="num pos">$ 7,728</td>
+          </tr>
+          <tr>
+            <td>Purple</td>
+            <td class="num">$ 2,069,337</td>
+            <td class="num">$ 1,272,983</td>
+            <td class="num">$ 2,076,973</td>
+            <td class="num pos">$ 7,636</td>
+          </tr>
+          <tr>
+            <td>Copper</td>
+            <td class="num">$ 73,006</td>
+            <td class="num">$ 48,996</td>
+            <td class="num">$ 79,940</td>
+            <td class="num pos">$ 6,935</td>
+          </tr>
+          <tr>
+            <td>Gold</td>
+            <td class="num">$ 764,500</td>
+            <td class="num">$ 472,114</td>
+            <td class="num">$ 770,291</td>
+            <td class="num pos">$ 5,791</td>
+          </tr>
+          <tr>
+            <td>Morpheus</td>
+            <td class="num">$ 569,415</td>
+            <td class="num">$ 352,487</td>
+            <td class="num">$ 575,110</td>
+            <td class="num pos">$ 5,695</td>
+          </tr>
+          <tr>
+            <td>Stainless</td>
+            <td class="num">$ 30,151</td>
+            <td class="num">$ 21,741</td>
+            <td class="num">$ 35,472</td>
+            <td class="num pos">$ 5,321</td>
+          </tr>
+          <tr>
+            <td>Hyperion</td>
+            <td class="num">$ 7,162</td>
+            <td class="num">$ 7,217</td>
+            <td class="num">$ 11,774</td>
+            <td class="num pos">$ 4,612</td>
+          </tr>
+          <tr>
+            <td>Thor</td>
+            <td class="num">$ 65,894</td>
+            <td class="num">$ 42,795</td>
+            <td class="num">$ 69,824</td>
+            <td class="num pos">$ 3,930</td>
+          </tr>
+          <tr>
+            <td>Teal</td>
+            <td class="num">$ 16,919</td>
+            <td class="num">$ 12,508</td>
+            <td class="num">$ 20,407</td>
+            <td class="num pos">$ 3,488</td>
+          </tr>
+          <tr>
+            <td>Triton</td>
+            <td class="num">$ 199,240</td>
+            <td class="num">$ 123,891</td>
+            <td class="num">$ 202,138</td>
+            <td class="num pos">$ 2,898</td>
+          </tr>
+          <tr>
+            <td>ECLIPSE</td>
+            <td class="num">$ 12,984</td>
+            <td class="num">$ 9,151</td>
+            <td class="num">$ 14,930</td>
+            <td class="num pos">$ 1,946</td>
+          </tr>
+          <tr>
+            <td>Leon</td>
+            <td class="num">$ 21,998</td>
+            <td class="num">$ 14,205</td>
+            <td class="num">$ 23,176</td>
+            <td class="num pos">$ 1,178</td>
+          </tr>
+          <tr>
+            <td>Turquoise</td>
+            <td class="num">$ 3,840</td>
+            <td class="num">$ 2,659</td>
+            <td class="num">$ 4,339</td>
+            <td class="num pos">$ 499</td>
+          </tr>
+          <tr>
+            <td>Tiger Eye</td>
+            <td class="num">$ 4,626</td>
+            <td class="num">$ 2,962</td>
+            <td class="num">$ 4,832</td>
+            <td class="num pos">$ 207</td>
+          </tr>
+          <tr>
+            <td>Mars</td>
+            <td class="num">$ 2,648</td>
+            <td class="num">$ 1,264</td>
+            <td class="num">$ 2,063</td>
+            <td class="num neg">$ -585</td>
+          </tr>
+          <tr>
+            <td>Helios</td>
+            <td class="num">$ 31,933</td>
+            <td class="num">$ 18,989</td>
+            <td class="num">$ 30,982</td>
+            <td class="num neg">$ -951</td>
+          </tr>
+          <tr>
+            <td>Poseidon</td>
+            <td class="num">$ 14,786</td>
+            <td class="num">$ 8,406</td>
+            <td class="num">$ 13,714</td>
+            <td class="num neg">$ -1,072</td>
+          </tr>
+          <tr>
+            <td>Plutus</td>
+            <td class="num">$ 62,616</td>
+            <td class="num">$ 36,988</td>
+            <td class="num">$ 60,348</td>
+            <td class="num neg">$ -2,268</td>
+          </tr>
+          <tr>
+            <td>Royal</td>
+            <td class="num">$ 73,825</td>
+            <td class="num">$ 43,528</td>
+            <td class="num">$ 71,020</td>
+            <td class="num neg">$ -2,805</td>
+          </tr>
+          <tr>
+            <td>Alkamene</td>
+            <td class="num">$ 52,581</td>
+            <td class="num">$ 30,424</td>
+            <td class="num">$ 49,638</td>
+            <td class="num neg">$ -2,942</td>
+          </tr>
+          <tr>
+            <td>Oceanus</td>
+            <td class="num">$ 21,198</td>
+            <td class="num">$ 11,130</td>
+            <td class="num">$ 18,159</td>
+            <td class="num neg">$ -3,039</td>
+          </tr>
+          <tr>
+            <td>Ajax</td>
+            <td class="num">$ 83,352</td>
+            <td class="num">$ 49,110</td>
+            <td class="num">$ 80,127</td>
+            <td class="num neg">$ -3,225</td>
+          </tr>
+          <tr>
+            <td>Blue Diamond</td>
+            <td class="num">$ 55,703</td>
+            <td class="num">$ 32,073</td>
+            <td class="num">$ 52,329</td>
+            <td class="num neg">$ -3,374</td>
+          </tr>
+          <tr>
+            <td>Milky Way</td>
+            <td class="num">$ 370,622</td>
+            <td class="num">$ 224,406</td>
+            <td class="num">$ 366,136</td>
+            <td class="num neg">$ -4,486</td>
+          </tr>
+          <tr>
+            <td>Frost</td>
+            <td class="num">$ 79,705</td>
+            <td class="num">$ 45,998</td>
+            <td class="num">$ 75,049</td>
+            <td class="num neg">$ -4,656</td>
+          </tr>
+          <tr>
+            <td>Navy</td>
+            <td class="num">$ 184,835</td>
+            <td class="num">$ 110,226</td>
+            <td class="num">$ 179,842</td>
+            <td class="num neg">$ -4,992</td>
+          </tr>
+          <tr>
+            <td>ASHES</td>
+            <td class="num">$ 61,404</td>
+            <td class="num">$ 34,030</td>
+            <td class="num">$ 55,523</td>
+            <td class="num neg">$ -5,881</td>
+          </tr>
+          <tr>
+            <td>Taurus</td>
+            <td class="num">$ 80,248</td>
+            <td class="num">$ 45,423</td>
+            <td class="num">$ 74,111</td>
+            <td class="num neg">$ -6,137</td>
+          </tr>
+          <tr>
+            <td>Sky</td>
+            <td class="num">$ 57,217</td>
+            <td class="num">$ 31,303</td>
+            <td class="num">$ 51,074</td>
+            <td class="num neg">$ -6,143</td>
+          </tr>
+          <tr>
+            <td>Nebula</td>
+            <td class="num">$ 83,934</td>
+            <td class="num">$ 46,748</td>
+            <td class="num">$ 76,273</td>
+            <td class="num neg">$ -7,661</td>
+          </tr>
+          <tr>
+            <td>Cyan</td>
+            <td class="num">$ 46,872</td>
+            <td class="num">$ 23,794</td>
+            <td class="num">$ 38,821</td>
+            <td class="num neg">$ -8,051</td>
+          </tr>
+          <tr>
+            <td>Old Titanium</td>
+            <td class="num">$ 70,604</td>
+            <td class="num">$ 38,010</td>
+            <td class="num">$ 62,017</td>
+            <td class="num neg">$ -8,587</td>
+          </tr>
+          <tr>
+            <td>Lead</td>
+            <td class="num">$ 76,458</td>
+            <td class="num">$ 41,591</td>
+            <td class="num">$ 67,859</td>
+            <td class="num neg">$ -8,599</td>
+          </tr>
+          <tr>
+            <td>Lavender</td>
+            <td class="num">$ 342,957</td>
+            <td class="num">$ 204,401</td>
+            <td class="num">$ 333,497</td>
+            <td class="num neg">$ -9,460</td>
+          </tr>
+          <tr>
+            <td>ORESTES</td>
+            <td class="num">$ 71,387</td>
+            <td class="num">$ 34,979</td>
+            <td class="num">$ 57,071</td>
+            <td class="num neg">$ -14,315</td>
+          </tr>
+          <tr>
+            <td>Pink</td>
+            <td class="num">$ 56,132</td>
+            <td class="num">$ 24,895</td>
+            <td class="num">$ 40,618</td>
+            <td class="num neg">$ -15,514</td>
+          </tr>
+          <tr>
+            <td>Orange</td>
+            <td class="num">$ 156,950</td>
+            <td class="num">$ 86,150</td>
+            <td class="num">$ 140,561</td>
+            <td class="num neg">$ -16,389</td>
+          </tr>
+          <tr>
+            <td>Dagobah</td>
+            <td class="num">$ 16,930</td>
+            <td class="num">$ 100</td>
+            <td class="num">$ 163</td>
+            <td class="num neg">$ -16,767</td>
+          </tr>
+          <tr>
+            <td>NEXSELL</td>
+            <td class="num">$ 16,820</td>
+            <td class="num">$ 0</td>
+            <td class="num">$ 0</td>
+            <td class="num neg">$ -16,820</td>
+          </tr>
+          <tr>
+            <td>Quasar</td>
+            <td class="num">$ 46,693</td>
+            <td class="num">$ 18,250</td>
+            <td class="num">$ 29,777</td>
+            <td class="num neg">$ -16,916</td>
+          </tr>
+          <tr>
+            <td>CHILLY</td>
+            <td class="num">$ 91,767</td>
+            <td class="num">$ 44,828</td>
+            <td class="num">$ 73,141</td>
+            <td class="num neg">$ -18,626</td>
+          </tr>
+          <tr>
+            <td>Opal</td>
+            <td class="num">$ 48,277</td>
+            <td class="num">$ 17,767</td>
+            <td class="num">$ 28,988</td>
+            <td class="num neg">$ -19,289</td>
+          </tr>
+          <tr>
+            <td>Summit</td>
+            <td class="num">$ 292,099</td>
+            <td class="num">$ 166,421</td>
+            <td class="num">$ 271,528</td>
+            <td class="num neg">$ -20,570</td>
+          </tr>
+          <tr>
+            <td>Yellow</td>
+            <td class="num">$ 279,739</td>
+            <td class="num">$ 157,941</td>
+            <td class="num">$ 257,694</td>
+            <td class="num neg">$ -22,045</td>
+          </tr>
+          <tr>
+            <td>Ruby</td>
+            <td class="num">$ 146,007</td>
+            <td class="num">$ 72,692</td>
+            <td class="num">$ 118,602</td>
+            <td class="num neg">$ -27,405</td>
+          </tr>
+          <tr>
+            <td>Nova</td>
+            <td class="num">$ 279,017</td>
+            <td class="num">$ 153,471</td>
+            <td class="num">$ 250,400</td>
+            <td class="num neg">$ -28,618</td>
+          </tr>
+          <tr>
+            <td>Hermes</td>
+            <td class="num">$ 624,173</td>
+            <td class="num">$ 363,294</td>
+            <td class="num">$ 592,742</td>
+            <td class="num neg">$ -31,431</td>
+          </tr>
+          <tr>
+            <td>Titanium</td>
+            <td class="num">$ 615,972</td>
+            <td class="num">$ 358,064</td>
+            <td class="num">$ 584,209</td>
+            <td class="num neg">$ -31,763</td>
+          </tr>
+          <tr>
+            <td>Nomad</td>
+            <td class="num">$ 375,429</td>
+            <td class="num">$ 210,231</td>
+            <td class="num">$ 343,008</td>
+            <td class="num neg">$ -32,420</td>
+          </tr>
+          <tr>
+            <td>Kyros</td>
+            <td class="num">$ 574,357</td>
+            <td class="num">$ 331,467</td>
+            <td class="num">$ 540,814</td>
+            <td class="num neg">$ -33,543</td>
+          </tr>
+          <tr>
+            <td>AYTCH</td>
+            <td class="num">$ 72,077</td>
+            <td class="num">$ 20,067</td>
+            <td class="num">$ 32,741</td>
+            <td class="num neg">$ -39,336</td>
+          </tr>
+          <tr>
+            <td>Old Blue</td>
+            <td class="num">$ 1,638,838</td>
+            <td class="num">$ 978,737</td>
+            <td class="num">$ 1,596,886</td>
+            <td class="num neg">$ -41,952</td>
+          </tr>
+          <tr>
+            <td>Zenith</td>
+            <td class="num">$ 237,528</td>
+            <td class="num">$ 119,634</td>
+            <td class="num">$ 195,193</td>
+            <td class="num neg">$ -42,335</td>
+          </tr>
+          <tr>
+            <td>Cigar</td>
+            <td class="num">$ 113,959</td>
+            <td class="num">$ 43,703</td>
+            <td class="num">$ 71,306</td>
+            <td class="num neg">$ -42,654</td>
+          </tr>
+          <tr>
+            <td>Pegasus</td>
+            <td class="num">$ 165,714</td>
+            <td class="num">$ 72,147</td>
+            <td class="num">$ 117,714</td>
+            <td class="num neg">$ -48,000</td>
+          </tr>
+          <tr>
+            <td>Affiliated Distributors</td>
+            <td class="num">$ 315,729</td>
+            <td class="num">$ 162,487</td>
+            <td class="num">$ 265,110</td>
+            <td class="num neg">$ -50,619</td>
+          </tr>
+          <tr>
+            <td>IRIDIUM</td>
+            <td class="num">$ 152,360</td>
+            <td class="num">$ 59,155</td>
+            <td class="num">$ 96,517</td>
+            <td class="num neg">$ -55,843</td>
+          </tr>
+          <tr>
+            <td>Sun</td>
+            <td class="num">$ 56,677</td>
+            <td class="num">$ 0</td>
+            <td class="num">$ 0</td>
+            <td class="num neg">$ -56,677</td>
+          </tr>
+          <tr>
+            <td>Silver</td>
+            <td class="num">$ 580,604</td>
+            <td class="num">$ 320,883</td>
+            <td class="num">$ 523,546</td>
+            <td class="num neg">$ -57,058</td>
+          </tr>
+          <tr>
+            <td>Onyx</td>
+            <td class="num">$ 1,132,776</td>
+            <td class="num">$ 655,643</td>
+            <td class="num">$ 1,069,733</td>
+            <td class="num neg">$ -63,043</td>
+          </tr>
+          <tr>
+            <td>TEAM ASHES</td>
+            <td class="num">$ 278,612</td>
+            <td class="num">$ 131,134</td>
+            <td class="num">$ 213,956</td>
+            <td class="num neg">$ -64,655</td>
+          </tr>
+          <tr>
+            <td>CHAOS</td>
+            <td class="num">$ 564,469</td>
+            <td class="num">$ 305,955</td>
+            <td class="num">$ 499,190</td>
+            <td class="num neg">$ -65,279</td>
+          </tr>
+          <tr>
+            <td>Authotrans</td>
+            <td class="num">$ 535,939</td>
+            <td class="num">$ 280,801</td>
+            <td class="num">$ 458,149</td>
+            <td class="num neg">$ -77,790</td>
+          </tr>
+          <tr>
+            <td>Crimson</td>
+            <td class="num">$ 395,910</td>
+            <td class="num">$ 194,387</td>
+            <td class="num">$ 317,158</td>
+            <td class="num neg">$ -78,752</td>
+          </tr>
+          <tr>
+            <td>Lithium</td>
+            <td class="num">$ 1,591,761</td>
+            <td class="num">$ 925,740</td>
+            <td class="num">$ 1,510,417</td>
+            <td class="num neg">$ -81,343</td>
+          </tr>
+          <tr>
+            <td>Ultra</td>
+            <td class="num">$ 586,387</td>
+            <td class="num">$ 304,221</td>
+            <td class="num">$ 496,360</td>
+            <td class="num neg">$ -90,027</td>
+          </tr>
+          <tr>
+            <td>Ares</td>
+            <td class="num">$ 1,229,598</td>
+            <td class="num">$ 696,926</td>
+            <td class="num">$ 1,137,089</td>
+            <td class="num neg">$ -92,509</td>
+          </tr>
+          <tr>
+            <td>Lime</td>
+            <td class="num">$ 577,871</td>
+            <td class="num">$ 295,076</td>
+            <td class="num">$ 481,439</td>
+            <td class="num neg">$ -96,432</td>
+          </tr>
+          <tr>
+            <td>Titan</td>
+            <td class="num">$ 2,354,674</td>
+            <td class="num">$ 1,380,875</td>
+            <td class="num">$ 2,253,007</td>
+            <td class="num neg">$ -101,667</td>
+          </tr>
+          <tr>
+            <td>Capella</td>
+            <td class="num">$ 412,583</td>
+            <td class="num">$ 189,739</td>
+            <td class="num">$ 309,574</td>
+            <td class="num neg">$ -103,009</td>
+          </tr>
+          <tr>
+            <td>Subzero</td>
+            <td class="num">$ 905,356</td>
+            <td class="num">$ 489,907</td>
+            <td class="num">$ 799,322</td>
+            <td class="num neg">$ -106,034</td>
+          </tr>
+          <tr>
+            <td>Mystic</td>
+            <td class="num">$ 423,711</td>
+            <td class="num">$ 191,555</td>
+            <td class="num">$ 312,537</td>
+            <td class="num neg">$ -111,174</td>
+          </tr>
+          <tr>
+            <td>Agis</td>
+            <td class="num">$ 1,950,851</td>
+            <td class="num">$ 1,126,635</td>
+            <td class="num">$ 1,838,193</td>
+            <td class="num neg">$ -112,658</td>
+          </tr>
+          <tr>
+            <td>Iceberg</td>
+            <td class="num">$ 4,419,314</td>
+            <td class="num">$ 2,637,739</td>
+            <td class="num">$ 4,303,680</td>
+            <td class="num neg">$ -115,634</td>
+          </tr>
+          <tr>
+            <td>Hercules</td>
+            <td class="num">$ 1,007,196</td>
+            <td class="num">$ 543,111</td>
+            <td class="num">$ 886,129</td>
+            <td class="num neg">$ -121,068</td>
+          </tr>
+          <tr>
+            <td>Snow</td>
+            <td class="num">$ 672,771</td>
+            <td class="num">$ 331,285</td>
+            <td class="num">$ 540,518</td>
+            <td class="num neg">$ -132,253</td>
+          </tr>
+          <tr>
+            <td>Ivory</td>
+            <td class="num">$ 410,144</td>
+            <td class="num">$ 149,369</td>
+            <td class="num">$ 243,707</td>
+            <td class="num neg">$ -166,438</td>
+          </tr>
+          <tr>
+            <td>Glacier</td>
+            <td class="num">$ 1,225,811</td>
+            <td class="num">$ 645,721</td>
+            <td class="num">$ 1,053,545</td>
+            <td class="num neg">$ -172,266</td>
+          </tr>
+          <tr>
+            <td>Zinc</td>
+            <td class="num">$ 2,418,295</td>
+            <td class="num">$ 1,374,458</td>
+            <td class="num">$ 2,242,537</td>
+            <td class="num neg">$ -175,758</td>
+          </tr>
+          <tr>
+            <td>Aqua</td>
+            <td class="num">$ 4,470,066</td>
+            <td class="num">$ 2,624,103</td>
+            <td class="num">$ 4,281,431</td>
+            <td class="num neg">$ -188,634</td>
+          </tr>
+          <tr>
+            <td>White</td>
+            <td class="num">$ 3,072,764</td>
+            <td class="num">$ 1,751,553</td>
+            <td class="num">$ 2,857,796</td>
+            <td class="num neg">$ -214,968</td>
+          </tr>
+          <tr>
+            <td>Achilles</td>
+            <td class="num">$ 1,187,127</td>
+            <td class="num">$ 593,467</td>
+            <td class="num">$ 968,288</td>
+            <td class="num neg">$ -218,839</td>
+          </tr>
+          <tr>
+            <td>CRONUS</td>
+            <td class="num">$ 1,798,365</td>
+            <td class="num">$ 958,398</td>
+            <td class="num">$ 1,563,702</td>
+            <td class="num neg">$ -234,663</td>
+          </tr>
+          <tr>
+            <td>Fuchsia</td>
+            <td class="num">$ 2,723,047</td>
+            <td class="num">$ 1,517,971</td>
+            <td class="num">$ 2,476,689</td>
+            <td class="num neg">$ -246,358</td>
+          </tr>
+          <tr>
+            <td>BCG</td>
+            <td class="num">$ 4,140,483</td>
+            <td class="num">$ 2,354,227</td>
+            <td class="num">$ 3,841,107</td>
+            <td class="num neg">$ -299,376</td>
+          </tr>
+          <tr>
+            <td>Xerxes</td>
+            <td class="num">$ 4,016,519</td>
+            <td class="num">$ 2,269,454</td>
+            <td class="num">$ 3,702,794</td>
+            <td class="num neg">$ -313,725</td>
+          </tr>
+          <tr>
+            <td>ARETE</td>
+            <td class="num">$ 1,544,267</td>
+            <td class="num">$ 725,458</td>
+            <td class="num">$ 1,183,642</td>
+            <td class="num neg">$ -360,625</td>
+          </tr>
+          <tr>
+            <td>Areus</td>
+            <td class="num">$ 4,520,420</td>
+            <td class="num">$ 2,542,659</td>
+            <td class="num">$ 4,148,549</td>
+            <td class="num neg">$ -371,871</td>
+          </tr>
+          <tr>
+            <td>Black</td>
+            <td class="num">$ 22,767,260</td>
+            <td class="num">$ 13,674,486</td>
+            <td class="num">$ 22,311,004</td>
+            <td class="num neg">$ -456,257</td>
+          </tr>
+          <tr>
+            <td>Stelios</td>
+            <td class="num">$ 13,973,170</td>
+            <td class="num">$ 8,255,659</td>
+            <td class="num">$ 13,469,759</td>
+            <td class="num neg">$ -503,411</td>
+          </tr>
+          <tr>
+            <td>Athena</td>
+            <td class="num">$ 5,950,041</td>
+            <td class="num">$ 3,334,801</td>
+            <td class="num">$ 5,440,991</td>
+            <td class="num neg">$ -509,049</td>
+          </tr>
+          <tr>
+            <td>Apollo</td>
+            <td class="num">$ 6,125,447</td>
+            <td class="num">$ 3,426,118</td>
+            <td class="num">$ 5,589,982</td>
+            <td class="num neg">$ -535,465</td>
+          </tr>
+          <tr>
+            <td>Striker</td>
+            <td class="num">$ 6,635,923</td>
+            <td class="num">$ 3,716,229</td>
+            <td class="num">$ 6,063,321</td>
+            <td class="num neg">$ -572,603</td>
+          </tr>
+          <tr>
+            <td>Aluminum</td>
+            <td class="num">$ 8,027,340</td>
+            <td class="num">$ 4,564,975</td>
+            <td class="num">$ 7,448,116</td>
+            <td class="num neg">$ -579,224</td>
+          </tr>
+          <tr>
+            <td>Shadow</td>
+            <td class="num">$ 8,293,550</td>
+            <td class="num">$ 4,681,831</td>
+            <td class="num">$ 7,638,778</td>
+            <td class="num neg">$ -654,773</td>
+          </tr>
+          <tr>
+            <td>Iron</td>
+            <td class="num">$ 8,040,276</td>
+            <td class="num">$ 4,505,748</td>
+            <td class="num">$ 7,351,484</td>
+            <td class="num neg">$ -688,792</td>
+          </tr>
+          <tr>
+            <td>Hazel</td>
+            <td class="num">$ 2,187,370</td>
+            <td class="num">$ 913,464</td>
+            <td class="num">$ 1,490,388</td>
+            <td class="num neg">$ -696,982</td>
+          </tr>
+          <tr>
+            <td>Pluto</td>
+            <td class="num">$ 8,285,670</td>
+            <td class="num">$ 4,637,573</td>
+            <td class="num">$ 7,566,567</td>
+            <td class="num neg">$ -719,103</td>
+          </tr>
+          <tr>
+            <td>Emerald</td>
+            <td class="num">$ 15,647,438</td>
+            <td class="num">$ 9,041,731</td>
+            <td class="num">$ 14,752,297</td>
+            <td class="num neg">$ -895,140</td>
+          </tr>
+          <tr>
+            <td>Cobalt</td>
+            <td class="num">$ 11,145,939</td>
+            <td class="num">$ 6,212,639</td>
+            <td class="num">$ 10,136,410</td>
+            <td class="num neg">$ -1,009,529</td>
+          </tr>
+          <tr>
+            <td>Coral</td>
+            <td class="num">$ 13,495,641</td>
+            <td class="num">$ 7,622,720</td>
+            <td class="num">$ 12,437,070</td>
+            <td class="num neg">$ -1,058,571</td>
+          </tr>
+          <tr>
+            <td>Tungsten</td>
+            <td class="num">$ 10,648,335</td>
+            <td class="num">$ 5,873,858</td>
+            <td class="num">$ 9,583,664</td>
+            <td class="num neg">$ -1,064,671</td>
+          </tr>
+          <tr>
+            <td>Brass</td>
+            <td class="num">$ 14,931,680</td>
+            <td class="num">$ 8,495,395</td>
+            <td class="num">$ 13,860,908</td>
+            <td class="num neg">$ -1,070,773</td>
+          </tr>
+          <tr>
+            <td>Mahogany</td>
+            <td class="num">$ 19,935,082</td>
+            <td class="num">$ 11,549,213</td>
+            <td class="num">$ 18,843,453</td>
+            <td class="num neg">$ -1,091,629</td>
+          </tr>
+          <tr>
+            <td>Mercury</td>
+            <td class="num">$ 7,704,255</td>
+            <td class="num">$ 4,047,683</td>
+            <td class="num">$ 6,604,114</td>
+            <td class="num neg">$ -1,100,141</td>
+          </tr>
+          <tr>
+            <td>Orion</td>
+            <td class="num">$ 15,193,946</td>
+            <td class="num">$ 8,566,837</td>
+            <td class="num">$ 13,977,471</td>
+            <td class="num neg">$ -1,216,475</td>
+          </tr>
+          <tr>
+            <td>Chrome</td>
+            <td class="num">$ 18,953,539</td>
+            <td class="num">$ 10,800,934</td>
+            <td class="num">$ 17,622,576</td>
+            <td class="num neg">$ -1,330,963</td>
+          </tr>
+          <tr>
+            <td>Peach</td>
+            <td class="num">$ 17,907,714</td>
+            <td class="num">$ 9,954,645</td>
+            <td class="num">$ 16,241,788</td>
+            <td class="num neg">$ -1,665,926</td>
+          </tr>
+          <tr>
+            <td>Platinum</td>
+            <td class="num">$ 22,269,601</td>
+            <td class="num">$ 12,551,311</td>
+            <td class="num">$ 20,478,454</td>
+            <td class="num neg">$ -1,791,147</td>
+          </tr>
+          <tr>
+            <td>Leonidas</td>
+            <td class="num">$ 16,417,679</td>
+            <td class="num">$ 8,895,684</td>
+            <td class="num">$ 14,514,011</td>
+            <td class="num neg">$ -1,903,668</td>
+          </tr>
+          <tr>
+            <td>AMS</td>
+            <td class="num">$ 8,725,078</td>
+            <td class="num">$ 4,030,689</td>
+            <td class="num">$ 6,576,387</td>
+            <td class="num neg">$ -2,148,691</td>
+          </tr>
+          <tr>
+            <td>Zeus</td>
+            <td class="num">$ 28,977,371</td>
+            <td class="num">$ 16,398,981</td>
+            <td class="num">$ 26,756,233</td>
+            <td class="num neg">$ -2,221,138</td>
+          </tr>
+          <tr>
+            <td>Indigo</td>
+            <td class="num">$ 44,505,642</td>
+            <td class="num">$ 25,309,468</td>
+            <td class="num">$ 41,294,395</td>
+            <td class="num neg">$ -3,211,247</td>
+          </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th>Total</th>
+                <th class="num">$ 443,146,420</th>
+                <th class="num">$ 257,160,106</th>
+                <th class="num">$ 419,577,015</th>
+                <th class="num neg">$ -23,569,404</th>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="foot__rule"></div>
+  Copyright &copy; <a href="../index.html">Wholesale Payments</a>. All rights reserved.
+</footer>
+
+<script src="../assets/js/wpi.js" defer></script>
+</body>
+</html>

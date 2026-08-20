@@ -1,34 +1,41 @@
-# Wholesale Payments — Company Website
+# Wholesale Payments — Sales Dashboard (Redesign)
 
-A redesigned marketing website for Wholesale Payments, Inc. — zero-fee payment
-processing and merchant services since 2007.
+A ground-up redesign of `sales.wholesalepayments.org`, rebuilt as a fully static,
+dependency-free site from a capture of the production dashboard. Every page, table
+row, dollar figure, and merchant record from the reference capture is preserved.
 
 ## Design
 
-- **Typography** — Apple-style system font stack (SF Pro on Apple devices, with
-  Segoe UI / Roboto fallbacks), large tracking-tight headlines, generous whitespace.
-- **Color** — hues drawn from the Wholesale Payments logo: azure blue `#077AE8`,
-  deep blue `#0554A8`, and soft green `#80CD86`, on white and deep-navy grounds.
-- **Animation** — scroll-triggered reveals, animated stat counters, a floating
-  3D payment card with pointer tilt, aurora/parallax orbs, an industries marquee,
-  a fee-comparison bar animation, and a frosted-glass nav. All animations respect
-  `prefers-reduced-motion`.
+- **Typography** — Apple-style system stack (SF Pro on Apple hardware, Segoe UI /
+  Roboto elsewhere): tight-tracked navy headlines, tabular numerals for money.
+- **Color** — drawn from the Wholesale Payments logo and used as *subtle hues only*:
+  navy `#00115F` (wordmark), azure `#0095E4` and greens `#00C878`/`#50E878` (icon bars),
+  gray `#AAAFB5`. The hues appear in hairline gradients, badges, chart strokes,
+  meters, and whisper-quiet background glows — never as large blocks of color.
+- **Animation** — glass top bar, staggered card reveals, count-up KPIs, SVG charts
+  that draw in (bar-grow, line-draw, donut sweep), animated ratio meters, dropdown
+  and tab transitions. All animation respects `prefers-reduced-motion`.
 
-## Structure
-
-```
-index.html        # single-page site: hero, zero-fee, solutions, industries,
-                  # how-it-works, about, CTA, footer
-css/styles.css    # design system + all styling and keyframe animations
-js/main.js        # nav state, reveals, counters, tilt, parallax, mobile menu
-assets/           # SVG logo + favicon
-```
-
-## Run locally
-
-No build step — it's a static site:
+## Pages
 
 ```
-python3 -m http.server 8080
-# open http://localhost:8080
+index.html                     Sales Dashboard (portfolio, activity chart, widgets)
+Rankings.html                  Manager & sales-rep leaderboards
+merchants/search.html          Merchant search with live filtering
+merchants/detail/<MID>.html    20 merchant detail pages (stats, charts, contact)
+payverification/detail.html    Kaching — pay detail, earnings trend, income mix
+payverification/roster.html    Kaching — pay verification roster
+reports/…                      Nonprocessing, Volume Difference, Gain/Loss,
+                               Pended Deals, Avg Merchant Volume, Threshold,
+                               Weekly Processing, HPAR, Car Contest 2025
+```
+
+## Stack
+
+No build step, no external dependencies, no CDNs. Charts are hand-rolled SVG
+(`assets/js/wpi.js`) fed by `data-chart` JSON attributes. Tables sort client-side;
+search/filter controls filter rows live.
+
+```
+python3 -m http.server 8080   # then open http://localhost:8080
 ```

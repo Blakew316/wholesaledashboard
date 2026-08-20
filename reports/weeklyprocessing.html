@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weekly Processing Report — Wholesale Payments</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/wpi.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="shell topbar__inner">
+    <a class="brand" href="../index.html" aria-label="Wholesale Payments — dashboard home">
+      <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs>
+          <linearGradient id="bm" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#00A2EC"/>
+            <stop offset=".38" stop-color="#00B868"/>
+            <stop offset="1" stop-color="#50E878"/>
+          </linearGradient>
+        </defs>
+        <rect x="4"  y="12" width="8"  height="25" rx="4" fill="#0095E4"/>
+        <rect x="17" y="4"  width="14" height="40" rx="5" fill="url(#bm)"/>
+        <rect x="36" y="15" width="8"  height="22" rx="4" fill="#00C878"/>
+      </svg>
+      <span class="brand__text"><strong>wholesale</strong><span>payments</span></span>
+    </a>
+
+    <nav class="mainnav" id="mainnav" aria-label="Primary">
+      <a class="mainnav__link" href="../index.html">Dashboard</a>
+      <a class="mainnav__link" href="../Rankings.html">Rankings</a>
+      <a class="mainnav__link" href="../merchants/search.html">Merchants</a>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Products
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="https://kloser.wholesalepayments.org">Kloser<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpiuniversity.com/session/new">WPI University<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://customerconnectwp.com/">Customer Connect<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpirewards.com/login/">WPI Rewards<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <div class="drop__sep"></div>
+          <a href="../payverification/detail.html">Kaching</a>
+          <a href="../payverification/roster.html">Kaching (Roster)</a>
+        </div>
+      </div>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Reports
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="nonprocessing.html">Nonprocessing</a>
+          <a href="volume.html">Volume Difference</a>
+          <a href="gainloss.html">Gain/Loss</a>
+          <a href="pendingdeals.html">Pended Deals</a>
+          <a href="volumeavg.html">Avg Merchant Volume</a>
+          <a href="threshold__p_0.html">Threshold</a>
+          <a href="weeklyprocessing.html">Weekly Processing</a>
+          <a href="hpar.html">HPAR</a>
+          <a href="carcontest2025.html">Car Contest</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="topbar__user">
+      <div class="userchip">
+        <span class="userchip__avatar">JW</span>
+        <span class="userchip__meta">
+          <span class="userchip__name">justin.woodruff</span><br>
+          <span class="userchip__org">@ wholesalepayments.com</span>
+        </span>
+      </div>
+      <button class="btn-logout" type="button">Logout</button>
+    </div>
+
+    <button class="topbar__burger" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main class="page" id="main">
+  <div class="shell">
+
+    <div class="pagehead reveal">
+      <div>
+        <div class="pagehead__pre">Reports</div>
+        <h1 class="pagehead__title">Weekly Processing Report</h1>
+      </div>
+      <div class="pagehead__side">
+        <div class="field">
+          <label for="reportDate">Report Date</label>
+          <select id="reportDate">
+            <option value="2026-08-20" selected>Aug 20, 2026</option>
+            <option value="2026-08-13">Aug 13, 2026</option>
+            <option value="2026-08-06">Aug 06, 2026</option>
+            <option value="2026-07-30">Jul 30, 2026</option>
+            <option value="2026-07-23">Jul 23, 2026</option>
+            <option value="2026-07-16">Jul 16, 2026</option>
+            <option value="2026-07-09">Jul 09, 2026</option>
+            <option value="2026-07-02">Jul 02, 2026</option>
+            <option value="2026-06-25">Jun 25, 2026</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="banner reveal rd-1">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M10 9v4.5M10 6.4v.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <div>
+        <strong>Processing Week: 08/14/2026 - 08/20/2026</strong><br>
+        Definition: First met Processing Threshold within date range above, and Category is &#x27;Approved - Paid&#x27;.
+      </div>
+    </div>
+
+    <section class="card card--accent card--lift reveal rd-1" style="margin-bottom:18px">
+      <div class="card__head">
+        <h2 class="card__title">All Teams</h2>
+      </div>
+      <div class="card__body card__body--flush">
+        <div class="tblwrap">
+          <table class="tbl sortable" id="rs1">
+            <thead>
+              <tr>
+                <th>Team</th>
+                <th class="num">New Processing (65)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Peach</td><td class="num">8</td></tr>
+              <tr><td>Brass</td><td class="num">6</td></tr>
+              <tr><td>Emerald</td><td class="num">6</td></tr>
+              <tr><td>Palladium</td><td class="num">6</td></tr>
+              <tr><td>Leonidas</td><td class="num">5</td></tr>
+              <tr><td>Indigo</td><td class="num">4</td></tr>
+              <tr><td>Stelios</td><td class="num">4</td></tr>
+              <tr><td>MAVERICK</td><td class="num">3</td></tr>
+              <tr><td>Mercury</td><td class="num">3</td></tr>
+              <tr><td>Orion</td><td class="num">3</td></tr>
+              <tr><td>Athena</td><td class="num">3</td></tr>
+              <tr><td>Black</td><td class="num">2</td></tr>
+              <tr><td>House</td><td class="num">2</td></tr>
+              <tr><td>ARTEMIS</td><td class="num">2</td></tr>
+              <tr><td>CRONUS</td><td class="num">2</td></tr>
+              <tr><td>Zeus</td><td class="num">2</td></tr>
+              <tr><td>Mahogany</td><td class="num">2</td></tr>
+              <tr><td>Lithium</td><td class="num">1</td></tr>
+              <tr><td>Coral</td><td class="num">1</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid grid--3">
+
+      <section class="card card--lift reveal rd-2">
+        <div class="card__head">
+          <h2 class="card__title">FIRE</h2>
+        </div>
+        <div class="card__body card__body--flush">
+          <div class="tblwrap">
+            <table class="tbl sortable" id="rs2">
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th class="num">Processing (17)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Peach</td><td class="num">8</td></tr>
+                <tr><td>Emerald</td><td class="num">6</td></tr>
+                <tr><td>Black</td><td class="num">2</td></tr>
+                <tr><td>Coral</td><td class="num">1</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="card card--lift reveal rd-2">
+        <div class="card__head">
+          <h2 class="card__title">OLYMPUS</h2>
+        </div>
+        <div class="card__body card__body--flush">
+          <div class="tblwrap">
+            <table class="tbl sortable" id="rs3">
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th class="num">Processing (9)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Athena</td><td class="num">3</td></tr>
+                <tr><td>ARTEMIS</td><td class="num">2</td></tr>
+                <tr><td>CRONUS</td><td class="num">2</td></tr>
+                <tr><td>Zeus</td><td class="num">2</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="card card--lift reveal rd-2">
+        <div class="card__head">
+          <h2 class="card__title">ICE</h2>
+        </div>
+        <div class="card__body card__body--flush">
+          <div class="tblwrap">
+            <table class="tbl sortable" id="rs4">
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th class="num">Processing (12)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Indigo</td><td class="num">4</td></tr>
+                <tr><td>MAVERICK</td><td class="num">3</td></tr>
+                <tr><td>Mercury</td><td class="num">3</td></tr>
+                <tr><td>Mahogany</td><td class="num">2</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="card card--lift reveal rd-3">
+        <div class="card__head">
+          <h2 class="card__title">SPARTA</h2>
+        </div>
+        <div class="card__body card__body--flush">
+          <div class="tblwrap">
+            <table class="tbl sortable" id="rs5">
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th class="num">Processing (9)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Leonidas</td><td class="num">5</td></tr>
+                <tr><td>Stelios</td><td class="num">4</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="card card--lift reveal rd-3">
+        <div class="card__head">
+          <h2 class="card__title">STEEL</h2>
+        </div>
+        <div class="card__body card__body--flush">
+          <div class="tblwrap">
+            <table class="tbl sortable" id="rs6">
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th class="num">Processing (13)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Brass</td><td class="num">6</td></tr>
+                <tr><td>Palladium</td><td class="num">6</td></tr>
+                <tr><td>Lithium</td><td class="num">1</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="card card--lift reveal rd-3">
+        <div class="card__head">
+          <h2 class="card__title">GALAXY</h2>
+        </div>
+        <div class="card__body card__body--flush">
+          <div class="tblwrap">
+            <table class="tbl sortable" id="rs7">
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th class="num">Processing (3)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Orion</td><td class="num">3</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="foot__rule"></div>
+  Copyright &copy; <a href="../index.html">Wholesale Payments</a>. All rights reserved.
+</footer>
+
+<script src="../assets/js/wpi.js" defer></script>
+</body>
+</html>

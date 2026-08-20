@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pended Deals — Wholesale Payments</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/wpi.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="shell topbar__inner">
+    <a class="brand" href="../index.html" aria-label="Wholesale Payments — dashboard home">
+      <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs>
+          <linearGradient id="bm" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#00A2EC"/>
+            <stop offset=".38" stop-color="#00B868"/>
+            <stop offset="1" stop-color="#50E878"/>
+          </linearGradient>
+        </defs>
+        <rect x="4"  y="12" width="8"  height="25" rx="4" fill="#0095E4"/>
+        <rect x="17" y="4"  width="14" height="40" rx="5" fill="url(#bm)"/>
+        <rect x="36" y="15" width="8"  height="22" rx="4" fill="#00C878"/>
+      </svg>
+      <span class="brand__text"><strong>wholesale</strong><span>payments</span></span>
+    </a>
+
+    <nav class="mainnav" id="mainnav" aria-label="Primary">
+      <a class="mainnav__link" href="../index.html">Dashboard</a>
+      <a class="mainnav__link" href="../Rankings.html">Rankings</a>
+      <a class="mainnav__link" href="../merchants/search.html">Merchants</a>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Products
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="https://kloser.wholesalepayments.org">Kloser<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpiuniversity.com/session/new">WPI University<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://customerconnectwp.com/">Customer Connect<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpirewards.com/login/">WPI Rewards<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <div class="drop__sep"></div>
+          <a href="../payverification/detail.html">Kaching</a>
+          <a href="../payverification/roster.html">Kaching (Roster)</a>
+        </div>
+      </div>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Reports
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="nonprocessing.html">Nonprocessing</a>
+          <a href="volume.html">Volume Difference</a>
+          <a href="gainloss.html">Gain/Loss</a>
+          <a href="pendingdeals.html">Pended Deals</a>
+          <a href="volumeavg.html">Avg Merchant Volume</a>
+          <a href="threshold__p_0.html">Threshold</a>
+          <a href="weeklyprocessing.html">Weekly Processing</a>
+          <a href="hpar.html">HPAR</a>
+          <a href="carcontest2025.html">Car Contest</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="topbar__user">
+      <div class="userchip">
+        <span class="userchip__avatar">JW</span>
+        <span class="userchip__meta">
+          <span class="userchip__name">justin.woodruff</span><br>
+          <span class="userchip__org">@ wholesalepayments.com</span>
+        </span>
+      </div>
+      <button class="btn-logout" type="button">Logout</button>
+    </div>
+
+    <button class="topbar__burger" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main class="page" id="main">
+  <div class="shell">
+
+    <div class="pagehead reveal">
+      <div>
+        <div class="pagehead__pre">Reports</div>
+        <h1 class="pagehead__title">Pended Deals</h1>
+        <div class="pagehead__sub">Merchants in Pended status created in the last 60 days</div>
+      </div>
+    </div>
+
+    <section class="card card--accent card--lift reveal rd-1">
+      <div class="card__head">
+        <h2 class="card__title">Pended Deals</h2>
+      </div>
+      <div class="card__body card__body--flush">
+        <div class="tblwrap">
+          <table class="tbl sortable" id="pendedDeals">
+            <thead>
+              <tr>
+                <th>Team</th>
+                <th>DBA</th>
+                <th>GM</th>
+                <th>Sales Rep</th>
+                <th class="num">Expected Volume</th>
+                <th data-nosort>Pend Category</th>
+                <th>Sub-Category</th>
+                <th>Comment</th>
+                <th>Pend Date</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Maverick</td>
+                <td>CERRUS AUTO</td>
+                <td>Ice</td>
+                <td>DARRIN  FAILLE</td>
+                <td class="num">10,000</td>
+                <td><span class="badge badge--warn">Banking &amp; Financial Issues; Business Verification Issues</span></td>
+                <td>Invalid or Unverifiable Business Address; Voided Check or Bank Letter Missing/Incorrect</td>
+                <td>RISK ALERT | UNABLE TO VERIFY THE DBA ADDRESS</td>
+                <td>Aug 19, 2026</td>
+              </tr>
+              <tr>
+                <td>Maverick</td>
+                <td>BEAR COUNTRY GALLERY</td>
+                <td>Ice</td>
+                <td>TIMOTHY CONSTENIOUS</td>
+                <td class="num">20,000</td>
+                <td><span class="badge badge--warn">Business Verification Issues</span></td>
+                <td>Mismatch in Business Name and Tax ID (EIN Mismatch)</td>
+                <td>INVALID TIN</td>
+                <td>Aug 10, 2026</td>
+              </tr>
+              <tr>
+                <td>Maverick</td>
+                <td>RAVEN ROCK AMORY</td>
+                <td>Ice</td>
+                <td>Timothy  Constenius</td>
+                <td class="num">30,000</td>
+                <td><span class="badge badge--warn">Business Verification Issues; Compliance &amp; Regulatory Hold-Ups</span></td>
+                <td>Mismatch in Business Name and Tax ID (EIN Mismatch); State or Federal Licensing Not Provided (e.g., firearms, cannabis, etc.)</td>
+                <td>need ffl | INVALID TIN</td>
+                <td>Aug 6, 2026</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="foot__rule"></div>
+  Copyright &copy; <a href="../index.html">Wholesale Payments</a>. All rights reserved.
+</footer>
+
+<script src="../assets/js/wpi.js" defer></script>
+</body>
+</html>

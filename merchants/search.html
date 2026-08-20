@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merchant Search — Wholesale Payments</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/wpi.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="shell topbar__inner">
+    <a class="brand" href="../index.html" aria-label="Wholesale Payments — dashboard home">
+      <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs>
+          <linearGradient id="bm" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#00A2EC"/>
+            <stop offset=".38" stop-color="#00B868"/>
+            <stop offset="1" stop-color="#50E878"/>
+          </linearGradient>
+        </defs>
+        <rect x="4"  y="12" width="8"  height="25" rx="4" fill="#0095E4"/>
+        <rect x="17" y="4"  width="14" height="40" rx="5" fill="url(#bm)"/>
+        <rect x="36" y="15" width="8"  height="22" rx="4" fill="#00C878"/>
+      </svg>
+      <span class="brand__text"><strong>wholesale</strong><span>payments</span></span>
+    </a>
+
+    <nav class="mainnav" id="mainnav" aria-label="Primary">
+      <a class="mainnav__link" href="../index.html">Dashboard</a>
+      <a class="mainnav__link" href="../Rankings.html">Rankings</a>
+      <a class="mainnav__link is-active" href="search.html">Merchants</a>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Products
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="https://kloser.wholesalepayments.org">Kloser<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpiuniversity.com/session/new">WPI University<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://customerconnectwp.com/">Customer Connect<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpirewards.com/login/">WPI Rewards<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <div class="drop__sep"></div>
+          <a href="../payverification/detail.html">Kaching</a>
+          <a href="../payverification/roster.html">Kaching (Roster)</a>
+        </div>
+      </div>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Reports
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="../reports/nonprocessing.html">Nonprocessing</a>
+          <a href="../reports/volume.html">Volume Difference</a>
+          <a href="../reports/gainloss.html">Gain/Loss</a>
+          <a href="../reports/pendingdeals.html">Pended Deals</a>
+          <a href="../reports/volumeavg.html">Avg Merchant Volume</a>
+          <a href="../reports/threshold__p_0.html">Threshold</a>
+          <a href="../reports/weeklyprocessing.html">Weekly Processing</a>
+          <a href="../reports/hpar.html">HPAR</a>
+          <a href="../reports/carcontest2025.html">Car Contest</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="topbar__user">
+      <div class="userchip">
+        <span class="userchip__avatar">JW</span>
+        <span class="userchip__meta">
+          <span class="userchip__name">justin.woodruff</span><br>
+          <span class="userchip__org">@ wholesalepayments.com</span>
+        </span>
+      </div>
+      <button class="btn-logout" type="button">Logout</button>
+    </div>
+
+    <button class="topbar__burger" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main class="page" id="main">
+  <div class="shell">
+
+    <div class="pagehead reveal">
+      <div>
+        <div class="pagehead__pre">Merchants</div>
+        <h1 class="pagehead__title">Merchant Search</h1>
+      </div>
+    </div>
+
+    <div class="filters reveal rd-1">
+      <div class="field searchbox">
+        <label>Search Merchants</label>
+        <svg viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m13.5 13.5 3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+        <input type="search" placeholder="Name, MID, rep or team (3+ characters)" data-filter="#merchTbl">
+      </div>
+      <div class="field">
+        <label>Status</label>
+        <select data-filter-select="#merchTbl">
+          <option value="">Any status</option>
+          <option value="active">Active</option>
+          <option value="inactive">Inactive</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Processing</label>
+        <select data-filter-select="#merchTbl">
+          <option value="">Any processing</option>
+          <option value="never">Never processed</option>
+          <option value="processing">Processing</option>
+          <option value="stopped">Stopped processing</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Created</label>
+        <select>
+          <option value="30">Last 30 days</option>
+          <option value="60">Last 60 days</option>
+          <option value="90">Last 90 days</option>
+          <option value="180" selected>Last 180 days</option>
+          <option value="365">Last 12 months</option>
+          <option value="0">All time</option>
+        </select>
+      </div>
+    </div>
+
+    <section class="card card--accent card--lift reveal rd-2">
+      <div class="card__head">
+        <h2 class="card__title">Results <span class="card__hint">25 merchants &mdash; page 1 of 2</span></h2>
+        <div class="card__side">
+          <button class="btn" type="button">Export CSV</button>
+        </div>
+      </div>
+      <div class="card__body card__body--flush">
+        <div class="tblwrap">
+          <table class="tbl sortable" id="merchTbl">
+            <thead>
+              <tr>
+                <th>GM / SM / TM</th>
+                <th>MID</th>
+                <th>DBA</th>
+                <th class="ctr" data-nosort>Status</th>
+                <th>Processor</th>
+                <th>Location</th>
+                <th>Created</th>
+                <th>Rep</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000058902</td>
+                <td>K+K VENTURES, LLC</td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Kalispell, MT</td>
+                <td>08/18/2026</td>
+                <td>Timothy Constenius</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000058571</td>
+                <td>ALL AMERICAN MUFFLER</td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Salinas, CA</td>
+                <td>08/14/2026</td>
+                <td>JUDAH STEELMAN</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000058464</td>
+                <td><a class="ent" href="detail/719070000058464.html">TRUCKANICS SERVICE AND INSPECTIONS</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Salinas, CA</td>
+                <td>08/14/2026</td>
+                <td>JUDAH STEELMAN</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000057813</td>
+                <td><a class="ent" href="detail/719070000057813.html">JAIMES AUTO SERVICE</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Salinas, CA</td>
+                <td>08/12/2026</td>
+                <td>JUDAH STEELMAN</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000056914</td>
+                <td><a class="ent" href="detail/719070000056914.html">ELITE AUTO SALES OF MT LLC</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Creston, MT</td>
+                <td>08/04/2026</td>
+                <td>Timothy Constenius</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000056435</td>
+                <td><a class="ent" href="detail/719070000056435.html">PAC MILLWORKS</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Creston, MT</td>
+                <td>07/31/2026</td>
+                <td>Timothy Constenius</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000055577</td>
+                <td><a class="ent" href="detail/719070000055577.html">8IGHTY9</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Salinas, CA</td>
+                <td>07/29/2026</td>
+                <td>JUDAH STEELMAN</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000056567</td>
+                <td><a class="ent" href="detail/719070000056567.html">BALLPARK RV RESORT 2</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Gatesville, TX</td>
+                <td>07/27/2026</td>
+                <td>HALEY WOODRUFF</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000054380</td>
+                <td><a class="ent" href="detail/719070000054380.html">CLUB 307 AMERICAN LEGION</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Pioneer, OH</td>
+                <td>07/22/2026</td>
+                <td>KYLE PETTIT</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000054026</td>
+                <td><a class="ent" href="detail/719070000054026.html">JW TRANSMISSIONS</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Marina, CA</td>
+                <td>07/20/2026</td>
+                <td>JUDAH STEELMAN</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000053861</td>
+                <td><a class="ent" href="detail/719070000053861.html">WALDMAN SUBARU SPECIALISTS</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Missoula, MT</td>
+                <td>07/17/2026</td>
+                <td>TIMOTHY CONSTENIOUS</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000053283</td>
+                <td><a class="ent" href="detail/719070000053283.html">MAMA JO&#x27;S FOOD TRUCK</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Kalispell, MT</td>
+                <td>07/14/2026</td>
+                <td>Timothy Constenius</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000053143</td>
+                <td><a class="ent" href="detail/719070000053143.html">MISSOULA FIRE EQUIPMENT</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Missoula, MT</td>
+                <td>07/13/2026</td>
+                <td>TIMOTHY CONSTENIOUS</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000051196</td>
+                <td>PRIMOS AUTO INSURANCE SERVICES 2</td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Sacramento, CA</td>
+                <td>06/30/2026</td>
+                <td>LLOYD CRUZ</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000051139</td>
+                <td><a class="ent" href="detail/719070000051139.html">PRIMOS AUTO INSURANCE SERVICES</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Citrus Heights, CA</td>
+                <td>06/30/2026</td>
+                <td>LLOYD CRUZ</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000051212</td>
+                <td>PRIMOS AUTO INSURANCE SERVICES 3</td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Woodland, CA</td>
+                <td>06/30/2026</td>
+                <td>LLOYD CRUZ</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000050487</td>
+                <td><a class="ent" href="detail/719070000050487.html">DREAMWORKZ GARAGE</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Prunedale, CA</td>
+                <td>06/25/2026</td>
+                <td>JUDAH STEELMAN</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000049638</td>
+                <td><a class="ent" href="detail/719070000049638.html">RANCHO CORDOVA AUTO DISMANTLING</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Rancho Cordova, CA</td>
+                <td>06/22/2026</td>
+                <td>LLOYD CRUZ</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000049273</td>
+                <td><a class="ent" href="detail/719070000049273.html">JJ&#x27;S DRYWALLING</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Kalispell, MT</td>
+                <td>06/19/2026</td>
+                <td>Timothy Constenius</td>
+              </tr>
+              <tr>
+                <td><span class="sub">GM</span> Ice<br><span class="sub">SM</span> Maverick</td>
+                <td>719070000048911</td>
+                <td><a class="ent" href="detail/719070000048911.html">HOUSE OF INK</a></td>
+                <td class="ctr"><span class="badge badge--info">Approved</span></td>
+                <td>TSYS</td>
+                <td>Buffalo Spgs, TX</td>
+                <td>06/17/2026</td>
+                <td>GABRIEL CRAFT</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="padding:10px 16px;font-size:12px;color:var(--faint)">
+          Showing first 20 of 25 results &middot; sorted by Created &#x2193;
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="foot__rule"></div>
+  Copyright &copy; <a href="../index.html">Wholesale Payments</a>. All rights reserved.
+</footer>
+
+<script src="../assets/js/wpi.js" defer></script>
+</body>
+</html>

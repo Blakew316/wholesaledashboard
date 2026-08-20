@@ -1,0 +1,998 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Pay Detail — Wholesale Payments</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/wpi.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="shell topbar__inner">
+    <a class="brand" href="../index.html" aria-label="Wholesale Payments — dashboard home">
+      <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs>
+          <linearGradient id="bm" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#00A2EC"/>
+            <stop offset=".38" stop-color="#00B868"/>
+            <stop offset="1" stop-color="#50E878"/>
+          </linearGradient>
+        </defs>
+        <rect x="4"  y="12" width="8"  height="25" rx="4" fill="#0095E4"/>
+        <rect x="17" y="4"  width="14" height="40" rx="5" fill="url(#bm)"/>
+        <rect x="36" y="15" width="8"  height="22" rx="4" fill="#00C878"/>
+      </svg>
+      <span class="brand__text"><strong>wholesale</strong><span>payments</span></span>
+    </a>
+
+    <nav class="mainnav" id="mainnav" aria-label="Primary">
+      <a class="mainnav__link" href="../index.html">Dashboard</a>
+      <a class="mainnav__link" href="../Rankings.html">Rankings</a>
+      <a class="mainnav__link" href="../merchants/search.html">Merchants</a>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Products
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="https://kloser.wholesalepayments.org">Kloser<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpiuniversity.com/session/new">WPI University<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://customerconnectwp.com/">Customer Connect<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpirewards.com/login/">WPI Rewards<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <div class="drop__sep"></div>
+          <a href="detail.html">Kaching</a>
+          <a href="roster.html">Kaching (Roster)</a>
+        </div>
+      </div>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Reports
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="../reports/nonprocessing.html">Nonprocessing</a>
+          <a href="../reports/volume.html">Volume Difference</a>
+          <a href="../reports/gainloss.html">Gain/Loss</a>
+          <a href="../reports/pendingdeals.html">Pended Deals</a>
+          <a href="../reports/volumeavg.html">Avg Merchant Volume</a>
+          <a href="../reports/threshold__p_0.html">Threshold</a>
+          <a href="../reports/weeklyprocessing.html">Weekly Processing</a>
+          <a href="../reports/hpar.html">HPAR</a>
+          <a href="../reports/carcontest2025.html">Car Contest</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="topbar__user">
+      <div class="userchip">
+        <span class="userchip__avatar">JW</span>
+        <span class="userchip__meta">
+          <span class="userchip__name">justin.woodruff</span><br>
+          <span class="userchip__org">@ wholesalepayments.com</span>
+        </span>
+      </div>
+      <button class="btn-logout" type="button">Logout</button>
+    </div>
+
+    <button class="topbar__burger" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main class="page" id="main">
+  <div class="shell">
+
+    <div class="pagehead reveal">
+      <div>
+        <div class="pagehead__pre">Pay Verification</div>
+        <h1 class="pagehead__title">My Pay Detail</h1>
+        <div class="pagehead__sub">Your earnings, deductions and deposits as held by Kaching</div>
+      </div>
+    </div>
+
+    <!-- Identity strip -->
+    <section class="card reveal rd-1" style="margin-bottom:18px">
+      <div class="card__body" style="display:flex;flex-wrap:wrap;gap:14px 36px;align-items:center;padding-top:15px;padding-bottom:15px">
+        <div style="flex:1;min-width:230px">
+          <div style="font-size:11.5px;color:var(--faint)">Paid as</div>
+          <div style="font-weight:700">BLAKE WOODRUFF</div>
+          <div style="font-size:12px;color:var(--muted)">Also paid under: JUSTIN BLAKE WOODRUFF</div>
+        </div>
+        <div>
+          <div style="font-size:11.5px;color:var(--faint)">Team</div>
+          <div style="font-weight:600">MAVERICK <span class="badge badge--info" style="margin-left:4px">ICE</span></div>
+        </div>
+        <div>
+          <div style="font-size:11.5px;color:var(--faint)">Last paid</div>
+          <div style="font-weight:600">Aug 19, 2026</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- KPI summary -->
+    <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(215px,1fr));margin-bottom:18px">
+      <section class="card card--lift reveal rd-1">
+        <div class="card__body">
+          <div style="font-size:12.5px;color:var(--muted)">Latest month deposit</div>
+          <div class="kpi__num"><span data-countup data-value="3050" data-format="money">$3,050</span>.00</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:5px">Aug <span class="badge badge--bad">-56.3%</span> vs Jul</div>
+        </div>
+      </section>
+      <section class="card card--lift reveal rd-2">
+        <div class="card__body">
+          <div style="font-size:12.5px;color:var(--muted)">Gross YTD</div>
+          <div class="kpi__num"><span data-countup data-value="174138" data-format="money">$174,138</span>.19</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:5px">Commission, bonus and residual, 2026</div>
+        </div>
+      </section>
+      <section class="card card--lift reveal rd-3">
+        <div class="card__body">
+          <div style="font-size:12.5px;color:var(--muted)">Net YTD</div>
+          <div class="kpi__num"><span data-countup data-value="97995" data-format="money">$97,995</span>.24</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:5px">Earnings after deductions, 2026 &mdash; cash deposited can differ on a draw</div>
+        </div>
+      </section>
+      <section class="card card--lift reveal rd-4">
+        <div class="card__body">
+          <div style="font-size:12.5px;color:var(--muted)">Statements</div>
+          <div class="kpi__num"><span data-countup data-value="57">57</span></div>
+          <div style="font-size:12px;color:var(--muted);margin-top:5px">57 shown</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Earnings trend + income mix -->
+    <div class="grid grid--dash" style="margin-bottom:18px">
+      <section class="card card--accent card--lift reveal rd-2">
+        <div class="card__head">
+          <h2 class="card__title">Earnings Trend <span class="card__hint">By month, 2026</span></h2>
+          <div class="card__side legend">
+            <span><i style="background:#0095E4"></i>Commission</span>
+            <span><i style="background:#E3A21A"></i>Bonus</span>
+            <span><i style="background:#00C878"></i>Residual</span>
+          </div>
+        </div>
+        <div class="card__body">
+          <div data-chart='{"kind":"combo","height":220,
+            "labels":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"],
+            "bars":[
+              {"name":"Commission","values":[2300.00,5807.65,4600.00,3663.76,50740.00,4700.00,6516.18,3050.00],"color":"#0095E4"},
+              {"name":"Bonus","values":[1700.00,875.00,4050.00,6000.00,0.00,0.00,3875.00,2500.00],"color":"#E3A21A"},
+              {"name":"Residual","values":[7478.07,8153.48,7410.57,8584.81,10817.68,10411.30,10673.83,10230.86],"color":"#00C878"}]}'></div>
+          <div style="font-size:12px;color:var(--muted);margin-top:10px">
+            Rounded for the chart. Read exact figures from the statements table below.
+          </div>
+        </div>
+      </section>
+
+      <section class="card card--lift reveal rd-3">
+        <div class="card__head">
+          <h2 class="card__title">Income Mix <span class="card__hint">Year to date</span></h2>
+        </div>
+        <div class="card__body">
+          <div data-chart='{"kind":"donut","size":168,
+            "segments":[
+              {"name":"Commission","value":81377.59,"color":"#0095E4"},
+              {"name":"Bonus","value":19000.00,"color":"#E3A21A"},
+              {"name":"Residual","value":73760.60,"color":"#00C878"}],
+            "centerValue":"$174.1k","centerLabel":"YTD"}'></div>
+          <div style="text-align:center;font-size:12px;color:var(--muted);margin:6px 0 12px">
+            42% of gross YTD is residual
+          </div>
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line-2);font-size:13.5px">
+              <span style="display:inline-flex;align-items:center"><i style="display:inline-block;width:9px;height:9px;border-radius:3px;background:#00C878;margin-right:8px"></i>Residuals</span>
+              <span style="font-weight:600;font-variant-numeric:tabular-nums">$73,760.60</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line-2);font-size:13.5px">
+              <span style="display:inline-flex;align-items:center"><i style="display:inline-block;width:9px;height:9px;border-radius:3px;background:#E3A21A;margin-right:8px"></i>Bonuses</span>
+              <span style="font-weight:600;font-variant-numeric:tabular-nums">$19,000.00</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:7px 0;border-top:1px solid var(--line-2);font-size:13.5px">
+              <span style="display:inline-flex;align-items:center"><i style="display:inline-block;width:9px;height:9px;border-radius:3px;background:#0095E4;margin-right:8px"></i>Commission</span>
+              <span style="font-weight:600;font-variant-numeric:tabular-nums">$81,377.59</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;gap:10px;padding:8px 0 0;border-top:1px solid var(--line);font-size:13.5px;font-weight:700;color:var(--navy)">
+              <span>Gross YTD</span>
+              <span style="font-variant-numeric:tabular-nums">$174,138.19</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Residuals + most recent pay run -->
+    <div class="grid grid--2" style="margin-bottom:18px">
+      <section class="card card--lift reveal rd-3">
+        <div class="card__head">
+          <h2 class="card__title">Residuals</h2>
+        </div>
+        <div class="card__body">
+          <div style="margin-bottom:16px">
+            <div style="font-size:12.5px;color:var(--muted)">Most recent residual run</div>
+            <div class="kpi__num">$3,130.86</div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px">
+              Net deposit on the last complete residual run &mdash; not a
+              residual-stream total, so it will differ from the figure below.
+            </div>
+          </div>
+          <div style="margin-bottom:16px">
+            <div style="font-size:12.5px;color:var(--muted)">Residual YTD</div>
+            <div style="font-size:1.35rem;font-weight:700;letter-spacing:-.02em;color:var(--navy);font-variant-numeric:tabular-nums">$73,760.60</div>
+          </div>
+          <div>
+            <div style="font-size:12.5px;color:var(--muted)">Change, Jan to Aug</div>
+            <div style="font-size:1.35rem;font-weight:700;letter-spacing:-.02em;color:var(--green-deep)">+36.8%</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="card card--lift reveal rd-4">
+        <div class="card__head">
+          <h2 class="card__title">Most Recent Pay Run <span class="card__hint">Paid Aug 19, 2026</span></h2>
+          <div class="card__side"><span class="badge badge--info">daily</span></div>
+        </div>
+        <div class="card__body">
+          <div style="display:flex;flex-wrap:wrap;gap:10px;align-items:center;text-align:center">
+            <div style="flex:1;min-width:96px">
+              <div style="font-size:11.5px;color:var(--faint)">Gross earnings</div>
+              <div style="font-size:1.25rem;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums">$250.00</div>
+            </div>
+            <div style="color:var(--faint)">+</div>
+            <div style="flex:1;min-width:88px">
+              <div style="font-size:11.5px;color:var(--faint)">Deductions</div>
+              <div style="font-size:1.25rem;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums">$0.00</div>
+            </div>
+            <div style="color:var(--faint)">+</div>
+            <div style="flex:1;min-width:96px">
+              <div style="font-size:11.5px;color:var(--faint)">Balance applied</div>
+              <div style="font-size:1.25rem;font-weight:700;color:var(--navy);font-variant-numeric:tabular-nums">$0.00</div>
+            </div>
+            <div style="color:var(--faint)">=</div>
+            <div style="flex:1;min-width:96px">
+              <div style="font-size:11.5px;color:var(--faint)">Net deposit</div>
+              <div style="font-size:1.25rem;font-weight:700;color:var(--green-deep);font-variant-numeric:tabular-nums">$250.00</div>
+            </div>
+          </div>
+          <div style="font-size:12px;color:var(--muted);margin-top:14px">
+            Balance applied is shown as its effect on this deposit: a
+            released carry-over balance adds, a withheld one subtracts.
+            Earning more than was deposited is normal on a draw or 1K
+            program &mdash; the difference moved to your balance.
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <!-- Statements -->
+    <section class="card card--lift reveal rd-4">
+      <div class="card__head">
+        <h2 class="card__title">Statements <span class="card__hint">Every pay run on file. Click a column heading to sort.</span></h2>
+      </div>
+      <div class="card__body card__body--flush">
+        <div class="tblwrap">
+          <table class="tbl sortable" id="stmts">
+            <thead>
+              <tr>
+                <th>Pay date</th>
+                <th>Run type</th>
+                <th class="num">Commission</th>
+                <th class="num">Bonus</th>
+                <th class="num">Residual</th>
+                <th class="num">Deductions</th>
+                <th class="num">Balance applied</th>
+                <th class="num">Net deposit</th>
+                <th class="ctr" data-nosort>Status</th>
+                <th class="ctr" data-nosort>Statement</th>
+              </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td data-sort="2026-08-19">Aug 19, 2026</td>
+              <td>daily</td>
+              <td class="num">$250.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$250.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-08-17">Aug 17, 2026</td>
+              <td>daily</td>
+              <td class="num">$900.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$900.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-08-14">Aug 14, 2026</td>
+              <td>daily</td>
+              <td class="num">$1,600.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$2,500.00</td>
+              <td class="num">$900.00</td>
+              <td class="num">$0.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-08-05">Aug 5, 2026</td>
+              <td>residual</td>
+              <td class="num">$300.00</td>
+              <td class="num">$2,500.00</td>
+              <td class="num">$10,230.86</td>
+              <td class="num neg">-$9,900.00</td>
+              <td class="num neg">-$330.86</td>
+              <td class="num">$2,800.00</td>
+              <td class="ctr"><span class="badge badge--warn" title="Aug 4, 2026">Revised</span></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-07-31">Jul 31, 2026</td>
+              <td>daily</td>
+              <td class="num">$1,100.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$1,100.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-07-24">Jul 24, 2026</td>
+              <td>daily</td>
+              <td class="num">$0.00</td>
+              <td class="num">$800.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$800.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-07-24">Jul 24, 2026</td>
+              <td>daily</td>
+              <td class="num">$1,600.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$600.00</td>
+              <td class="num">$1,000.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-07-17">Jul 17, 2026</td>
+              <td>daily</td>
+              <td class="num">$1,600.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$500.00</td>
+              <td class="num neg">-$1,100.00</td>
+              <td class="num">$0.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-07-15">Jul 15, 2026</td>
+              <td>daily</td>
+              <td class="num">$0.00</td>
+              <td class="num">$500.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$500.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-07-10">Jul 10, 2026</td>
+              <td>daily</td>
+              <td class="num">$1,600.00</td>
+              <td class="num">$75.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$2,500.00</td>
+              <td class="num">$1,700.00</td>
+              <td class="num">$875.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-07-06">Jul 6, 2026</td>
+              <td>daily</td>
+              <td class="num">$416.18</td>
+              <td class="num">$2,500.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$416.18</td>
+              <td class="num">$2,500.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-07-03">Jul 3, 2026</td>
+              <td>residual</td>
+              <td class="num">$200.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$10,673.83</td>
+              <td class="num neg">-$9,334.10</td>
+              <td class="num neg">-$1,339.73</td>
+              <td class="num">$200.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-06-30">Jun 30, 2026</td>
+              <td>daily</td>
+              <td class="num">$1,400.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$1,400.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-06-26">Jun 26, 2026</td>
+              <td>daily</td>
+              <td class="num">$2,100.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$2,100.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-06-18">Jun 18, 2026</td>
+              <td>daily</td>
+              <td class="num">$400.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$400.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-06-12">Jun 12, 2026</td>
+              <td>daily</td>
+              <td class="num">$100.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$100.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-06-12">Jun 12, 2026</td>
+              <td>daily</td>
+              <td class="num">$500.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$500.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-06-05">Jun 5, 2026</td>
+              <td>residual</td>
+              <td class="num">$200.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$10,411.30</td>
+              <td class="num neg">-$11,959.85</td>
+              <td class="num">$1,548.55</td>
+              <td class="num">$200.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-05-29">May 29, 2026</td>
+              <td>daily</td>
+              <td class="num">$200.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$200.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-05-29">May 29, 2026</td>
+              <td>daily</td>
+              <td class="num">$800.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$100.00</td>
+              <td class="num">$700.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-05-22">May 22, 2026</td>
+              <td>daily</td>
+              <td class="num">$45,000.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$8,189.00</td>
+              <td class="num">$36,811.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-05-22">May 22, 2026</td>
+              <td>daily</td>
+              <td class="num">$50.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$350.00</td>
+              <td class="num">$400.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-05-12">May 12, 2026</td>
+              <td>daily</td>
+              <td class="num">$310.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$310.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-05-08">May 8, 2026</td>
+              <td>daily</td>
+              <td class="num">$100.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$100.00</td>
+              <td class="num">$0.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-05-05">May 5, 2026</td>
+              <td>daily</td>
+              <td class="num">$3,500.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$525.00</td>
+              <td class="num">$525.00</td>
+              <td class="num">$3,500.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-05-04">May 4, 2026</td>
+              <td>daily</td>
+              <td class="num">$780.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$780.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-05-01">May 1, 2026</td>
+              <td>residual</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$10,817.68</td>
+              <td class="num neg">-$5,700.00</td>
+              <td class="num neg">-$5,117.68</td>
+              <td class="num">$0.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-04-29">Apr 29, 2026</td>
+              <td>daily</td>
+              <td class="num">$400.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$400.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-04-24">Apr 24, 2026</td>
+              <td>daily</td>
+              <td class="num">$400.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$400.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-04-24">Apr 24, 2026</td>
+              <td>daily</td>
+              <td class="num">$50.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$1,000.00</td>
+              <td class="num">$950.00</td>
+              <td class="num">$0.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-04-22">Apr 22, 2026</td>
+              <td>daily</td>
+              <td class="num">$1,000.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$1,000.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-04-13">Apr 13, 2026</td>
+              <td>daily</td>
+              <td class="num">$1,363.76</td>
+              <td class="num">$6,000.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$7,363.76</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-04-10">Apr 10, 2026</td>
+              <td>daily</td>
+              <td class="num">$450.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$450.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-04-03">Apr 3, 2026</td>
+              <td>residual</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$8,584.81</td>
+              <td class="num neg">-$5,100.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$3,484.81</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-03-25">Mar 25, 2026</td>
+              <td>daily</td>
+              <td class="num">$1,000.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$1,000.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-03-24">Mar 24, 2026</td>
+              <td>daily</td>
+              <td class="num">$1,600.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$1,600.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-03-20">Mar 20, 2026</td>
+              <td>daily</td>
+              <td class="num">$400.00</td>
+              <td class="num">$1,200.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$500.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$1,100.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-03-19">Mar 19, 2026</td>
+              <td>daily</td>
+              <td class="num">$0.00</td>
+              <td class="num">$400.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$400.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-03-17">Mar 17, 2026</td>
+              <td>daily</td>
+              <td class="num">$0.00</td>
+              <td class="num">$450.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$450.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-03-12">Mar 12, 2026</td>
+              <td>daily</td>
+              <td class="num">$800.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$800.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-03-05">Mar 5, 2026</td>
+              <td>residual</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$7,410.57</td>
+              <td class="num neg">-$7,900.00</td>
+              <td class="num">$489.43</td>
+              <td class="num">$0.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-03-02">Mar 2, 2026</td>
+              <td>daily</td>
+              <td class="num">$800.00</td>
+              <td class="num">$2,000.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$50.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$2,750.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-02-24">Feb 24, 2026</td>
+              <td>daily</td>
+              <td class="num">$900.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$900.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-02-18">Feb 18, 2026</td>
+              <td>daily</td>
+              <td class="num">$400.00</td>
+              <td class="num">$100.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$500.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-02-17">Feb 17, 2026</td>
+              <td>daily</td>
+              <td class="num">$1,200.00</td>
+              <td class="num">$75.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$50.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$1,225.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-02-12">Feb 12, 2026</td>
+              <td>daily</td>
+              <td class="num">$1,900.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$1,900.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-02-06">Feb 6, 2026</td>
+              <td>daily</td>
+              <td class="num">$0.00</td>
+              <td class="num">$700.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$700.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-02-05">Feb 5, 2026</td>
+              <td>daily</td>
+              <td class="num">$1,407.65</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$1,407.65</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-02-05">Feb 5, 2026</td>
+              <td>residual</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$8,153.48</td>
+              <td class="num neg">-$9,699.00</td>
+              <td class="num">$1,545.52</td>
+              <td class="num">$0.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-01-27">Jan 27, 2026</td>
+              <td>daily</td>
+              <td class="num">$0.00</td>
+              <td class="num">$500.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$500.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-01-26">Jan 26, 2026</td>
+              <td>daily</td>
+              <td class="num">$400.00</td>
+              <td class="num">$100.00</td>
+              <td class="num">$0.00</td>
+              <td class="num neg">-$500.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-01-22">Jan 22, 2026</td>
+              <td>daily</td>
+              <td class="num">$0.00</td>
+              <td class="num">$500.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$500.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-01-14">Jan 14, 2026</td>
+              <td>daily</td>
+              <td class="num">$0.00</td>
+              <td class="num">$100.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$100.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-01-08">Jan 8, 2026</td>
+              <td>daily</td>
+              <td class="num">$1,000.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$1,000.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-01-07">Jan 7, 2026</td>
+              <td>daily</td>
+              <td class="num">$0.00</td>
+              <td class="num">$500.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$500.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-01-02">Jan 2, 2026</td>
+              <td>daily</td>
+              <td class="num">$900.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$900.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            <tr>
+              <td data-sort="2026-01-02">Jan 2, 2026</td>
+              <td>residual</td>
+              <td class="num">$0.00</td>
+              <td class="num">$0.00</td>
+              <td class="num">$7,478.07</td>
+              <td class="num neg">-$7,025.00</td>
+              <td class="num neg">-$453.07</td>
+              <td class="num">$0.00</td>
+              <td class="ctr"></td>
+              <td class="ctr"><span style="color:var(--faint);font-size:12px;font-weight:600">PDF</span></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="padding:12px 22px 16px;font-size:12px;color:var(--muted)">
+          Showing 57 of 57 statements. Amounts are as issued by Kaching; deposits are never
+          recalculated here.
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="foot__rule"></div>
+  Copyright &copy; <a href="../index.html">Wholesale Payments</a>. All rights reserved.
+</footer>
+
+<script src="../assets/js/wpi.js" defer></script>
+</body>
+</html>

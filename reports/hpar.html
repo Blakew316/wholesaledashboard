@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HPAR — Wholesale Payments</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/wpi.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="shell topbar__inner">
+    <a class="brand" href="../index.html" aria-label="Wholesale Payments — dashboard home">
+      <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs>
+          <linearGradient id="bm" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#00A2EC"/>
+            <stop offset=".38" stop-color="#00B868"/>
+            <stop offset="1" stop-color="#50E878"/>
+          </linearGradient>
+        </defs>
+        <rect x="4"  y="12" width="8"  height="25" rx="4" fill="#0095E4"/>
+        <rect x="17" y="4"  width="14" height="40" rx="5" fill="url(#bm)"/>
+        <rect x="36" y="15" width="8"  height="22" rx="4" fill="#00C878"/>
+      </svg>
+      <span class="brand__text"><strong>wholesale</strong><span>payments</span></span>
+    </a>
+
+    <nav class="mainnav" id="mainnav" aria-label="Primary">
+      <a class="mainnav__link" href="../index.html">Dashboard</a>
+      <a class="mainnav__link" href="../Rankings.html">Rankings</a>
+      <a class="mainnav__link" href="../merchants/search.html">Merchants</a>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Products
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="https://kloser.wholesalepayments.org">Kloser<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpiuniversity.com/session/new">WPI University<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://customerconnectwp.com/">Customer Connect<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpirewards.com/login/">WPI Rewards<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <div class="drop__sep"></div>
+          <a href="../payverification/detail.html">Kaching</a>
+          <a href="../payverification/roster.html">Kaching (Roster)</a>
+        </div>
+      </div>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Reports
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="nonprocessing.html">Nonprocessing</a>
+          <a href="volume.html">Volume Difference</a>
+          <a href="gainloss.html">Gain/Loss</a>
+          <a href="pendingdeals.html">Pended Deals</a>
+          <a href="volumeavg.html">Avg Merchant Volume</a>
+          <a href="threshold__p_0.html">Threshold</a>
+          <a href="weeklyprocessing.html">Weekly Processing</a>
+          <a href="hpar.html">HPAR</a>
+          <a href="carcontest2025.html">Car Contest</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="topbar__user">
+      <div class="userchip">
+        <span class="userchip__avatar">JW</span>
+        <span class="userchip__meta">
+          <span class="userchip__name">justin.woodruff</span><br>
+          <span class="userchip__org">@ wholesalepayments.com</span>
+        </span>
+      </div>
+      <button class="btn-logout" type="button">Logout</button>
+    </div>
+
+    <button class="topbar__burger" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main class="page" id="main">
+  <div class="shell">
+
+    <div class="pagehead reveal">
+      <div>
+        <div class="pagehead__pre">Reports</div>
+        <h1 class="pagehead__title">High Priority Activation Report (HPAR)</h1>
+      </div>
+    </div>
+
+    <div class="banner reveal rd-1">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M10 9v4.5M10 6.4v.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <div>
+        Ratios based on Approvals: 5/1/2026 - 6/30/2026<br>
+        Effective 7/20/2026
+      </div>
+    </div>
+
+    <section class="card card--accent card--lift reveal rd-2">
+      <div class="card__head">
+        <h2 class="card__title">Activation Ratios by Rep</h2>
+      </div>
+      <div class="card__body card__body--flush">
+        <div class="tblwrap">
+          <table class="tbl sortable" id="hparTbl">
+            <thead>
+              <tr>
+                <th>GM</th>
+                <th>Team</th>
+                <th>Rep</th>
+                <th class="num">Approved</th>
+                <th class="num">Processing</th>
+                <th class="num">Ratio</th>
+                <th style="width:22%" data-nosort aria-hidden="true"></th>
+                <th class="ctr">Needed</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Fire</td>
+                <td>Black</td>
+                <td>CHRISTOPHER RODRIGUEZ</td>
+                <td class="num">5</td>
+                <td class="num">3</td>
+                <td class="num">60.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:60%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Fire</td>
+                <td>Black</td>
+                <td>WILLIAM MOYA</td>
+                <td class="num">4</td>
+                <td class="num">2</td>
+                <td class="num">50.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:50%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Fire</td>
+                <td>DYNAMITE</td>
+                <td>MICHAEL BOUZIDEN</td>
+                <td class="num">5</td>
+                <td class="num">3</td>
+                <td class="num">60.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:60%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Fire</td>
+                <td>Emerald</td>
+                <td>Brandon Schutza</td>
+                <td class="num">5</td>
+                <td class="num">3</td>
+                <td class="num">60.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:60%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Fire</td>
+                <td>Fuchsia</td>
+                <td>AMY KAUFMAN</td>
+                <td class="num">4</td>
+                <td class="num">2</td>
+                <td class="num">50.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:50%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Fire</td>
+                <td>Peach</td>
+                <td>BRAEDEN FUSTOS</td>
+                <td class="num">6</td>
+                <td class="num">3</td>
+                <td class="num">50.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:50%"></span></div></td>
+                <td class="ctr" style="font-weight:600">2</td>
+              </tr>
+              <tr>
+                <td>Galaxy</td>
+                <td>Draco</td>
+                <td>JAMES WHITWORTH</td>
+                <td class="num">4</td>
+                <td class="num">2</td>
+                <td class="num">50.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:50%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Galaxy</td>
+                <td>Orion</td>
+                <td>ELIAS ALAFOGIANIS</td>
+                <td class="num">6</td>
+                <td class="num">1</td>
+                <td class="num">16.67 %</td>
+                <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:16.67%"></span></div></td>
+                <td class="ctr" style="font-weight:600">4</td>
+              </tr>
+              <tr>
+                <td>Galaxy</td>
+                <td>Titan</td>
+                <td>KAYDEN JACKSON</td>
+                <td class="num">8</td>
+                <td class="num">4</td>
+                <td class="num">50.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:50%"></span></div></td>
+                <td class="ctr" style="font-weight:600">2</td>
+              </tr>
+              <tr>
+                <td>Ice</td>
+                <td>Chrome</td>
+                <td>DANIEL RUBIO</td>
+                <td class="num">12</td>
+                <td class="num">7</td>
+                <td class="num">58.33 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:58.33%"></span></div></td>
+                <td class="ctr" style="font-weight:600">2</td>
+              </tr>
+              <tr>
+                <td>Ice</td>
+                <td>Iceberg</td>
+                <td>AUBREY COULTER</td>
+                <td class="num">5</td>
+                <td class="num">2</td>
+                <td class="num">40.00 %</td>
+                <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:40%"></span></div></td>
+                <td class="ctr" style="font-weight:600">2</td>
+              </tr>
+              <tr>
+                <td>Ice</td>
+                <td>Iceberg</td>
+                <td>Eric Saavedra</td>
+                <td class="num">9</td>
+                <td class="num">6</td>
+                <td class="num">66.67 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:66.67%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Ice</td>
+                <td>Indigo</td>
+                <td>DON HUTTER</td>
+                <td class="num">5</td>
+                <td class="num">3</td>
+                <td class="num">60.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:60%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Ice</td>
+                <td>Mahogany</td>
+                <td>ANTONIO HULLUM</td>
+                <td class="num">5</td>
+                <td class="num">3</td>
+                <td class="num">60.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:60%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Ice</td>
+                <td>Mahogany</td>
+                <td>Brian Loschenko</td>
+                <td class="num">6</td>
+                <td class="num">4</td>
+                <td class="num">66.67 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:66.67%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Ice</td>
+                <td>Mahogany</td>
+                <td>Jackie Castaneda</td>
+                <td class="num">5</td>
+                <td class="num">1</td>
+                <td class="num">20.00 %</td>
+                <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:20%"></span></div></td>
+                <td class="ctr" style="font-weight:600">3</td>
+              </tr>
+              <tr>
+                <td>Ice</td>
+                <td>MAVERICK</td>
+                <td>JADEN DUFEK</td>
+                <td class="num">10</td>
+                <td class="num">6</td>
+                <td class="num">60.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:60%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Ice</td>
+                <td>Mercury</td>
+                <td>DAVID HIGGINS</td>
+                <td class="num">4</td>
+                <td class="num">2</td>
+                <td class="num">50.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:50%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Ice</td>
+                <td>Mercury</td>
+                <td>Vincent Malesa</td>
+                <td class="num">12</td>
+                <td class="num">5</td>
+                <td class="num">41.67 %</td>
+                <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:41.67%"></span></div></td>
+                <td class="ctr" style="font-weight:600">4</td>
+              </tr>
+              <tr>
+                <td>Ice</td>
+                <td>Shadow</td>
+                <td>Michael Ruffcorn</td>
+                <td class="num">6</td>
+                <td class="num">3</td>
+                <td class="num">50.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:50%"></span></div></td>
+                <td class="ctr" style="font-weight:600">2</td>
+              </tr>
+              <tr>
+                <td>Ice</td>
+                <td>Shadow</td>
+                <td>STEVE HANKS</td>
+                <td class="num">5</td>
+                <td class="num">1</td>
+                <td class="num">20.00 %</td>
+                <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:20%"></span></div></td>
+                <td class="ctr" style="font-weight:600">3</td>
+              </tr>
+              <tr>
+                <td>Olympus</td>
+                <td>Apollo</td>
+                <td>LISA KING</td>
+                <td class="num">5</td>
+                <td class="num">3</td>
+                <td class="num">60.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:60%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Olympus</td>
+                <td>ARTEMIS</td>
+                <td>CHRISTINA KEISER</td>
+                <td class="num">9</td>
+                <td class="num">5</td>
+                <td class="num">55.56 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:55.56%"></span></div></td>
+                <td class="ctr" style="font-weight:600">2</td>
+              </tr>
+              <tr>
+                <td>Olympus</td>
+                <td>Athena</td>
+                <td>MAVIS SACKEY</td>
+                <td class="num">6</td>
+                <td class="num">2</td>
+                <td class="num">33.33 %</td>
+                <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:33.33%"></span></div></td>
+                <td class="ctr" style="font-weight:600">3</td>
+              </tr>
+              <tr>
+                <td>Olympus</td>
+                <td>Athena</td>
+                <td>RICK AMOS</td>
+                <td class="num">5</td>
+                <td class="num">3</td>
+                <td class="num">60.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:60%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Olympus</td>
+                <td>Zeus</td>
+                <td>Kazz Ehlinger</td>
+                <td class="num">5</td>
+                <td class="num">3</td>
+                <td class="num">60.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:60%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Sparta</td>
+                <td>Areus</td>
+                <td>DUSTIN GRADY</td>
+                <td class="num">7</td>
+                <td class="num">3</td>
+                <td class="num">42.86 %</td>
+                <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:42.86%"></span></div></td>
+                <td class="ctr" style="font-weight:600">2</td>
+              </tr>
+              <tr>
+                <td>Sparta</td>
+                <td>Areus</td>
+                <td>ROSA GOMEZ</td>
+                <td class="num">7</td>
+                <td class="num">4</td>
+                <td class="num">57.14 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:57.14%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Sparta</td>
+                <td>ODYSSEUS</td>
+                <td>NICK GORDON</td>
+                <td class="num">7</td>
+                <td class="num">4</td>
+                <td class="num">57.14 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:57.14%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Sparta</td>
+                <td>Stelios</td>
+                <td>Andres MARTINEZ</td>
+                <td class="num">4</td>
+                <td class="num">2</td>
+                <td class="num">50.00 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:50%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Sparta</td>
+                <td>Stelios</td>
+                <td>Kirby Pate</td>
+                <td class="num">9</td>
+                <td class="num">5</td>
+                <td class="num">55.56 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:55.56%"></span></div></td>
+                <td class="ctr" style="font-weight:600">2</td>
+              </tr>
+              <tr>
+                <td>Sparta</td>
+                <td>Stelios</td>
+                <td>SHAWN WOOLEY</td>
+                <td class="num">6</td>
+                <td class="num">4</td>
+                <td class="num">66.67 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:66.67%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Sparta</td>
+                <td>Stelios</td>
+                <td>TAJCHE GRIFFIN</td>
+                <td class="num">5</td>
+                <td class="num">2</td>
+                <td class="num">40.00 %</td>
+                <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:40%"></span></div></td>
+                <td class="ctr" style="font-weight:600">2</td>
+              </tr>
+              <tr>
+                <td>Sparta</td>
+                <td>Stelios</td>
+                <td>Tyler PATCH</td>
+                <td class="num">5</td>
+                <td class="num">2</td>
+                <td class="num">40.00 %</td>
+                <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:40%"></span></div></td>
+                <td class="ctr" style="font-weight:600">2</td>
+              </tr>
+              <tr>
+                <td>Steel</td>
+                <td>FORGED</td>
+                <td>Alex Baumgart</td>
+                <td class="num">12</td>
+                <td class="num">8</td>
+                <td class="num">66.67 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:66.67%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Steel</td>
+                <td>FORGED</td>
+                <td>DAVID HANSEN</td>
+                <td class="num">7</td>
+                <td class="num">2</td>
+                <td class="num">28.57 %</td>
+                <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:28.57%"></span></div></td>
+                <td class="ctr" style="font-weight:600">3</td>
+              </tr>
+              <tr>
+                <td>Steel</td>
+                <td>Lithium</td>
+                <td>RICHARD HAJJAR</td>
+                <td class="num">7</td>
+                <td class="num">4</td>
+                <td class="num">57.14 %</td>
+                <td><div class="meter"><span class="meter__fill" style="--w:57.14%"></span></div></td>
+                <td class="ctr" style="font-weight:600">1</td>
+              </tr>
+              <tr>
+                <td>Steel</td>
+                <td>Palladium</td>
+                <td>Sidney Joffrion</td>
+                <td class="num">4</td>
+                <td class="num">0</td>
+                <td class="num">0.00 %</td>
+                <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
+                <td class="ctr" style="font-weight:600">3</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="foot__rule"></div>
+  Copyright &copy; <a href="../index.html">Wholesale Payments</a>. All rights reserved.
+</footer>
+
+<script src="../assets/js/wpi.js" defer></script>
+</body>
+</html>

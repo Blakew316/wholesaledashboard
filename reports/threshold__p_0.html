@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Threshold Report — Wholesale Payments</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/wpi.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="shell topbar__inner">
+    <a class="brand" href="../index.html" aria-label="Wholesale Payments — dashboard home">
+      <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs>
+          <linearGradient id="bm" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#00A2EC"/>
+            <stop offset=".38" stop-color="#00B868"/>
+            <stop offset="1" stop-color="#50E878"/>
+          </linearGradient>
+        </defs>
+        <rect x="4"  y="12" width="8"  height="25" rx="4" fill="#0095E4"/>
+        <rect x="17" y="4"  width="14" height="40" rx="5" fill="url(#bm)"/>
+        <rect x="36" y="15" width="8"  height="22" rx="4" fill="#00C878"/>
+      </svg>
+      <span class="brand__text"><strong>wholesale</strong><span>payments</span></span>
+    </a>
+
+    <nav class="mainnav" id="mainnav" aria-label="Primary">
+      <a class="mainnav__link" href="../index.html">Dashboard</a>
+      <a class="mainnav__link" href="../Rankings.html">Rankings</a>
+      <a class="mainnav__link" href="../merchants/search.html">Merchants</a>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Products
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="https://kloser.wholesalepayments.org">Kloser<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpiuniversity.com/session/new">WPI University<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://customerconnectwp.com/">Customer Connect<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpirewards.com/login/">WPI Rewards<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <div class="drop__sep"></div>
+          <a href="../payverification/detail.html">Kaching</a>
+          <a href="../payverification/roster.html">Kaching (Roster)</a>
+        </div>
+      </div>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Reports
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="../reports/nonprocessing.html">Nonprocessing</a>
+          <a href="../reports/volume.html">Volume Difference</a>
+          <a href="../reports/gainloss.html">Gain/Loss</a>
+          <a href="../reports/pendingdeals.html">Pended Deals</a>
+          <a href="../reports/volumeavg.html">Avg Merchant Volume</a>
+          <a href="../reports/threshold__p_0.html">Threshold</a>
+          <a href="../reports/weeklyprocessing.html">Weekly Processing</a>
+          <a href="../reports/hpar.html">HPAR</a>
+          <a href="../reports/carcontest2025.html">Car Contest</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="topbar__user">
+      <div class="userchip">
+        <span class="userchip__avatar">JW</span>
+        <span class="userchip__meta">
+          <span class="userchip__name">justin.woodruff</span><br>
+          <span class="userchip__org">@ wholesalepayments.com</span>
+        </span>
+      </div>
+      <button class="btn-logout" type="button">Logout</button>
+    </div>
+
+    <button class="topbar__burger" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main class="page" id="main">
+  <div class="shell">
+
+    <div class="pagehead reveal">
+      <div>
+        <div class="pagehead__pre">Reports</div>
+        <h1 class="pagehead__title">Threshold Report</h1>
+        <div class="pagehead__sub">Threshold Report for accounts approved in last 90 days</div>
+      </div>
+    </div>
+
+    <div class="filters reveal rd-1">
+      <div class="field"><label for="paidFlag">Paid status</label>
+        <select id="paidFlag">
+          <option value="0" selected="selected">Not Paid</option>
+          <option value="1">Paid</option>
+          <option value="2">All</option>
+        </select></div>
+    </div>
+
+    <section class="card card--accent card--lift reveal rd-2">
+      <div class="card__head">
+        <h2 class="card__title">Threshold Report</h2>
+        <div class="card__side"><span class="badge badge--info">Approved last 90 days</span></div>
+      </div>
+      <div class="card__body card__body--flush">
+        <div class="tblwrap">
+          <table class="tbl sortable" id="rs1">
+            <thead>
+              <tr>
+                <th>Sales Rep</th>
+                <th>Sales Team</th>
+                <th>MID</th>
+                <th>Merchant</th>
+                <th>Status</th>
+                <th>Category</th>
+                <th>Rankings Date</th>
+                <th>Delivered</th>
+                <th>Installed</th>
+                <th>First Batch</th>
+                <th>Last Batch</th>
+                <th class="ctr" data-nosort>Processing<br>5/$1,000</th>
+                <th class="ctr" data-nosort>Processing<br>10/$3,000</th>
+                <th class="ctr" data-nosort>Processing<br>10/$5,000</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>SADIE SCOVILLE</td>
+                <td>MAVERICK</td>
+                <td>&#x27;554402059805390</td>
+                <td>R1 TOWING</td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>6/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-06-15</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>JADEN DUFEK</td>
+                <td>MAVERICK</td>
+                <td>&#x27;554402059816629</td>
+                <td>BRYTNIE&#x27;S BARK BOUTIQUE</td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>6/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-08-19</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>JADEN DUFEK</td>
+                <td>MAVERICK</td>
+                <td>&#x27;554402059817239</td>
+                <td>CHEAP THRILLZ</td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>6/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-06-18</td>
+                <td></td>
+                <td>2026-07-01</td>
+                <td>2026-07-17</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>GABRIEL CRAFT</td>
+                <td>MAVERICK</td>
+                <td>&#x27;554402059824037</td>
+                <td>FIVE CITIES CO BRAND INC</td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>6/1/2026 12:00:00&#x202F;AM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>GABRIEL CRAFT</td>
+                <td>MAVERICK</td>
+                <td>&#x27;554402059837567</td>
+                <td>SUPER MARIO TIRES SHOP</td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>7/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-07-08</td>
+                <td></td>
+                <td>2026-07-12</td>
+                <td>2026-08-11</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>JUDAH STEELMAN</td>
+                <td>MAVERICK</td>
+                <td>&#x27;554402059838086</td>
+                <td>PRECISION VENDING INC</td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>6/1/2026 12:00:00&#x202F;AM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>JADEN DUFEK</td>
+                <td>MAVERICK</td>
+                <td>&#x27;554402059849505</td>
+                <td>MISFIT MAMAS CHAOS &amp; CAFFEINE</td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>5/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-06-11</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>SADIE SCOVILLE</td>
+                <td>MAVERICK</td>
+                <td>&#x27;554402059868182</td>
+                <td>BAZOOKA FOOD TRUCK</td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>6/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-06-12</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>JASON COUTCHER</td>
+                <td>MAVERICK</td>
+                <td>&#x27;554402059890509</td>
+                <td>KAPOLEI KOREAN BAR-B-Q</td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>6/1/2026 12:00:00&#x202F;AM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>TIMOTHY CONSTENIUS</td>
+                <td>MAVERICK</td>
+                <td>&#x27;719070000049273</td>
+                <td><a class="ent" href="../merchants/detail/719070000049273.html">JJ&#x27;S DRYWALLING</a></td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>6/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-06-24</td>
+                <td></td>
+                <td>2026-06-28</td>
+                <td>2026-06-28</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>JUDAH STEELMAN</td>
+                <td>MAVERICK</td>
+                <td>&#x27;719070000050487</td>
+                <td><a class="ent" href="../merchants/detail/719070000050487.html">DREAMWORKZ GARAGE</a></td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>6/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-07-01</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>TIMOTHY CONSTENIUS</td>
+                <td>MAVERICK</td>
+                <td>&#x27;719070000053861</td>
+                <td><a class="ent" href="../merchants/detail/719070000053861.html">WALDMAN SUBARU SPECIALISTS</a></td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>7/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-07-22</td>
+                <td></td>
+                <td>2026-07-23</td>
+                <td>2026-07-23</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>JUDAH STEELMAN</td>
+                <td>MAVERICK</td>
+                <td>&#x27;719070000054026</td>
+                <td><a class="ent" href="../merchants/detail/719070000054026.html">JW TRANSMISSIONS</a></td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>7/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-07-22</td>
+                <td></td>
+                <td>2026-07-24</td>
+                <td>2026-08-11</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>JUDAH STEELMAN</td>
+                <td>MAVERICK</td>
+                <td>&#x27;719070000055577</td>
+                <td><a class="ent" href="../merchants/detail/719070000055577.html">8IGHTY9</a></td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>7/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-08-03</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>TIMOTHY CONSTENIUS</td>
+                <td>MAVERICK</td>
+                <td>&#x27;719070000056435</td>
+                <td><a class="ent" href="../merchants/detail/719070000056435.html">PAC MILLWORKS</a></td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>7/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-08-06</td>
+                <td></td>
+                <td>2026-08-16</td>
+                <td>2026-08-16</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>TIMOTHY CONSTENIUS</td>
+                <td>MAVERICK</td>
+                <td>&#x27;719070000056914</td>
+                <td><a class="ent" href="../merchants/detail/719070000056914.html">ELITE AUTO SALES OF MT LLC</a></td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>7/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-08-11</td>
+                <td></td>
+                <td>2026-08-18</td>
+                <td>2026-08-18</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>JUDAH STEELMAN</td>
+                <td>MAVERICK</td>
+                <td>&#x27;719070000057813</td>
+                <td><a class="ent" href="../merchants/detail/719070000057813.html">JAIMES AUTO SERVICE</a></td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>7/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-08-18</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>JUDAH STEELMAN</td>
+                <td>MAVERICK</td>
+                <td>&#x27;719070000058464</td>
+                <td><a class="ent" href="../merchants/detail/719070000058464.html">TRUCKANICS SERVICE AND INSPECTIONS</a></td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>7/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-08-19</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>JUDAH STEELMAN</td>
+                <td>MAVERICK</td>
+                <td>&#x27;719070000058571</td>
+                <td>ALL AMERICAN MUFFLER</td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>8/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-08-19</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>Timothy Constenius</td>
+                <td>MAVERICK</td>
+                <td>&#x27;719070000058902</td>
+                <td>K&#x2B;K VENTURES, LLC</td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>8/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-08-21</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>SADIE SCOVILLE</td>
+                <td>MAVERICK</td>
+                <td>&#x27;815235117885</td>
+                <td>TARA INTERNATIONAL MARKET</td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>7/1/2026 12:00:00&#x202F;AM</td>
+                <td></td>
+                <td></td>
+                <td>2026-07-17</td>
+                <td>2026-07-20</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>HALEY WOODRUFF</td>
+                <td>MAVERICK</td>
+                <td>&#x27;815236546884</td>
+                <td>GREEN ACRES BOWL</td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>8/1/2026 12:00:00&#x202F;AM</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+              <tr>
+                <td>KYLE PETTIT</td>
+                <td>MAVERICK</td>
+                <td>&#x27;815236569886</td>
+                <td>PIONEER MEAT MARKET</td>
+                <td>Equipment Requested</td>
+                <td>Approved - Not Paid</td>
+                <td>8/1/2026 12:00:00&#x202F;AM</td>
+                <td>2026-08-23</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+                <td class="ctr" style="color:var(--faint)">&mdash;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="foot__rule"></div>
+  Copyright &copy; <a href="../index.html">Wholesale Payments</a>. All rights reserved.
+</footer>
+
+<script src="../assets/js/wpi.js" defer></script>
+</body>
+</html>

@@ -1,418 +1,558 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Wholesale Payments — Zero-Fee Payment Processing &amp; Merchant Services</title>
-  <meta name="description" content="Wholesale Payments is one of the nation's largest privately held merchant services providers. Zero-fee credit card processing, modern POS systems, and 24/7 human support — since 2007.">
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
-  <link rel="stylesheet" href="css/styles.css">
+  <title>Sales Dashboard — Wholesale Payments</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/wpi.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
-  <!-- ============ NAVIGATION ============ -->
-  <header class="nav" id="nav">
-    <div class="nav__inner">
-      <a href="#top" class="nav__brand" aria-label="Wholesale Payments home">
-        <svg class="nav__mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-          <rect x="12" y="8"  width="24" height="8"  rx="4" class="mark-bar mark-bar--top"/>
-          <rect x="6"  y="20" width="36" height="8"  rx="4" class="mark-bar mark-bar--mid"/>
-          <rect x="12" y="32" width="24" height="8"  rx="4" class="mark-bar mark-bar--bot"/>
-        </svg>
-        <span class="nav__wordmark">
-          <strong>wholesale</strong><em>payments</em>
+<header class="topbar">
+  <div class="shell topbar__inner">
+    <a class="brand" href="index.html" aria-label="Wholesale Payments — dashboard home">
+      <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs>
+          <linearGradient id="bm" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#00A2EC"/>
+            <stop offset=".38" stop-color="#00B868"/>
+            <stop offset="1" stop-color="#50E878"/>
+          </linearGradient>
+        </defs>
+        <rect x="4"  y="12" width="8"  height="25" rx="4" fill="#0095E4"/>
+        <rect x="17" y="4"  width="14" height="40" rx="5" fill="url(#bm)"/>
+        <rect x="36" y="15" width="8"  height="22" rx="4" fill="#00C878"/>
+      </svg>
+      <span class="brand__text"><strong>wholesale</strong><span>payments</span></span>
+    </a>
+
+    <nav class="mainnav" id="mainnav" aria-label="Primary">
+      <a class="mainnav__link is-active" href="index.html">Dashboard</a>
+      <a class="mainnav__link" href="Rankings.html">Rankings</a>
+      <a class="mainnav__link" href="merchants/search.html">Merchants</a>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Products
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="https://kloser.wholesalepayments.org">Kloser<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpiuniversity.com/session/new">WPI University<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://customerconnectwp.com/">Customer Connect<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpirewards.com/login/">WPI Rewards<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <div class="drop__sep"></div>
+          <a href="payverification/detail.html">Kaching</a>
+          <a href="payverification/roster.html">Kaching (Roster)</a>
+        </div>
+      </div>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Reports
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="reports/nonprocessing.html">Nonprocessing</a>
+          <a href="reports/volume.html">Volume Difference</a>
+          <a href="reports/gainloss.html">Gain/Loss</a>
+          <a href="reports/pendingdeals.html">Pended Deals</a>
+          <a href="reports/volumeavg.html">Avg Merchant Volume</a>
+          <a href="reports/threshold__p_0.html">Threshold</a>
+          <a href="reports/weeklyprocessing.html">Weekly Processing</a>
+          <a href="reports/hpar.html">HPAR</a>
+          <a href="reports/carcontest2025.html">Car Contest</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="topbar__user">
+      <div class="userchip">
+        <span class="userchip__avatar">JW</span>
+        <span class="userchip__meta">
+          <span class="userchip__name">justin.woodruff</span><br>
+          <span class="userchip__org">@ wholesalepayments.com</span>
         </span>
-      </a>
-      <nav class="nav__links" id="navLinks" aria-label="Primary">
-        <a href="#zero-fee">Zero-Fee</a>
-        <a href="#solutions">Solutions</a>
-        <a href="#industries">Industries</a>
-        <a href="#how">How It Works</a>
-        <a href="#about">About</a>
-      </nav>
-      <div class="nav__actions">
-        <a href="tel:+18066980625" class="nav__phone">(806) 698-0625</a>
-        <a href="#contact" class="btn btn--primary btn--sm">Get Started</a>
       </div>
-      <button class="nav__burger" id="navBurger" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="btn-logout" type="button">Logout</button>
     </div>
-  </header>
 
-  <main id="top">
+    <button class="topbar__burger" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-    <!-- ============ HERO ============ -->
-    <section class="hero">
-      <div class="hero__aurora" aria-hidden="true">
-        <div class="orb orb--blue" data-parallax="0.35"></div>
-        <div class="orb orb--green" data-parallax="0.55"></div>
-        <div class="orb orb--sky" data-parallax="0.25"></div>
-      </div>
-      <div class="hero__grid" aria-hidden="true"></div>
+<main class="page" id="main">
+  <div class="shell">
 
-      <div class="container hero__inner">
-        <div class="hero__copy">
-          <p class="eyebrow reveal fade-up">Merchant services, reimagined</p>
-          <h1 class="hero__title reveal fade-up d-1">
-            Keep <span class="grad-text">100%</span> of<br>every sale.
-          </h1>
-          <p class="hero__sub reveal fade-up d-2">
-            Zero-fee payment processing, beautifully simple point-of-sale, and real humans
-            answering the phone. Wholesale Payments has helped businesses stop paying to
-            get paid — since 2007.
-          </p>
-          <div class="hero__cta reveal fade-up d-3">
-            <a href="#contact" class="btn btn--primary btn--lg">
-              Get a free savings analysis
-              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 10h12m0 0-5-5m5 5-5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </a>
-            <a href="#zero-fee" class="btn btn--ghost btn--lg">See how zero-fee works</a>
-          </div>
-          <div class="hero__stats reveal fade-up d-4">
-            <div class="stat">
-              <span class="stat__num" data-count="2007" data-plain="true">2007</span>
-              <span class="stat__label">Founded in Lubbock, TX</span>
-            </div>
-            <div class="stat">
-              <span class="stat__num"><span data-count="60">0</span>+</span>
-              <span class="stat__label">Support pros on staff</span>
-            </div>
-            <div class="stat">
-              <span class="stat__num"><span data-count="50">0</span></span>
-              <span class="stat__label">States served</span>
-            </div>
-            <div class="stat">
-              <span class="stat__num">$<span data-count="0">0</span></span>
-              <span class="stat__label">Processing fees for you</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="hero__visual reveal zoom d-2" id="cardScene">
-          <div class="card3d" id="card3d">
-            <div class="card3d__face">
-              <div class="card3d__glow" aria-hidden="true"></div>
-              <div class="card3d__top">
-                <svg class="card3d__logo" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-                  <rect x="12" y="8" width="24" height="8" rx="4" fill="rgba(255,255,255,.95)"/>
-                  <rect x="6" y="20" width="36" height="8" rx="4" fill="rgba(255,255,255,.75)"/>
-                  <rect x="12" y="32" width="24" height="8" rx="4" fill="rgba(255,255,255,.55)"/>
-                </svg>
-                <svg class="card3d__chip" viewBox="0 0 40 30" aria-hidden="true">
-                  <rect width="40" height="30" rx="6" fill="url(#chipGrad)"/>
-                  <path d="M0 12h40M0 19h40M14 0v30M27 0v30" stroke="rgba(4,40,70,.35)" stroke-width="1.4"/>
-                  <defs><linearGradient id="chipGrad" x1="0" y1="0" x2="40" y2="30"><stop stop-color="#CFE9B9"/><stop offset="1" stop-color="#8FD096"/></linearGradient></defs>
-                </svg>
-              </div>
-              <div class="card3d__number">•••• &nbsp;•••• &nbsp;•••• &nbsp;2007</div>
-              <div class="card3d__bottom">
-                <div>
-                  <span class="card3d__label">Merchant</span>
-                  <span class="card3d__value">Your Business</span>
-                </div>
-                <div>
-                  <span class="card3d__label">Fees</span>
-                  <span class="card3d__value card3d__value--green">$0.00</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="chip-badge chip-badge--one floaty">
-            <span class="chip-badge__dot"></span> $0 processing fees
-          </div>
-          <div class="chip-badge chip-badge--two floaty floaty--slow">
-            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="m4 10.5 4 4L16 6" stroke="#3AA25F" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            Next-day funding
-          </div>
-          <div class="chip-badge chip-badge--three floaty floaty--slower">
-            <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="7" stroke="#077AE8" stroke-width="2"/><path d="M10 6.5V10l2.5 2" stroke="#077AE8" stroke-width="2" stroke-linecap="round"/></svg>
-            24/7 human support
-          </div>
-        </div>
-      </div>
-
-      <div class="hero__scrollhint" aria-hidden="true"><span></span></div>
-    </section>
-
-    <!-- ============ MARQUEE ============ -->
-    <div class="marquee" aria-hidden="true">
-      <div class="marquee__track">
-        <span>Restaurants</span><i>✦</i><span>Retail</span><i>✦</i><span>Gas Stations</span><i>✦</i>
-        <span>B2B</span><i>✦</i><span>Salons</span><i>✦</i><span>Hospitality</span><i>✦</i>
-        <span>Auto Shops</span><i>✦</i><span>Medical</span><i>✦</i><span>E-Commerce</span><i>✦</i>
-        <span>Restaurants</span><i>✦</i><span>Retail</span><i>✦</i><span>Gas Stations</span><i>✦</i>
-        <span>B2B</span><i>✦</i><span>Salons</span><i>✦</i><span>Hospitality</span><i>✦</i>
-        <span>Auto Shops</span><i>✦</i><span>Medical</span><i>✦</i><span>E-Commerce</span><i>✦</i>
+    <div class="pagehead reveal">
+      <div>
+        <h1 class="pagehead__title">Sales Dashboard <span class="badge badge--beta">Beta</span></h1>
       </div>
     </div>
 
-    <!-- ============ ZERO FEE ============ -->
-    <section class="zerofee section" id="zero-fee">
-      <div class="container">
-        <div class="zerofee__panel">
-          <div class="zerofee__deco" aria-hidden="true"></div>
-          <div class="zerofee__copy">
-            <p class="eyebrow eyebrow--light reveal fade-up">The flagship program</p>
-            <h2 class="h2 h2--light reveal fade-up d-1">Say goodbye to<br>processing fees.</h2>
-            <p class="lead lead--light reveal fade-up d-2">
-              Most processors quietly take 3–4% of everything you earn. Our zero-fee program
-              replaces all of it with one flat, predictable monthly subscription —
-              no matter your volume.
-            </p>
-            <ul class="check-list reveal fade-up d-3">
-              <li>One flat monthly program fee — that's it</li>
-              <li>No percentage cut, no hidden line items</li>
-              <li>Fully compliant signage &amp; receipts, handled for you</li>
-              <li>Free equipment placement on qualifying plans</li>
+    <div class="banner reveal rd-1">
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.6"/><path d="M10 9v4.5M10 6.4v.2" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      <div>
+        Merchants are actively being assigned to portfolios, but discrepancies and missing accounts
+        will continue. If you are aware of an account that is missing or incorrect, please notify
+        <a href="mailto:it@wholesalepayments.com">it@wholesalepayments.com</a> and include the Team and Sales Rep.
+      </div>
+    </div>
+
+    <div class="grid grid--dash">
+
+      <!-- ===================== left column ===================== -->
+      <div class="stack">
+
+        <!-- Portfolio + monthly activity -->
+        <section class="card card--accent reveal rd-1">
+          <div class="card__head">
+            <span class="subheader">Portfolio</span>
+            <div class="card__side legend">
+              <span><i style="background:#00C878"></i>Processing</span>
+              <span><i style="background:#E3A21A"></i>Not proc.</span>
+              <span><i style="background:#00115F"></i>Volume</span>
+            </div>
+          </div>
+          <div class="card__body">
+            <div class="kpi" style="margin-bottom:14px">
+              <span class="kpi__num" data-countup data-value="14">14</span>
+              <span class="kpi__meta">active MIDs</span>
+              <span class="kpi__meta" style="margin-left:auto">33 approved (42%)</span>
+            </div>
+            <div data-chart='{"kind":"combo","height":200,
+              "labels":["Nov 25","Dec 25","Jan 26","Feb 26","Mar 26","Apr 26","May 26","Jun 26","Jul 26","Aug 26"],
+              "bars":[
+                {"name":"Processing","values":[1,0,2,0,0,0,0,9,3,1],"color":"#00C878"},
+                {"name":"Not proc.","values":[0,0,4,1,0,0,0,3,4,5],"color":"#E3A21A"}],
+              "line":{"name":"Volume","values":[800.53,4954.03,7731.96,13636.7,14011.01,14258.66,12099.7,30778.39,123393.34,101093.05],"color":"#00115F"}}'></div>
+          </div>
+        </section>
+
+        <!-- Nonprocessing merchants -->
+        <section class="card card--lift reveal rd-2">
+          <div class="card__head">
+            <h2 class="card__title">Nonprocessing Merchants <span class="card__hint">v3-beta</span></h2>
+            <div class="card__side">
+              <a class="btn" href="reports/nonprocessing.html">Nonprocessing Report (v2)</a>
+            </div>
+          </div>
+          <div class="card__body card__body--flush">
+            <ul class="rowlist">
+              <li>
+                <div style="flex:1;min-width:0">
+                  <a class="ent" style="font-size:13.5px;font-weight:600" href="merchants/detail/719070000047897.html">TONE TOWN GUITARS</a>
+                  <span class="sub" style="display:block;font-size:11.5px;color:var(--faint)">719070000047897</span>
+                </div>
+                <div style="display:flex;gap:16px;text-align:center;font-size:12px">
+                  <div><div style="color:var(--faint)">Approved</div><div style="font-weight:600">6/11</div></div>
+                  <div><div style="color:var(--faint)">Delivered</div><div style="font-weight:600">6/15</div></div>
+                  <div><div style="color:var(--faint)">Installed</div><div style="font-weight:600;color:var(--faint)">&mdash;</div></div>
+                </div>
+                <div class="pipe" style="width:74px" aria-hidden="true">
+                  <span class="pipe__node done"></span><span class="pipe__bar done"></span>
+                  <span class="pipe__node done"></span><span class="pipe__bar"></span>
+                  <span class="pipe__node"></span>
+                </div>
+                <div class="dayschip dayschip--hot"><b>65</b><span>days</span></div>
+              </li>
+              <li>
+                <div style="flex:1;min-width:0">
+                  <a class="ent" style="font-size:13.5px;font-weight:600" href="merchants/detail/719070000049273.html">JJ&#x27;S DRYWALLING</a>
+                  <span class="sub" style="display:block;font-size:11.5px;color:var(--faint)">719070000049273</span>
+                </div>
+                <div style="display:flex;gap:16px;text-align:center;font-size:12px">
+                  <div><div style="color:var(--faint)">Approved</div><div style="font-weight:600">6/19</div></div>
+                  <div><div style="color:var(--faint)">Delivered</div><div style="font-weight:600">6/24</div></div>
+                  <div><div style="color:var(--faint)">Installed</div><div style="font-weight:600;color:var(--faint)">&mdash;</div></div>
+                </div>
+                <div class="pipe" style="width:74px" aria-hidden="true">
+                  <span class="pipe__node done"></span><span class="pipe__bar done"></span>
+                  <span class="pipe__node done"></span><span class="pipe__bar"></span>
+                  <span class="pipe__node"></span>
+                </div>
+                <div class="dayschip dayschip--hot"><b>56</b><span>days</span></div>
+              </li>
+              <li>
+                <div style="flex:1;min-width:0">
+                  <a class="ent" style="font-size:13.5px;font-weight:600" href="merchants/detail/719070000050487.html">DREAMWORKZ GARAGE</a>
+                  <span class="sub" style="display:block;font-size:11.5px;color:var(--faint)">719070000050487</span>
+                </div>
+                <div style="display:flex;gap:16px;text-align:center;font-size:12px">
+                  <div><div style="color:var(--faint)">Approved</div><div style="font-weight:600">6/26</div></div>
+                  <div><div style="color:var(--faint)">Delivered</div><div style="font-weight:600">7/1</div></div>
+                  <div><div style="color:var(--faint)">Installed</div><div style="font-weight:600;color:var(--faint)">&mdash;</div></div>
+                </div>
+                <div class="pipe" style="width:74px" aria-hidden="true">
+                  <span class="pipe__node done"></span><span class="pipe__bar done"></span>
+                  <span class="pipe__node done"></span><span class="pipe__bar"></span>
+                  <span class="pipe__node"></span>
+                </div>
+                <div class="dayschip dayschip--hot"><b>49</b><span>days</span></div>
+              </li>
+              <li>
+                <div style="flex:1;min-width:0">
+                  <a class="ent" style="font-size:13.5px;font-weight:600" href="merchants/detail/719070000053861.html">WALDMAN SUBARU SPECIALISTS</a>
+                  <span class="sub" style="display:block;font-size:11.5px;color:var(--faint)">719070000053861</span>
+                </div>
+                <div style="display:flex;gap:16px;text-align:center;font-size:12px">
+                  <div><div style="color:var(--faint)">Approved</div><div style="font-weight:600">7/17</div></div>
+                  <div><div style="color:var(--faint)">Delivered</div><div style="font-weight:600">7/22</div></div>
+                  <div><div style="color:var(--faint)">Installed</div><div style="font-weight:600;color:var(--faint)">&mdash;</div></div>
+                </div>
+                <div class="pipe" style="width:74px" aria-hidden="true">
+                  <span class="pipe__node done"></span><span class="pipe__bar done"></span>
+                  <span class="pipe__node done"></span><span class="pipe__bar"></span>
+                  <span class="pipe__node"></span>
+                </div>
+                <div class="dayschip dayschip--hot"><b>28</b><span>days</span></div>
+              </li>
+              <li>
+                <div style="flex:1;min-width:0">
+                  <a class="ent" style="font-size:13.5px;font-weight:600" href="merchants/detail/719070000054026.html">JW TRANSMISSIONS</a>
+                  <span class="sub" style="display:block;font-size:11.5px;color:var(--faint)">719070000054026</span>
+                </div>
+                <div style="display:flex;gap:16px;text-align:center;font-size:12px">
+                  <div><div style="color:var(--faint)">Approved</div><div style="font-weight:600">7/20</div></div>
+                  <div><div style="color:var(--faint)">Delivered</div><div style="font-weight:600">7/22</div></div>
+                  <div><div style="color:var(--faint)">Installed</div><div style="font-weight:600;color:var(--faint)">&mdash;</div></div>
+                </div>
+                <div class="pipe" style="width:74px" aria-hidden="true">
+                  <span class="pipe__node done"></span><span class="pipe__bar done"></span>
+                  <span class="pipe__node done"></span><span class="pipe__bar"></span>
+                  <span class="pipe__node"></span>
+                </div>
+                <div class="dayschip dayschip--hot"><b>28</b><span>days</span></div>
+              </li>
+              <li>
+                <div style="flex:1;min-width:0">
+                  <a class="ent" style="font-size:13.5px;font-weight:600" href="merchants/detail/719070000055577.html">8IGHTY9</a>
+                  <span class="sub" style="display:block;font-size:11.5px;color:var(--faint)">719070000055577</span>
+                </div>
+                <div style="display:flex;gap:16px;text-align:center;font-size:12px">
+                  <div><div style="color:var(--faint)">Approved</div><div style="font-weight:600">7/28</div></div>
+                  <div><div style="color:var(--faint)">Delivered</div><div style="font-weight:600">8/3</div></div>
+                  <div><div style="color:var(--faint)">Installed</div><div style="font-weight:600;color:var(--faint)">&mdash;</div></div>
+                </div>
+                <div class="pipe" style="width:74px" aria-hidden="true">
+                  <span class="pipe__node done"></span><span class="pipe__bar done"></span>
+                  <span class="pipe__node done"></span><span class="pipe__bar"></span>
+                  <span class="pipe__node"></span>
+                </div>
+                <div class="dayschip dayschip--hot"><b>16</b><span>days</span></div>
+              </li>
+              <li>
+                <div style="flex:1;min-width:0">
+                  <a class="ent" style="font-size:13.5px;font-weight:600" href="merchants/detail/719070000056435.html">PAC MILLWORKS</a>
+                  <span class="sub" style="display:block;font-size:11.5px;color:var(--faint)">719070000056435</span>
+                </div>
+                <div style="display:flex;gap:16px;text-align:center;font-size:12px">
+                  <div><div style="color:var(--faint)">Approved</div><div style="font-weight:600">7/31</div></div>
+                  <div><div style="color:var(--faint)">Delivered</div><div style="font-weight:600">8/6</div></div>
+                  <div><div style="color:var(--faint)">Installed</div><div style="font-weight:600;color:var(--faint)">&mdash;</div></div>
+                </div>
+                <div class="pipe" style="width:74px" aria-hidden="true">
+                  <span class="pipe__node done"></span><span class="pipe__bar done"></span>
+                  <span class="pipe__node done"></span><span class="pipe__bar"></span>
+                  <span class="pipe__node"></span>
+                </div>
+                <div class="dayschip dayschip--hot"><b>13</b><span>days</span></div>
+              </li>
+              <li>
+                <div style="flex:1;min-width:0">
+                  <a class="ent" style="font-size:13.5px;font-weight:600" href="merchants/detail/719070000056914.html">ELITE AUTO SALES OF MT LLC</a>
+                  <span class="sub" style="display:block;font-size:11.5px;color:var(--faint)">719070000056914</span>
+                </div>
+                <div style="display:flex;gap:16px;text-align:center;font-size:12px">
+                  <div><div style="color:var(--faint)">Approved</div><div style="font-weight:600">8/4</div></div>
+                  <div><div style="color:var(--faint)">Delivered</div><div style="font-weight:600">8/11</div></div>
+                  <div><div style="color:var(--faint)">Installed</div><div style="font-weight:600;color:var(--faint)">&mdash;</div></div>
+                </div>
+                <div class="pipe" style="width:74px" aria-hidden="true">
+                  <span class="pipe__node done"></span><span class="pipe__bar done"></span>
+                  <span class="pipe__node done"></span><span class="pipe__bar"></span>
+                  <span class="pipe__node"></span>
+                </div>
+                <div class="dayschip dayschip--warm"><b>8</b><span>days</span></div>
+              </li>
+              <li>
+                <div style="flex:1;min-width:0">
+                  <a class="ent" style="font-size:13.5px;font-weight:600" href="merchants/detail/719070000057813.html">JAIMES AUTO SERVICE</a>
+                  <span class="sub" style="display:block;font-size:11.5px;color:var(--faint)">719070000057813</span>
+                </div>
+                <div style="display:flex;gap:16px;text-align:center;font-size:12px">
+                  <div><div style="color:var(--faint)">Approved</div><div style="font-weight:600">8/12</div></div>
+                  <div><div style="color:var(--faint)">Delivered</div><div style="font-weight:600">8/18</div></div>
+                  <div><div style="color:var(--faint)">Installed</div><div style="font-weight:600;color:var(--faint)">&mdash;</div></div>
+                </div>
+                <div class="pipe" style="width:74px" aria-hidden="true">
+                  <span class="pipe__node done"></span><span class="pipe__bar done"></span>
+                  <span class="pipe__node done"></span><span class="pipe__bar"></span>
+                  <span class="pipe__node"></span>
+                </div>
+                <div class="dayschip dayschip--cool"><b>1</b><span>days</span></div>
+              </li>
+              <li>
+                <div style="flex:1;min-width:0">
+                  <a class="ent" style="font-size:13.5px;font-weight:600" href="merchants/detail/719070000058464.html">TRUCKANICS SERVICE AND INSPECTIONS</a>
+                  <span class="sub" style="display:block;font-size:11.5px;color:var(--faint)">719070000058464</span>
+                </div>
+                <div style="display:flex;gap:16px;text-align:center;font-size:12px">
+                  <div><div style="color:var(--faint)">Approved</div><div style="font-weight:600">8/14</div></div>
+                  <div><div style="color:var(--faint)">Delivered</div><div style="font-weight:600">8/19</div></div>
+                  <div><div style="color:var(--faint)">Installed</div><div style="font-weight:600;color:var(--faint)">&mdash;</div></div>
+                </div>
+                <div class="pipe" style="width:74px" aria-hidden="true">
+                  <span class="pipe__node done"></span><span class="pipe__bar done"></span>
+                  <span class="pipe__node done"></span><span class="pipe__bar"></span>
+                  <span class="pipe__node"></span>
+                </div>
+                <div class="dayschip dayschip--cool"><b>0</b><span>days</span></div>
+              </li>
             </ul>
-            <a href="#contact" class="btn btn--white btn--lg reveal fade-up d-4">Run my numbers</a>
           </div>
+        </section>
 
-          <div class="zerofee__compare reveal fade-left d-2">
-            <div class="compare-card">
-              <h3 class="compare-card__title">Monthly sales of $40,000</h3>
-              <div class="compare-row">
-                <div class="compare-row__head">
-                  <span>Typical processor</span>
-                  <strong class="compare-row__amount" data-money data-count="1400">$0</strong>
+        <!-- Gain / Loss -->
+        <section class="card card--lift reveal rd-3">
+          <div class="card__head">
+            <h2 class="card__title">Gain / Loss <span class="card__hint">v3-beta</span></h2>
+            <div class="card__side">
+              <a class="btn" href="reports/gainloss.html">Gain/Loss Report (v2)</a>
+            </div>
+          </div>
+          <div class="card__body">
+            <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px">
+              <span class="badge badge--bad">No Volume: 2</span>
+              <span class="badge badge--ok">New / Reactivated: 4</span>
+            </div>
+            <div class="tblwrap">
+              <table class="tbl sortable">
+                <thead>
+                  <tr>
+                    <th>Merchant</th>
+                    <th>Rep</th>
+                    <th class="num">Jul</th>
+                    <th class="num">Aug MTD</th>
+                    <th class="ctr" data-nosort>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="ent" href="merchants/detail/719070000048788.html">FALCON METALS</a><span class="sub">719070000048788</span></td>
+                    <td>TIMOTHY CONSTENIUS</td>
+                    <td class="num">$1,400</td>
+                    <td class="num">$0</td>
+                    <td class="ctr"><span class="badge badge--bad">No Volume</span></td>
+                  </tr>
+                  <tr>
+                    <td><a class="ent" href="merchants/detail/719070000047137.html">MAMA B&#x27;S JUBILEE</a><span class="sub">719070000047137</span></td>
+                    <td>TIMOTHY CONSTENIUS</td>
+                    <td class="num">$1,799</td>
+                    <td class="num">$0</td>
+                    <td class="ctr"><span class="badge badge--bad">No Volume</span></td>
+                  </tr>
+                  <tr>
+                    <td><a class="ent" href="merchants/detail/719070000056567.html">BALLPARK RV RESORT 2</a><span class="sub">719070000056567</span></td>
+                    <td>HALEY WOODRUFF</td>
+                    <td class="num">$0</td>
+                    <td class="num">$7,308</td>
+                    <td class="ctr"><span class="badge badge--ok">New / Reactivated</span></td>
+                  </tr>
+                  <tr>
+                    <td><a class="ent" href="merchants/detail/719070000054380.html">CLUB 307 AMERICAN LEGION</a><span class="sub">719070000054380</span></td>
+                    <td>KYLE PETTIT</td>
+                    <td class="num">$0</td>
+                    <td class="num">$6,875</td>
+                    <td class="ctr"><span class="badge badge--ok">New / Reactivated</span></td>
+                  </tr>
+                  <tr>
+                    <td><a class="ent" href="merchants/detail/719070000056914.html">ELITE AUTO SALES OF MT LLC</a><span class="sub">719070000056914</span></td>
+                    <td>TIMOTHY CONSTENIUS</td>
+                    <td class="num">$0</td>
+                    <td class="num">$1,794</td>
+                    <td class="ctr"><span class="badge badge--ok">New / Reactivated</span></td>
+                  </tr>
+                  <tr>
+                    <td><a class="ent" href="merchants/detail/719070000053283.html">MAMA JO&#x27;S FOOD TRUCK</a><span class="sub">719070000053283</span></td>
+                    <td>Timothy Constenius</td>
+                    <td class="num">$0</td>
+                    <td class="num">$1,066</td>
+                    <td class="ctr"><span class="badge badge--ok">New / Reactivated</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ===================== right column ===================== -->
+      <div class="stack">
+
+        <!-- This month vs last month -->
+        <section class="card card--accent reveal rd-2">
+          <div class="card__head">
+            <span class="subheader">This Month vs Last Month</span>
+          </div>
+          <div class="card__body card__body--flush">
+            <ul class="rowlist">
+              <li>
+                <div style="flex:1">
+                  <div style="font-weight:600;font-size:13.5px">New Approvals</div>
+                  <div style="display:flex;gap:6px;margin-top:4px">
+                    <span class="badge badge--ok">1 proc</span>
+                    <span class="badge badge--warn">5 not yet</span>
+                  </div>
                 </div>
-                <div class="compare-bar"><span class="compare-bar__fill compare-bar__fill--bad" style="--w:100%"></span></div>
-                <p class="compare-row__note">~3.5% blended rate, statements you need a lawyer to read</p>
-              </div>
-              <div class="compare-row">
-                <div class="compare-row__head">
-                  <span class="compare-row__brand">Wholesale Payments</span>
-                  <strong class="compare-row__amount compare-row__amount--green" data-money data-count="45">$0</strong>
+                <div style="text-align:right">
+                  <div class="kpi__num" style="font-size:1.5rem" data-countup data-value="6">6</div>
+                  <div style="font-size:11.5px;color:var(--faint)">vs 7 last mo</div>
+                  <span class="badge badge--bad" style="margin-top:3px">&#9662; 14%</span>
                 </div>
-                <div class="compare-bar"><span class="compare-bar__fill compare-bar__fill--good" style="--w:4%"></span></div>
-                <p class="compare-row__note">One flat subscription. Every month. Done.</p>
-              </div>
-              <div class="compare-card__savings">
-                <span>You keep an extra</span>
-                <strong>$<span data-count="16260">0</span>/year</strong>
-              </div>
+              </li>
+              <li>
+                <div style="flex:1">
+                  <div style="font-weight:600;font-size:13.5px">Started Processing</div>
+                  <div style="display:flex;gap:6px;margin-top:4px">
+                    <span class="badge badge--warn">10 nonprocessing</span>
+                  </div>
+                </div>
+                <div style="text-align:right">
+                  <div class="kpi__num" style="font-size:1.5rem" data-countup data-value="3">3</div>
+                  <div style="font-size:11.5px;color:var(--faint)">vs 7 last mo</div>
+                  <span class="badge badge--bad" style="margin-top:3px">&#9662; 57%</span>
+                </div>
+              </li>
+              <li>
+                <div style="flex:1">
+                  <div style="font-weight:600;font-size:13.5px">Volume</div>
+                  <div style="font-size:11.5px;color:var(--faint);margin-top:4px">Proj: $164,941</div>
+                </div>
+                <div style="text-align:right">
+                  <div class="kpi__num" style="font-size:1.5rem" data-countup data-value="101093" data-format="money">$101,093</div>
+                  <div style="font-size:11.5px;color:var(--faint)">vs $123,393 last mo</div>
+                  <span class="badge badge--ok" style="margin-top:3px">&#9652; 34%</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- Portfolio by tier -->
+        <section class="card card--lift reveal rd-3">
+          <div class="card__head">
+            <h2 class="card__title">Portfolio by Tier</h2>
+          </div>
+          <div class="card__body card__body--flush">
+            <div class="tblwrap">
+              <table class="tbl">
+                <thead>
+                  <tr><th>Tier</th><th class="num">Count</th><th style="width:38%" aria-hidden="true"></th></tr>
+                </thead>
+                <tbody>
+                  <tr class="mutedrow">
+                    <td>Non Processing (&lt; $5)</td>
+                    <td class="num">12</td>
+                    <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:92%"></span></div></td>
+                  </tr>
+                  <tr>
+                    <td>Micro (&lt; $10k)</td>
+                    <td class="num">9</td>
+                    <td><div class="meter"><span class="meter__fill" style="--w:69%"></span></div></td>
+                  </tr>
+                  <tr>
+                    <td>Small (&lt; $25k)</td>
+                    <td class="num">4</td>
+                    <td><div class="meter"><span class="meter__fill" style="--w:31%"></span></div></td>
+                  </tr>
+                  <tr>
+                    <td>Mid (&lt; $50k)</td>
+                    <td class="num">1</td>
+                    <td><div class="meter"><span class="meter__fill" style="--w:8%"></span></div></td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr><th>Active</th><th class="num">14</th><th></th></tr>
+                  <tr><th style="color:var(--faint)">Total</th><th class="num" style="color:var(--faint)">26</th><th></th></tr>
+                </tfoot>
+              </table>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
+        </section>
 
-    <!-- ============ SOLUTIONS ============ -->
-    <section class="section" id="solutions">
-      <div class="container">
-        <div class="section__head">
-          <p class="eyebrow reveal fade-up">Everything you need to get paid</p>
-          <h2 class="h2 reveal fade-up d-1">One partner.<br>Every way to pay.</h2>
-          <p class="lead reveal fade-up d-2">From countertop terminals to full restaurant systems,
-            we design, ship, install, and support the whole stack.</p>
-        </div>
-
-        <div class="cards-grid">
-          <article class="s-card reveal fade-up">
-            <div class="s-card__icon">
-              <svg viewBox="0 0 32 32" fill="none"><rect x="3" y="7" width="26" height="18" rx="3" stroke="currentColor" stroke-width="2"/><path d="M3 12h26" stroke="currentColor" stroke-width="2"/><path d="M8 20h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </div>
-            <h3>Credit &amp; Debit Processing</h3>
-            <p>Fast, secure acceptance for every major card brand — swipe, dip, tap, and digital wallets — with next-day funding.</p>
-          </article>
-
-          <article class="s-card reveal fade-up d-1">
-            <div class="s-card__icon">
-              <svg viewBox="0 0 32 32" fill="none"><rect x="6" y="3" width="20" height="22" rx="3" stroke="currentColor" stroke-width="2"/><path d="M11 8h10M11 13h10M11 18h6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M12 29h8" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </div>
-            <h3>Point-of-Sale Systems</h3>
-            <p>From sleek countertop smart terminals to complete multi-station restaurant and retail systems — configured for how you actually work.</p>
-          </article>
-
-          <article class="s-card reveal fade-up d-2">
-            <div class="s-card__icon">
-              <svg viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="2"/><path d="M16 9v14M20 12.5c0-1.7-1.8-2.5-4-2.5s-4 .9-4 2.5c0 4 8 2 8 6 0 1.6-1.8 2.5-4 2.5s-4-.8-4-2.5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            </div>
-            <h3>Cash Discount Program</h3>
-            <p>Reward customers who pay with cash while card-paying customers cover the cost of acceptance — fully compliant, fully automated.</p>
-          </article>
-
-          <article class="s-card reveal fade-up d-3">
-            <div class="s-card__icon">
-              <svg viewBox="0 0 32 32" fill="none"><rect x="3" y="10" width="26" height="16" rx="3" stroke="currentColor" stroke-width="2"/><path d="M3 16h26M16 10v16" stroke="currentColor" stroke-width="2"/><path d="M16 10c-2-3.5-6-5.5-8-3.5S9.5 10 16 10Zm0 0c2-3.5 6-5.5 8-3.5S22.5 10 16 10Z" stroke="currentColor" stroke-width="2"/></svg>
-            </div>
-            <h3>Gift Cards &amp; Loyalty</h3>
-            <p>Custom-branded gift card programs and loyalty tools that turn first-time visitors into regulars — and regulars into revenue.</p>
-          </article>
-
-          <article class="s-card reveal fade-up d-4">
-            <div class="s-card__icon">
-              <svg viewBox="0 0 32 32" fill="none"><path d="M4 9h24v14H4z" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M8 14h8M8 18h5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="23" cy="16" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
-            </div>
-            <h3>ACH &amp; Check Acceptance</h3>
-            <p>Take checks and bank payments with confidence — electronic conversion, verification, and guarantee options built in.</p>
-          </article>
-
-          <article class="s-card reveal fade-up d-5">
-            <div class="s-card__icon">
-              <svg viewBox="0 0 32 32" fill="none"><rect x="9" y="3" width="14" height="26" rx="3" stroke="currentColor" stroke-width="2"/><path d="M14 25h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M13 10.5 15.5 13l4-4.5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </div>
-            <h3>Mobile &amp; Virtual Terminals</h3>
-            <p>Sell at the counter, curbside, on the road, or over the phone. If your business moves, your payments move with it.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ INDUSTRIES ============ -->
-    <section class="section section--soft" id="industries">
-      <div class="container">
-        <div class="section__head">
-          <p class="eyebrow reveal fade-up">Built for your counter</p>
-          <h2 class="h2 reveal fade-up d-1">Tuned to your industry.</h2>
-          <p class="lead reveal fade-up d-2">Payment processing isn't one-size-fits-all. We configure
-            pricing, hardware, and software around the way your business runs.</p>
-        </div>
-
-        <div class="ind-grid">
-          <article class="ind-card reveal fade-up"><span class="ind-card__emoji">🍽️</span><h3>Restaurants</h3><p>Tableside ordering, tips, splits, online menus, and kitchen displays.</p></article>
-          <article class="ind-card reveal fade-up d-1"><span class="ind-card__emoji">🛍️</span><h3>Retail</h3><p>Inventory, barcode scanning, and lightning-fast checkout lines.</p></article>
-          <article class="ind-card reveal fade-up d-2"><span class="ind-card__emoji">⛽</span><h3>Gas Stations</h3><p>Pay-at-the-pump, c-store POS, and EMV compliance handled end-to-end.</p></article>
-          <article class="ind-card reveal fade-up d-3"><span class="ind-card__emoji">🤝</span><h3>B2B</h3><p>Invoicing, level 2/3 data, and virtual terminals for wholesale trade.</p></article>
-          <article class="ind-card reveal fade-up d-4"><span class="ind-card__emoji">💈</span><h3>Salons &amp; Services</h3><p>Appointments, memberships, and no-show protection in one system.</p></article>
-          <article class="ind-card reveal fade-up d-5"><span class="ind-card__emoji">🏨</span><h3>Hospitality</h3><p>Pre-auths, incidentals, and folio-friendly workflows for lodging.</p></article>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ HOW IT WORKS ============ -->
-    <section class="section" id="how">
-      <div class="container">
-        <div class="section__head">
-          <p class="eyebrow reveal fade-up">Switching is the easy part</p>
-          <h2 class="h2 reveal fade-up d-1">Live in days,<br>not months.</h2>
-        </div>
-
-        <ol class="steps">
-          <li class="step reveal fade-up">
-            <span class="step__num">01</span>
-            <h3>Free savings analysis</h3>
-            <p>Send us a recent statement. We'll show you — line by line — exactly what you'd keep with zero-fee processing. No pressure, no obligation.</p>
-          </li>
-          <li class="step reveal fade-up d-2">
-            <span class="step__num">02</span>
-            <h3>We build your setup</h3>
-            <p>Hardware, software, signage, menus, and training — configured for your business and shipped ready to plug in.</p>
-          </li>
-          <li class="step reveal fade-up d-4">
-            <span class="step__num">03</span>
-            <h3>You keep every dollar</h3>
-            <p>Go live with next-day funding and a support team that answers on the first ring — nights, weekends, and holidays included.</p>
-          </li>
-        </ol>
-      </div>
-    </section>
-
-    <!-- ============ ABOUT ============ -->
-    <section class="about section" id="about">
-      <div class="container about__inner">
-        <div class="about__copy">
-          <p class="eyebrow reveal fade-up">West Texas roots. Nationwide reach.</p>
-          <h2 class="h2 reveal fade-up d-1">Big enough to matter.<br>Small enough to care.</h2>
-          <p class="lead reveal fade-up d-2">
-            Founded in Lubbock, Texas in 2007, Wholesale Payments has grown into one of the
-            nation's largest privately held merchant services providers — powering payments for
-            restaurants, retailers, and B2B companies across all 50 states.
-          </p>
-          <p class="lead reveal fade-up d-3">
-            More than 60 support professionals work from our Lubbock headquarters and our
-            satellite offices in New Braunfels and Dallas. When you call, a person answers.
-            When you need hardware, it ships same-day. That's the wholesale way.
-          </p>
-          <div class="about__badges reveal fade-up d-4">
-            <span class="badge-pill">Est. 2007</span>
-            <span class="badge-pill">Privately held</span>
-            <span class="badge-pill">Lubbock · New Braunfels · Dallas</span>
-            <span class="badge-pill">All 50 states</span>
+        <!-- Top 5 merchants -->
+        <section class="card card--lift reveal rd-4">
+          <div class="card__head">
+            <h2 class="card__title">Top 5 Merchants by Volume</h2>
           </div>
-        </div>
-        <div class="about__panel reveal fade-left d-2">
-          <div class="quote-card">
-            <svg class="quote-card__mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-              <rect x="12" y="8" width="24" height="8" rx="4" fill="#077AE8"/>
-              <rect x="6" y="20" width="36" height="8" rx="4" fill="#3399F3"/>
-              <rect x="12" y="32" width="24" height="8" rx="4" fill="#80CD86"/>
-            </svg>
-            <p class="quote-card__text">
-              “Our mission has never changed: low rates, cutting-edge technology, and customer
-              service that actually serves the customer.”
-            </p>
-            <p class="quote-card__attr">— The Wholesale Payments team</p>
+          <div class="card__body card__body--flush">
+            <div class="tblwrap">
+              <table class="tbl">
+                <thead>
+                  <tr>
+                    <th>Merchant</th>
+                    <th class="num">Last Month</th>
+                    <th class="num">This Month</th>
+                    <th class="num">Projected</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a class="ent" href="merchants/detail/719070000047178.html">BLAINE MOUNTAIN SALSA</a><span class="sub">719070000047178</span></td>
+                    <td class="num">$31,455</td>
+                    <td class="num">$18,135</td>
+                    <td class="num neg">$29,588</td>
+                  </tr>
+                  <tr>
+                    <td><a class="ent" href="merchants/detail/719070000048911.html">HOUSE OF INK</a><span class="sub">719070000048911</span></td>
+                    <td class="num">$13,434</td>
+                    <td class="num">$13,113</td>
+                    <td class="num">$21,394</td>
+                  </tr>
+                  <tr>
+                    <td><a class="ent" href="merchants/detail/719070000053143.html">MISSOULA FIRE EQUIPMENT</a><span class="sub">719070000053143</span></td>
+                    <td class="num">$6,769</td>
+                    <td class="num">$12,800</td>
+                    <td class="num">$20,884</td>
+                  </tr>
+                  <tr>
+                    <td><a class="ent" href="merchants/detail/719070000051139.html">PRIMOS AUTO INSURANCE SERVICES</a><span class="sub">719070000051139</span></td>
+                    <td class="num">$20,408</td>
+                    <td class="num">$10,978</td>
+                    <td class="num neg">$17,911</td>
+                  </tr>
+                  <tr>
+                    <td><a class="ent" href="merchants/detail/719070000049638.html">RANCHO CORDOVA AUTO DISMANTLING</a><span class="sub">719070000049638</span></td>
+                    <td class="num">$5,880</td>
+                    <td class="num">$10,635</td>
+                    <td class="num">$17,351</td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th>Top 5 Total</th>
+                    <th class="num">$77,945</th>
+                    <th class="num">$65,660</th>
+                    <th class="num">$107,129</th>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ============ CTA ============ -->
-    <section class="cta section" id="contact">
-      <div class="container">
-        <div class="cta__panel">
-          <div class="cta__orbs" aria-hidden="true"><span></span><span></span></div>
-          <h2 class="h2 h2--light reveal fade-up">Stop paying to get paid.</h2>
-          <p class="lead lead--light reveal fade-up d-1">
-            Talk to a real person today and find out how much you'd keep with zero-fee processing.
-          </p>
-          <div class="cta__actions reveal fade-up d-2">
-            <a href="tel:+18066980625" class="btn btn--white btn--lg">
-              <svg viewBox="0 0 20 20" fill="none" aria-hidden="true"><path d="M4 3h3l2 5-2.5 1.5a11 11 0 0 0 4 4L12 11l5 2v3a2 2 0 0 1-2 2A13 13 0 0 1 2 5a2 2 0 0 1 2-2Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
-              Call (806) 698-0625
-            </a>
-            <a href="mailto:info@wholesalepayments.com" class="btn btn--outline-light btn--lg">Request a quote</a>
-          </div>
-          <p class="cta__addr reveal fade-up d-3">7602 University Ave, Ste 100 · Lubbock, TX 79423</p>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- ============ FOOTER ============ -->
-  <footer class="footer">
-    <div class="container footer__grid">
-      <div class="footer__brand">
-        <a href="#top" class="nav__brand" aria-label="Wholesale Payments home">
-          <svg class="nav__mark" viewBox="0 0 48 48" fill="none" aria-hidden="true">
-            <rect x="12" y="8" width="24" height="8" rx="4" fill="#FFFFFF"/>
-            <rect x="6" y="20" width="36" height="8" rx="4" fill="rgba(255,255,255,.75)"/>
-            <rect x="12" y="32" width="24" height="8" rx="4" fill="#80CD86"/>
-          </svg>
-          <span class="nav__wordmark nav__wordmark--light"><strong>wholesale</strong><em>payments</em></span>
-        </a>
-        <p class="footer__tag">Zero-fee payment processing and merchant services, done the wholesale way — since 2007.</p>
-      </div>
-      <nav class="footer__col" aria-label="Solutions">
-        <h4>Solutions</h4>
-        <a href="#zero-fee">Zero-Fee Processing</a>
-        <a href="#solutions">Point-of-Sale Systems</a>
-        <a href="#solutions">Cash Discount</a>
-        <a href="#solutions">Gift Cards &amp; Loyalty</a>
-      </nav>
-      <nav class="footer__col" aria-label="Company">
-        <h4>Company</h4>
-        <a href="#about">About Us</a>
-        <a href="#industries">Industries</a>
-        <a href="#how">How It Works</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <div class="footer__col">
-        <h4>Contact</h4>
-        <a href="tel:+18066980625">(806) 698-0625</a>
-        <a href="mailto:info@wholesalepayments.com">info@wholesalepayments.com</a>
-        <p>7602 University Ave, Ste 100<br>Lubbock, TX 79423</p>
+        </section>
       </div>
     </div>
-    <div class="container footer__legal">
-      <p>© <span id="year">2026</span> Wholesale Payments, Inc. All rights reserved.</p>
-      <p>Wholesale Payments is a registered ISO of Wells Fargo Bank, N.A. and Merrick Bank.</p>
-    </div>
-  </footer>
+  </div>
+</main>
 
-  <script src="js/main.js"></script>
+<footer class="foot">
+  <div class="foot__rule"></div>
+  Copyright &copy; <a href="index.html">Wholesale Payments</a>. All rights reserved.
+</footer>
+
+<script src="assets/js/wpi.js" defer></script>
 </body>
 </html>

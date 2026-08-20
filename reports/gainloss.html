@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gain/Loss Report — Wholesale Payments</title>
+  <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="stylesheet" href="../assets/css/wpi.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="shell topbar__inner">
+    <a class="brand" href="../index.html" aria-label="Wholesale Payments — dashboard home">
+      <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs>
+          <linearGradient id="bm" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#00A2EC"/>
+            <stop offset=".38" stop-color="#00B868"/>
+            <stop offset="1" stop-color="#50E878"/>
+          </linearGradient>
+        </defs>
+        <rect x="4"  y="12" width="8"  height="25" rx="4" fill="#0095E4"/>
+        <rect x="17" y="4"  width="14" height="40" rx="5" fill="url(#bm)"/>
+        <rect x="36" y="15" width="8"  height="22" rx="4" fill="#00C878"/>
+      </svg>
+      <span class="brand__text"><strong>wholesale</strong><span>payments</span></span>
+    </a>
+
+    <nav class="mainnav" id="mainnav" aria-label="Primary">
+      <a class="mainnav__link" href="../index.html">Dashboard</a>
+      <a class="mainnav__link" href="../Rankings.html">Rankings</a>
+      <a class="mainnav__link" href="../merchants/search.html">Merchants</a>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Products
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="https://kloser.wholesalepayments.org">Kloser<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpiuniversity.com/session/new">WPI University<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://customerconnectwp.com/">Customer Connect<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpirewards.com/login/">WPI Rewards<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <div class="drop__sep"></div>
+          <a href="../payverification/detail.html">Kaching</a>
+          <a href="../payverification/roster.html">Kaching (Roster)</a>
+        </div>
+      </div>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Reports
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="nonprocessing.html">Nonprocessing</a>
+          <a href="volume.html">Volume Difference</a>
+          <a href="gainloss.html">Gain/Loss</a>
+          <a href="pendingdeals.html">Pended Deals</a>
+          <a href="volumeavg.html">Avg Merchant Volume</a>
+          <a href="threshold__p_0.html">Threshold</a>
+          <a href="weeklyprocessing.html">Weekly Processing</a>
+          <a href="hpar.html">HPAR</a>
+          <a href="carcontest2025.html">Car Contest</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="topbar__user">
+      <div class="userchip">
+        <span class="userchip__avatar">JW</span>
+        <span class="userchip__meta">
+          <span class="userchip__name">justin.woodruff</span><br>
+          <span class="userchip__org">@ wholesalepayments.com</span>
+        </span>
+      </div>
+      <button class="btn-logout" type="button">Logout</button>
+    </div>
+
+    <button class="topbar__burger" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main class="page" id="main">
+  <div class="shell">
+
+    <div class="pagehead reveal">
+      <div>
+        <div class="pagehead__pre">Reports</div>
+        <h1 class="pagehead__title">Gain/Loss Report</h1>
+        <div class="pagehead__sub">Qualified merchant counts by GM and by Team — Jul 2026 vs Aug 2026 MTD</div>
+      </div>
+    </div>
+
+    <div class="filters reveal rd-1">
+      <div class="field"><label for="reportDate">Report date</label>
+        <select id="reportDate" name="dt">
+          <option value="2026-08" selected>Aug 2026</option>
+          <option value="2026-07">Jul 2026</option>
+          <option value="2026-06">Jun 2026</option>
+          <option value="2026-05">May 2026</option>
+          <option value="2026-04">Apr 2026</option>
+          <option value="2026-03">Mar 2026</option>
+          <option value="2026-02">Feb 2026</option>
+          <option value="2026-01">Jan 2026</option>
+          <option value="2025-12">Dec 2025</option>
+          <option value="2025-11">Nov 2025</option>
+          <option value="2025-10">Oct 2025</option>
+          <option value="2025-09">Sep 2025</option>
+          <option value="2025-08">Aug 2025</option>
+        </select></div>
+      <div class="field"><label for="salesTeam">Team</label>
+        <select id="salesTeam" name="team">
+          <option value="ALL" selected>ALL</option>
+          <option value="ALL WITH DETAIL">ALL WITH DETAIL</option>
+          <optgroup label="Divisions">
+            <option value="*** Lightning">Lightning</option>
+            <option value="*** Thunder">Thunder</option>
+          </optgroup>
+          <optgroup label="General Managers">
+            <option value="** ICE">ICE</option>
+            <option value="** FIRE">FIRE</option>
+            <option value="** STEEL">STEEL</option>
+            <option value="** GALAXY">GALAXY</option>
+            <option value="** SPARTA">SPARTA</option>
+            <option value="** OLYMPUS">OLYMPUS</option>
+          </optgroup>
+          <optgroup label="Teams">
+            <option value="Achilles">Achilles</option>
+            <option value="Affiliated Distributors">Affiliated Distributors</option>
+            <option value="Agis">Agis</option>
+            <option value="Ajax">Ajax</option>
+            <option value="ALCHEMY">ALCHEMY</option>
+            <option value="Alkamene">Alkamene</option>
+            <option value="Aluminum">Aluminum</option>
+            <option value="Amethyst">Amethyst</option>
+            <option value="AMS">AMS</option>
+            <option value="Anaxandros">Anaxandros</option>
+            <option value="Andromeda">Andromeda</option>
+            <option value="Apex">Apex</option>
+            <option value="Apollo">Apollo</option>
+            <option value="Aqua">Aqua</option>
+            <option value="Archidamus">Archidamus</option>
+            <option value="Ares">Ares</option>
+            <option value="ARETE">ARETE</option>
+            <option value="Areus">Areus</option>
+            <option value="Argonauts">Argonauts</option>
+            <option value="ARTEMIS">ARTEMIS</option>
+            <option value="ASHES">ASHES</option>
+            <option value="Athena">Athena</option>
+            <option value="Atlas">Atlas</option>
+            <option value="Authotrans">Authotrans</option>
+            <option value="AYTCH">AYTCH</option>
+            <option value="BCG">BCG</option>
+            <option value="Black">Black</option>
+            <option value="Black Eye">Black Eye</option>
+            <option value="Blaze">Blaze</option>
+            <option value="Blue Diamond">Blue Diamond</option>
+            <option value="Bourbon">Bourbon</option>
+            <option value="Brass">Brass</option>
+            <option value="Bronze">Bronze</option>
+            <option value="Brown">Brown</option>
+            <option value="Capella">Capella</option>
+            <option value="CHAOS">CHAOS</option>
+            <option value="Cheddar">Cheddar</option>
+            <option value="CHILLY">CHILLY</option>
+            <option value="Chrome">Chrome</option>
+            <option value="Cigar">Cigar</option>
+            <option value="Cobalt">Cobalt</option>
+            <option value="Coin">Coin</option>
+            <option value="COLDSTEEL">COLDSTEEL</option>
+            <option value="Copper">Copper</option>
+            <option value="Coral">Coral</option>
+            <option value="Crimson">Crimson</option>
+            <option value="CRONUS">CRONUS</option>
+            <option value="Cyan">Cyan</option>
+            <option value="Dagobah">Dagobah</option>
+            <option value="Diamond">Diamond</option>
+            <option value="Draco">Draco</option>
+            <option value="Draco">Draco</option>
+            <option value="DYNAMITE">DYNAMITE</option>
+            <option value="ECLIPSE">ECLIPSE</option>
+            <option value="Emerald">Emerald</option>
+            <option value="Evinos">Evinos</option>
+            <option value="FORGED">FORGED</option>
+            <option value="Frost">Frost</option>
+            <option value="Fuchsia">Fuchsia</option>
+            <option value="Glacier">Glacier</option>
+            <option value="Gold">Gold</option>
+            <option value="Green">Green</option>
+            <option value="Grey">Grey</option>
+            <option value="Hades">Hades</option>
+            <option value="Hazel">Hazel</option>
+            <option value="Helios">Helios</option>
+            <option value="HELLFIRE">HELLFIRE</option>
+            <option value="Hephaestus">Hephaestus</option>
+            <option value="Hercules">Hercules</option>
+            <option value="Hermes">Hermes</option>
+            <option value="Hippocratides">Hippocratides</option>
+            <option value="Hot Pink">Hot Pink</option>
+            <option value="House">House</option>
+            <option value="Hyperion">Hyperion</option>
+            <option value="ICE KANNON">ICE KANNON</option>
+            <option value="Iceberg">Iceberg</option>
+            <option value="Indigo">Indigo</option>
+            <option value="INFERNO">INFERNO</option>
+            <option value="IRIDIUM">IRIDIUM</option>
+            <option value="Iron">Iron</option>
+            <option value="Ivory">Ivory</option>
+            <option value="Kevlar">Kevlar</option>
+            <option value="Kyros">Kyros</option>
+            <option value="Lavender">Lavender</option>
+            <option value="Lead">Lead</option>
+            <option value="Leo">Leo</option>
+            <option value="Leon">Leon</option>
+            <option value="Leonidas">Leonidas</option>
+            <option value="Lime">Lime</option>
+            <option value="Lithium">Lithium</option>
+            <option value="Mahogany">Mahogany</option>
+            <option value="Mars">Mars</option>
+            <option value="MAVERICK">MAVERICK</option>
+            <option value="Mercury">Mercury</option>
+            <option value="Milky Way">Milky Way</option>
+            <option value="Morpheus">Morpheus</option>
+            <option value="Mystic">Mystic</option>
+            <option value="Navy">Navy</option>
+            <option value="Nebula">Nebula</option>
+            <option value="NEXSELL">NEXSELL</option>
+            <option value="NICKEL">NICKEL</option>
+            <option value="NIKE">NIKE</option>
+            <option value="Niobium">Niobium</option>
+            <option value="Nomad">Nomad</option>
+            <option value="Nova">Nova</option>
+            <option value="Oceanus">Oceanus</option>
+            <option value="ODIN">ODIN</option>
+            <option value="ODYSSEUS">ODYSSEUS</option>
+            <option value="Old Blue">Old Blue</option>
+            <option value="Old Titanium">Old Titanium</option>
+            <option value="Old Yellow">Old Yellow</option>
+            <option value="Olive">Olive</option>
+            <option value="Onyx">Onyx</option>
+            <option value="Opal">Opal</option>
+            <option value="Orange">Orange</option>
+            <option value="ORESTES">ORESTES</option>
+            <option value="Orion">Orion</option>
+            <option value="Palladium">Palladium</option>
+            <option value="Peach">Peach</option>
+            <option value="Pegasus">Pegasus</option>
+            <option value="Pink">Pink</option>
+            <option value="Platinum">Platinum</option>
+            <option value="Pleistoanax">Pleistoanax</option>
+            <option value="Pluto">Pluto</option>
+            <option value="Plutonium">Plutonium</option>
+            <option value="Plutus">Plutus</option>
+            <option value="Poseidon">Poseidon</option>
+            <option value="PULSAR">PULSAR</option>
+            <option value="Purple">Purple</option>
+            <option value="Quasar">Quasar</option>
+            <option value="Radium">Radium</option>
+            <option value="RIGEL">RIGEL</option>
+            <option value="Royal">Royal</option>
+            <option value="Ruby">Ruby</option>
+            <option value="Sapphire">Sapphire</option>
+            <option value="Scarlet">Scarlet</option>
+            <option value="Shadow">Shadow</option>
+            <option value="Silver">Silver</option>
+            <option value="Sky">Sky</option>
+            <option value="Snow">Snow</option>
+            <option value="Stainless">Stainless</option>
+            <option value="Stelios">Stelios</option>
+            <option value="Striker">Striker</option>
+            <option value="Subzero">Subzero</option>
+            <option value="Summit">Summit</option>
+            <option value="Sun">Sun</option>
+            <option value="Taurus">Taurus</option>
+            <option value="Teal">Teal</option>
+            <option value="Team Andromeda">Team Andromeda</option>
+            <option value="TEAM ASHES">TEAM ASHES</option>
+            <option value="TEAM AYTCH">TEAM AYTCH</option>
+            <option value="Team Hephaestus">Team Hephaestus</option>
+            <option value="TEAM INFERNO">TEAM INFERNO</option>
+            <option value="Team Lithium">Team Lithium</option>
+            <option value="Team Tm">Team Tm</option>
+            <option value="Thor">Thor</option>
+            <option value="Tiger Eye">Tiger Eye</option>
+            <option value="Titan">Titan</option>
+            <option value="Titanium">Titanium</option>
+            <option value="Triton">Triton</option>
+            <option value="Tungsten">Tungsten</option>
+            <option value="Turquoise">Turquoise</option>
+            <option value="Ultra">Ultra</option>
+            <option value="White">White</option>
+            <option value="Xerxes">Xerxes</option>
+            <option value="Yellow">Yellow</option>
+            <option value="Zenith">Zenith</option>
+            <option value="Zerogravity">Zerogravity</option>
+            <option value="Zeus">Zeus</option>
+            <option value="Zinc">Zinc</option>
+          </optgroup>
+        </select></div>
+      <div class="field"><label for="processor">Processor</label>
+        <select id="processor" name="proc">
+          <option value="ALL" selected>ALL</option>
+          <option value="TSYS">FSP</option>
+          <option value="PPS">PPS</option>
+        </select></div>
+      <div class="field"><label for="minNetAmount">Min $</label>
+        <input type="number" min="0" step="1" id="minNetAmount" name="min" value="100"></div>
+    </div>
+
+    <div class="stack">
+
+      <section class="card card--accent card--lift reveal rd-1">
+        <div class="card__head">
+          <h2 class="card__title">By GM</h2>
+          <div class="card__side">
+            <a class="btn" href="gainloss.html">(back to All Teams)</a>
+          </div>
+        </div>
+        <div class="card__body card__body--flush">
+          <div class="tblwrap">
+            <table class="tbl sortable" id="rs1">
+              <thead>
+                <tr>
+                  <th>GM</th>
+                  <th class="num">Jul 2026 Qualified</th>
+                  <th class="num">Aug 2026 MTD Qualified</th>
+                  <th class="num">Difference</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Galaxy</a></td>
+                  <td class="num">1,371</td>
+                  <td class="num">1,306</td>
+                  <td class="num neg">-65</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Sparta</a></td>
+                  <td class="num">1,789</td>
+                  <td class="num">1,716</td>
+                  <td class="num neg">-73</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Steel</a></td>
+                  <td class="num">2,283</td>
+                  <td class="num">2,198</td>
+                  <td class="num neg">-85</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Olympus</a></td>
+                  <td class="num">1,830</td>
+                  <td class="num">1,742</td>
+                  <td class="num neg">-88</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Fire</a></td>
+                  <td class="num">3,912</td>
+                  <td class="num">3,759</td>
+                  <td class="num neg">-153</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Ice</a></td>
+                  <td class="num">4,918</td>
+                  <td class="num">4,691</td>
+                  <td class="num neg">-227</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Total</th>
+                  <th class="num">16,103</th>
+                  <th class="num">15,412</th>
+                  <th class="num neg">-691</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section class="card card--lift reveal rd-2">
+        <div class="card__head">
+          <h2 class="card__title">By Team</h2>
+          <div class="card__side">
+            <a class="btn" href="gainloss.html">(back to All Teams)</a>
+          </div>
+        </div>
+        <div class="card__body card__body--flush">
+          <div class="tblwrap">
+            <table class="tbl sortable" id="rs2">
+              <thead>
+                <tr>
+                  <th>Team</th>
+                  <th class="num">Jul 2026 Qualified</th>
+                  <th class="num">Aug 2026 MTD Qualified</th>
+                  <th class="num">Difference</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Cigar</a></td>
+                  <td class="num">5</td>
+                  <td class="num">7</td>
+                  <td class="num pos">2</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Triton</a></td>
+                  <td class="num">21</td>
+                  <td class="num">23</td>
+                  <td class="num pos">2</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">ICE KANNON</a></td>
+                  <td class="num">4</td>
+                  <td class="num">6</td>
+                  <td class="num pos">2</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">DYNAMITE</a></td>
+                  <td class="num">9</td>
+                  <td class="num">11</td>
+                  <td class="num pos">2</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Atlas</a></td>
+                  <td class="num">5</td>
+                  <td class="num">7</td>
+                  <td class="num pos">2</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">RIGEL</a></td>
+                  <td class="num">6</td>
+                  <td class="num">8</td>
+                  <td class="num pos">2</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Lithium</a></td>
+                  <td class="num">61</td>
+                  <td class="num">63</td>
+                  <td class="num pos">2</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Aluminum</a></td>
+                  <td class="num">317</td>
+                  <td class="num">318</td>
+                  <td class="num pos">1</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">NIKE</a></td>
+                  <td class="num">6</td>
+                  <td class="num">7</td>
+                  <td class="num pos">1</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">ODYSSEUS</a></td>
+                  <td class="num">16</td>
+                  <td class="num">17</td>
+                  <td class="num pos">1</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">ARTEMIS</a></td>
+                  <td class="num">40</td>
+                  <td class="num">41</td>
+                  <td class="num pos">1</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Stainless</a></td>
+                  <td class="num">3</td>
+                  <td class="num">3</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Milky Way</a></td>
+                  <td class="num">17</td>
+                  <td class="num">17</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Capella</a></td>
+                  <td class="num">17</td>
+                  <td class="num">17</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Pleistoanax</a></td>
+                  <td class="num">7</td>
+                  <td class="num">7</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">ECLIPSE</a></td>
+                  <td class="num">2</td>
+                  <td class="num">2</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">TEAM ASHES</a></td>
+                  <td class="num">14</td>
+                  <td class="num">14</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">CHILLY</a></td>
+                  <td class="num">2</td>
+                  <td class="num">2</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Black Eye</a></td>
+                  <td class="num">5</td>
+                  <td class="num">5</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Evinos</a></td>
+                  <td class="num">11</td>
+                  <td class="num">11</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Summit</a></td>
+                  <td class="num">10</td>
+                  <td class="num">10</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">ALCHEMY</a></td>
+                  <td class="num">19</td>
+                  <td class="num">19</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Plutus</a></td>
+                  <td class="num">3</td>
+                  <td class="num">3</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Hippocratides</a></td>
+                  <td class="num">1</td>
+                  <td class="num">1</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Hyperion</a></td>
+                  <td class="num">1</td>
+                  <td class="num">1</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">ORESTES</a></td>
+                  <td class="num">1</td>
+                  <td class="num">1</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">FORGED</a></td>
+                  <td class="num">25</td>
+                  <td class="num">25</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Nova</a></td>
+                  <td class="num">16</td>
+                  <td class="num">16</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Zerogravity</a></td>
+                  <td class="num">9</td>
+                  <td class="num">9</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Kyros</a></td>
+                  <td class="num">23</td>
+                  <td class="num">23</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">MAVERICK</a></td>
+                  <td class="num">46</td>
+                  <td class="num">46</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">CHAOS</a></td>
+                  <td class="num">24</td>
+                  <td class="num">24</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Coin</a></td>
+                  <td class="num">10</td>
+                  <td class="num">10</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Alkamene</a></td>
+                  <td class="num">7</td>
+                  <td class="num">6</td>
+                  <td class="num neg">-1</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">INFERNO</a></td>
+                  <td class="num">24</td>
+                  <td class="num">23</td>
+                  <td class="num neg">-1</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Snow</a></td>
+                  <td class="num">32</td>
+                  <td class="num">31</td>
+                  <td class="num neg">-1</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">NEXSELL</a></td>
+                  <td class="num">1</td>
+                  <td class="num">0</td>
+                  <td class="num neg">-1</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Dagobah</a></td>
+                  <td class="num">2</td>
+                  <td class="num">1</td>
+                  <td class="num neg">-1</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">ODIN</a></td>
+                  <td class="num">15</td>
+                  <td class="num">13</td>
+                  <td class="num neg">-2</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Onyx</a></td>
+                  <td class="num">48</td>
+                  <td class="num">46</td>
+                  <td class="num neg">-2</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Thor</a></td>
+                  <td class="num">9</td>
+                  <td class="num">7</td>
+                  <td class="num neg">-2</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">ASHES</a></td>
+                  <td class="num">6</td>
+                  <td class="num">4</td>
+                  <td class="num neg">-2</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Zinc</a></td>
+                  <td class="num">62</td>
+                  <td class="num">60</td>
+                  <td class="num neg">-2</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Morpheus</a></td>
+                  <td class="num">24</td>
+                  <td class="num">22</td>
+                  <td class="num neg">-2</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Palladium</a></td>
+                  <td class="num">140</td>
+                  <td class="num">138</td>
+                  <td class="num neg">-2</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">IRIDIUM</a></td>
+                  <td class="num">16</td>
+                  <td class="num">13</td>
+                  <td class="num neg">-3</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">AYTCH</a></td>
+                  <td class="num">11</td>
+                  <td class="num">8</td>
+                  <td class="num neg">-3</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Draco</a></td>
+                  <td class="num">117</td>
+                  <td class="num">114</td>
+                  <td class="num neg">-3</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Ares</a></td>
+                  <td class="num">41</td>
+                  <td class="num">38</td>
+                  <td class="num neg">-3</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Glacier</a></td>
+                  <td class="num">42</td>
+                  <td class="num">39</td>
+                  <td class="num neg">-3</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">ARETE</a></td>
+                  <td class="num">55</td>
+                  <td class="num">51</td>
+                  <td class="num neg">-4</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Agis</a></td>
+                  <td class="num">80</td>
+                  <td class="num">76</td>
+                  <td class="num neg">-4</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Andromeda</a></td>
+                  <td class="num">10</td>
+                  <td class="num">6</td>
+                  <td class="num neg">-4</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">CRONUS</a></td>
+                  <td class="num">93</td>
+                  <td class="num">87</td>
+                  <td class="num neg">-6</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Shadow</a></td>
+                  <td class="num">369</td>
+                  <td class="num">360</td>
+                  <td class="num neg">-9</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Striker</a></td>
+                  <td class="num">242</td>
+                  <td class="num">233</td>
+                  <td class="num neg">-9</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Xerxes</a></td>
+                  <td class="num">153</td>
+                  <td class="num">143</td>
+                  <td class="num neg">-10</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Purple</a></td>
+                  <td class="num">78</td>
+                  <td class="num">68</td>
+                  <td class="num neg">-10</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Mercury</a></td>
+                  <td class="num">319</td>
+                  <td class="num">307</td>
+                  <td class="num neg">-12</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Titan</a></td>
+                  <td class="num">142</td>
+                  <td class="num">129</td>
+                  <td class="num neg">-13</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Emerald</a></td>
+                  <td class="num">677</td>
+                  <td class="num">664</td>
+                  <td class="num neg">-13</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Tungsten</a></td>
+                  <td class="num">331</td>
+                  <td class="num">317</td>
+                  <td class="num neg">-14</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Fuchsia</a></td>
+                  <td class="num">129</td>
+                  <td class="num">114</td>
+                  <td class="num neg">-15</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Areus</a></td>
+                  <td class="num">154</td>
+                  <td class="num">139</td>
+                  <td class="num neg">-15</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Athena</a></td>
+                  <td class="num">274</td>
+                  <td class="num">258</td>
+                  <td class="num neg">-16</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Stelios</a></td>
+                  <td class="num">683</td>
+                  <td class="num">665</td>
+                  <td class="num neg">-18</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Pluto</a></td>
+                  <td class="num">333</td>
+                  <td class="num">314</td>
+                  <td class="num neg">-19</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Cobalt</a></td>
+                  <td class="num">398</td>
+                  <td class="num">378</td>
+                  <td class="num neg">-20</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Iron</a></td>
+                  <td class="num">346</td>
+                  <td class="num">326</td>
+                  <td class="num neg">-20</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Apollo</a></td>
+                  <td class="num">302</td>
+                  <td class="num">282</td>
+                  <td class="num neg">-20</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Coral</a></td>
+                  <td class="num">538</td>
+                  <td class="num">516</td>
+                  <td class="num neg">-22</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Green</a></td>
+                  <td class="num">287</td>
+                  <td class="num">265</td>
+                  <td class="num neg">-22</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Platinum</a></td>
+                  <td class="num">635</td>
+                  <td class="num">612</td>
+                  <td class="num neg">-23</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Iceberg</a></td>
+                  <td class="num">279</td>
+                  <td class="num">256</td>
+                  <td class="num neg">-23</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Aqua</a></td>
+                  <td class="num">237</td>
+                  <td class="num">214</td>
+                  <td class="num neg">-23</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Peach</a></td>
+                  <td class="num">821</td>
+                  <td class="num">795</td>
+                  <td class="num neg">-26</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Leonidas</a></td>
+                  <td class="num">660</td>
+                  <td class="num">634</td>
+                  <td class="num neg">-26</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Brass</a></td>
+                  <td class="num">625</td>
+                  <td class="num">599</td>
+                  <td class="num neg">-26</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Chrome</a></td>
+                  <td class="num">705</td>
+                  <td class="num">676</td>
+                  <td class="num neg">-29</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Orion</a></td>
+                  <td class="num">678</td>
+                  <td class="num">647</td>
+                  <td class="num neg">-31</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Mahogany</a></td>
+                  <td class="num">682</td>
+                  <td class="num">646</td>
+                  <td class="num neg">-36</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Zeus</a></td>
+                  <td class="num">922</td>
+                  <td class="num">885</td>
+                  <td class="num neg">-37</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Black</a></td>
+                  <td class="num">871</td>
+                  <td class="num">832</td>
+                  <td class="num neg">-39</td>
+                </tr>
+                <tr>
+                  <td><a class="ent" href="gainloss.html">Indigo</a></td>
+                  <td class="num">1,642</td>
+                  <td class="num">1,581</td>
+                  <td class="num neg">-61</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th>Total</th>
+                  <th class="num">16,103</th>
+                  <th class="num">15,412</th>
+                  <th class="num neg">-691</th>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="foot__rule"></div>
+  Copyright &copy; <a href="../index.html">Wholesale Payments</a>. All rights reserved.
+</footer>
+
+<script src="../assets/js/wpi.js" defer></script>
+</body>
+</html>

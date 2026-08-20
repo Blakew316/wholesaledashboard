@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rankings — Wholesale Payments</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="stylesheet" href="assets/css/wpi.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="topbar">
+  <div class="shell topbar__inner">
+    <a class="brand" href="index.html" aria-label="Wholesale Payments — dashboard home">
+      <svg class="brand__mark" viewBox="0 0 48 48" aria-hidden="true">
+        <defs>
+          <linearGradient id="bm" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#00A2EC"/>
+            <stop offset=".38" stop-color="#00B868"/>
+            <stop offset="1" stop-color="#50E878"/>
+          </linearGradient>
+        </defs>
+        <rect x="4"  y="12" width="8"  height="25" rx="4" fill="#0095E4"/>
+        <rect x="17" y="4"  width="14" height="40" rx="5" fill="url(#bm)"/>
+        <rect x="36" y="15" width="8"  height="22" rx="4" fill="#00C878"/>
+      </svg>
+      <span class="brand__text"><strong>wholesale</strong><span>payments</span></span>
+    </a>
+
+    <nav class="mainnav" id="mainnav" aria-label="Primary">
+      <a class="mainnav__link" href="index.html">Dashboard</a>
+      <a class="mainnav__link is-active" href="Rankings.html">Rankings</a>
+      <a class="mainnav__link" href="merchants/search.html">Merchants</a>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Products
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="https://kloser.wholesalepayments.org">Kloser<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpiuniversity.com/session/new">WPI University<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://customerconnectwp.com/">Customer Connect<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <a href="https://www.wpirewards.com/login/">WPI Rewards<svg class="ext" viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M4 2h6v6M10 2 5 7" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a>
+          <div class="drop__sep"></div>
+          <a href="payverification/detail.html">Kaching</a>
+          <a href="payverification/roster.html">Kaching (Roster)</a>
+        </div>
+      </div>
+      <div class="drop">
+        <button class="drop__btn" type="button" aria-haspopup="true">
+          Reports
+          <svg viewBox="0 0 12 12" fill="none" aria-hidden="true"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </button>
+        <div class="drop__menu">
+          <a href="reports/nonprocessing.html">Nonprocessing</a>
+          <a href="reports/volume.html">Volume Difference</a>
+          <a href="reports/gainloss.html">Gain/Loss</a>
+          <a href="reports/pendingdeals.html">Pended Deals</a>
+          <a href="reports/volumeavg.html">Avg Merchant Volume</a>
+          <a href="reports/threshold__p_0.html">Threshold</a>
+          <a href="reports/weeklyprocessing.html">Weekly Processing</a>
+          <a href="reports/hpar.html">HPAR</a>
+          <a href="reports/carcontest2025.html">Car Contest</a>
+        </div>
+      </div>
+    </nav>
+
+    <div class="topbar__user">
+      <div class="userchip">
+        <span class="userchip__avatar">JW</span>
+        <span class="userchip__meta">
+          <span class="userchip__name">justin.woodruff</span><br>
+          <span class="userchip__org">@ wholesalepayments.com</span>
+        </span>
+      </div>
+      <button class="btn-logout" type="button">Logout</button>
+    </div>
+
+    <button class="topbar__burger" type="button" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<main class="page" id="main">
+  <div class="shell">
+
+    <div class="pagehead reveal">
+      <div>
+        <h1 class="pagehead__title">Rankings</h1>
+      </div>
+    </div>
+
+    <div class="grid grid--2">
+
+      <!-- Top 20 managers -->
+      <section class="card card--accent card--lift reveal rd-1">
+        <div class="card__head">
+          <h2 class="card__title">TOP 20 MANAGERS <span class="card__hint">ALL</span></h2>
+          <div class="card__side">
+            <div class="field">
+              <label for="reportDate">Period</label>
+              <select id="reportDate" name="dt">
+                <option value="2026-08" selected="selected">Aug 2026</option>
+                <option value="2026-07">Jul 2026</option>
+                <option value="2026-06">Jun 2026</option>
+                <option value="2026-05">May 2026</option>
+                <option value="2026-04">Apr 2026</option>
+                <option value="2026-03">Mar 2026</option>
+                <option value="2026-02">Feb 2026</option>
+                <option value="2026-01">Jan 2026</option>
+                <option value="2025-12">Dec 2025</option>
+                <option value="2025-11">Nov 2025</option>
+                <option value="2025-10">Oct 2025</option>
+                <option value="2025-09">Sep 2025</option>
+                <option value="2025-08">Aug 2025</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="card__body card__body--flush">
+          <div class="tblwrap">
+            <table class="tbl sortable" id="rs1">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Team</th>
+                  <th class="num">Goal</th>
+                  <th class="num">Month</th>
+                  <th class="num">Week</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-sort="1"><span class="badge badge--ok">1st</span></td>
+                  <td data-sort="Stelios">Stelios</td>
+                  <td class="num">0</td>
+                  <td class="num">38</td>
+                  <td class="num">9</td>
+                </tr>
+                <tr>
+                  <td data-sort="2"><span class="badge badge--info">2nd</span></td>
+                  <td data-sort="Indigo">Indigo</td>
+                  <td class="num">0</td>
+                  <td class="num">34</td>
+                  <td class="num">4</td>
+                </tr>
+                <tr>
+                  <td data-sort="3"><span class="badge badge--warn">3rd</span></td>
+                  <td data-sort="Black">Black</td>
+                  <td class="num">0</td>
+                  <td class="num">29</td>
+                  <td class="num">8</td>
+                </tr>
+                <tr>
+                  <td data-sort="4">4th</td>
+                  <td data-sort="Palladium">Palladium</td>
+                  <td class="num">0</td>
+                  <td class="num">25</td>
+                  <td class="num">4</td>
+                </tr>
+                <tr>
+                  <td data-sort="5">5th</td>
+                  <td data-sort="Zeus">Zeus</td>
+                  <td class="num">0</td>
+                  <td class="num">22</td>
+                  <td class="num">10</td>
+                </tr>
+                <tr>
+                  <td data-sort="6">6th</td>
+                  <td data-sort="Leonidas">Leonidas</td>
+                  <td class="num">0</td>
+                  <td class="num">20</td>
+                  <td class="num">10</td>
+                </tr>
+                <tr>
+                  <td data-sort="7">7th</td>
+                  <td data-sort="Brass">Brass</td>
+                  <td class="num">0</td>
+                  <td class="num">15</td>
+                  <td class="num">2</td>
+                </tr>
+                <tr>
+                  <td data-sort="8">8th</td>
+                  <td data-sort="Emerald">Emerald</td>
+                  <td class="num">0</td>
+                  <td class="num">13</td>
+                  <td class="num">3</td>
+                </tr>
+                <tr>
+                  <td data-sort="9">9th</td>
+                  <td data-sort="Peach">Peach</td>
+                  <td class="num">0</td>
+                  <td class="num">13</td>
+                  <td class="num">6</td>
+                </tr>
+                <tr>
+                  <td data-sort="10">10th</td>
+                  <td data-sort="MAVERICK">MAVERICK</td>
+                  <td class="num">0</td>
+                  <td class="num">12</td>
+                  <td class="num">3</td>
+                </tr>
+                <tr>
+                  <td data-sort="11">11th</td>
+                  <td data-sort="Shadow">Shadow</td>
+                  <td class="num">0</td>
+                  <td class="num">12</td>
+                  <td class="num">6</td>
+                </tr>
+                <tr>
+                  <td data-sort="12">12th</td>
+                  <td data-sort="Orion">Orion</td>
+                  <td class="num">0</td>
+                  <td class="num">12</td>
+                  <td class="num">3</td>
+                </tr>
+                <tr>
+                  <td data-sort="13">13th</td>
+                  <td data-sort="Mahogany">Mahogany</td>
+                  <td class="num">0</td>
+                  <td class="num">11</td>
+                  <td class="num">1</td>
+                </tr>
+                <tr>
+                  <td data-sort="14">14th</td>
+                  <td data-sort="ARTEMIS">ARTEMIS</td>
+                  <td class="num">0</td>
+                  <td class="num">11</td>
+                  <td class="num">3</td>
+                </tr>
+                <tr>
+                  <td data-sort="15">15th</td>
+                  <td data-sort="Athena">Athena</td>
+                  <td class="num">0</td>
+                  <td class="num">9</td>
+                  <td class="num">3</td>
+                </tr>
+                <tr>
+                  <td data-sort="16">16th</td>
+                  <td data-sort="Chrome">Chrome</td>
+                  <td class="num">0</td>
+                  <td class="num">9</td>
+                  <td class="num">1</td>
+                </tr>
+                <tr>
+                  <td data-sort="17">17th</td>
+                  <td data-sort="House">House</td>
+                  <td class="num">0</td>
+                  <td class="num">8</td>
+                  <td class="num">5</td>
+                </tr>
+                <tr>
+                  <td data-sort="18">18th</td>
+                  <td data-sort="Apollo">Apollo</td>
+                  <td class="num">0</td>
+                  <td class="num">8</td>
+                  <td class="num">3</td>
+                </tr>
+                <tr>
+                  <td data-sort="19">19th</td>
+                  <td data-sort="Mercury">Mercury</td>
+                  <td class="num">0</td>
+                  <td class="num">7</td>
+                  <td class="num">1</td>
+                </tr>
+                <tr>
+                  <td data-sort="20">20th</td>
+                  <td data-sort="FORGED">FORGED</td>
+                  <td class="num">0</td>
+                  <td class="num">6</td>
+                  <td class="num">1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Top 15 sales reps -->
+      <section class="card card--lift reveal rd-2">
+        <div class="card__head">
+          <h2 class="card__title">TOP 15 SALES REPS <span class="card__hint">ALL</span></h2>
+        </div>
+        <div class="card__body card__body--flush">
+          <div class="tblwrap">
+            <table class="tbl sortable" id="rs2">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Sales Rep</th>
+                  <th class="num">Deals</th>
+                  <th class="num">Installs</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td data-sort="1"><span class="badge badge--ok">1st</span></td>
+                  <td>Michael Lynn Holmes <span class="sub">- Leonidas</span></td>
+                  <td class="num">10</td>
+                  <td class="num">3</td>
+                </tr>
+                <tr>
+                  <td data-sort="2"><span class="badge badge--info">2nd</span></td>
+                  <td>Mathias Thomas <span class="sub">- Indigo</span></td>
+                  <td class="num">9</td>
+                  <td class="num">1</td>
+                </tr>
+                <tr>
+                  <td data-sort="3"><span class="badge badge--warn">3rd</span></td>
+                  <td>Brogan Landreneau <span class="sub">- Palladium</span></td>
+                  <td class="num">9</td>
+                  <td class="num">4</td>
+                </tr>
+                <tr>
+                  <td data-sort="4">4th</td>
+                  <td>Andrew Anderson <span class="sub">- Zeus</span></td>
+                  <td class="num">6</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td data-sort="5">5th</td>
+                  <td>David Hamlin <span class="sub">- Stelios</span></td>
+                  <td class="num">6</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td data-sort="6">6th</td>
+                  <td>Moses Forde <span class="sub">- Athena</span></td>
+                  <td class="num">6</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td data-sort="7">7th</td>
+                  <td>Jamie Singleton <span class="sub">- Indigo</span></td>
+                  <td class="num">6</td>
+                  <td class="num">1</td>
+                </tr>
+                <tr>
+                  <td data-sort="8">8th</td>
+                  <td>Kirby Pate <span class="sub">- Stelios</span></td>
+                  <td class="num">5</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td data-sort="9">9th</td>
+                  <td>Enrique Jimenez <span class="sub">- Emerald</span></td>
+                  <td class="num">5</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td data-sort="10">10th</td>
+                  <td>Bob Dupor <span class="sub">- Indigo</span></td>
+                  <td class="num">5</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td data-sort="11">11th</td>
+                  <td>Andres Martinez <span class="sub">- Stelios</span></td>
+                  <td class="num">4</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td data-sort="12">12th</td>
+                  <td>Brandon Creasy <span class="sub">- FORGED</span></td>
+                  <td class="num">4</td>
+                  <td class="num">1</td>
+                </tr>
+                <tr>
+                  <td data-sort="13">13th</td>
+                  <td>Amber Riley <span class="sub">- Black</span></td>
+                  <td class="num">4</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td data-sort="14">14th</td>
+                  <td>Avery Fennell <span class="sub">- Mahogany</span></td>
+                  <td class="num">4</td>
+                  <td class="num">0</td>
+                </tr>
+                <tr>
+                  <td data-sort="15">15th</td>
+                  <td>Michael Colgan <span class="sub">- Orion</span></td>
+                  <td class="num">4</td>
+                  <td class="num">0</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+
+<footer class="foot">
+  <div class="foot__rule"></div>
+  Copyright &copy; <a href="index.html">Wholesale Payments</a>. All rights reserved.
+</footer>
+
+<script src="assets/js/wpi.js" defer></script>
+</body>
+</html>
