@@ -148,6 +148,7 @@ button { font-family: inherit; }
 
 .brand { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
 .brand__mark { width: 30px; height: 30px; }
+.brand__word { height: 30px; width: auto; display: block; }
 .brand__text { line-height: 1.02; display: flex; flex-direction: column; }
 .brand__text strong {
   font-size: 16.5px;
