@@ -733,9 +733,94 @@
     });
   }
 
+  /* ---------------- Team MAVERICK period filter ----------------
+     Reads the embedded spreadsheet dataset (#mav-data) and re-renders
+     the KPI strip and tables for the selected month / 2026 YTD. */
+  function initMavPeriod() {
+    var dataEl = document.getElementById("mav-data");
+    var sel = document.getElementById("mavPeriod");
+    if (!dataEl || !sel) return;
+    var data;
+    try { data = JSON.parse(dataEl.textContent); } catch (e) { return; }
+    var HASPAGE = {};
+    document.querySelectorAll("#mavMerch a.ent").forEach(function (a) {
+      var m = a.getAttribute("href").match(/(\d{12,16})\.html$/);
+      if (m) HASPAGE[m[1]] = true;
+    });
+    function money(n) { return "$" + Math.round(n).toLocaleString("en-US"); }
+    function pct(r) { return (Math.round(r * 1000) / 10).toFixed(1) + "%"; }
+    function esc(s) { return String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"); }
+    function teamA(name) {
+      return '<a class="teamlink" href="?team=' + encodeURIComponent(name) + '">' + esc(name) + "</a>";
+    }
+    function emptyRow(cols) {
+      return '<tr><td colspan="' + cols + '" style="text-align:center;color:#97A2B6;padding:26px">No deals reported for Team MAVERICK in this period.</td></tr>';
+    }
+    function label(key) { return key === "2026 YTD" ? "2026 YTD" : key; }
+    function render(key) {
+      var m = data.months[key];
+      if (!m) return;
+      var s = m.summary;
+      document.getElementById("mavKpis").innerHTML = [
+        ["Approved", s.approved], ["Processing", s.processing], ["Not processing", s.notProcessing],
+        ["Ratio", pct(s.ratio)], ["Installed", s.installed],
+        ["Commission", money(s.commission)], ["Volume", money(s.volume)],
+        ["Transactions", s.transactions.toLocaleString("en-US")]
+      ].map(function (p) {
+        return '<div class="mavkpi"><b>' + p[1] + "</b><span>" + p[0] + "</span></div>";
+      }).join("");
+      document.querySelector("#mavByRep tbody").innerHTML = m.byRep.length ? m.byRep.map(function (r) {
+        return "<tr><td>" + teamA(r.rep) + '</td><td class="num">' + r.approved +
+          '</td><td class="num">' + r.processing + '</td><td class="num">' + r.notProcessing +
+          '</td><td class="num">' + pct(r.ratio) + '</td><td class="num">' + money(r.commission) +
+          '</td><td class="num">' + money(r.volume) + "</td></tr>";
+      }).join("") : emptyRow(7);
+      document.querySelector("#mavByPay tbody").innerHTML = m.byPay.length ? m.byPay.map(function (p) {
+        return "<tr><td>" + esc(p.type) + '</td><td class="num">' + p.deals +
+          '</td><td class="num">' + p.processing + '</td><td class="num">' + money(p.commission) +
+          '</td><td class="num">' + money(p.volume) + "</td></tr>";
+      }).join("") : emptyRow(5);
+      document.querySelector("#mavMerch tbody").innerHTML = m.merchants.length ? m.merchants.map(function (r) {
+        var name = HASPAGE[r.mid]
+          ? '<a class="ent" href="../merchants/detail/' + r.mid + '.html">' + esc(r.name) + "</a>"
+          : '<span style="font-weight:600">' + esc(r.name) + "</span>";
+        var days = r.days === null || r.days === undefined ? "" : String(r.days);
+        return "<tr><td>" + teamA(r.rep) + "</td><td>" + name + '<span class="sub">' + r.mid + "</span></td>" +
+          '<td class="num" data-sort="' + r.approvedK + '">' + (r.approved || "&mdash;") + "</td>" +
+          '<td class="num" data-sort="' + r.deliveredK + '">' + (r.delivered || "&mdash;") + "</td>" +
+          '<td class="num" data-sort="' + r.installedK + '">' + (r.installed || "&mdash;") + "</td>" +
+          '<td class="num" data-sort="' + (days || 0) + '">' + (days || "&mdash;") + "</td>" +
+          "<td>" + esc(r.payment) + "</td>" +
+          '<td class="num">' + (r.commission > 0 ? money(r.commission) : "&mdash;") + "</td>" +
+          '<td class="num">' + money(r.volume) + "</td>" +
+          '<td class="num">' + r.txns + "</td>" +
+          '<td class="ctr">' + (r.processing ? '<span class="badge badge--ok">Yes</span>' : '<span class="badge badge--off">No</span>') + "</td>" +
+          '<td class="num" data-sort="' + r.lastBatchK + '">' + (r.lastBatch || "&mdash;") + "</td></tr>";
+      }).join("") : emptyRow(12);
+      document.getElementById("mavMerchCount").textContent = m.merchants.length + " deals";
+      var t1 = document.getElementById("mavPeriodTag1"), t2 = document.getElementById("mavPeriodTag2");
+      if (t1) t1.textContent = label(key);
+      if (t2) t2.textContent = label(key);
+      refilter(); /* re-apply any live search/team filters to the new rows */
+    }
+    sel.addEventListener("change", function () {
+      render(sel.value);
+      if (window.history && history.replaceState) {
+        history.replaceState(null, "", location.pathname + "?p=" + encodeURIComponent(sel.value));
+      }
+    });
+    var p = null;
+    try { p = new URLSearchParams(location.search).get("p"); } catch (e) {}
+    if (p && data.months[p]) {
+      sel.value = p;
+      render(p);
+    }
+  }
+
   /* ---- init order matters: charts first, then the reveal observer ---- */
   renderAllCharts();
   initReveal();
   initTabbar();
   initServiceWorker();
+  initMavPeriod();
 })();
