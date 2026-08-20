@@ -58,6 +58,9 @@
 
 html { scroll-behavior: smooth; }
 
+/* iOS/touch polish */
+a, button { -webkit-tap-highlight-color: transparent; touch-action: manipulation; }
+
 body {
   font-family: var(--font);
   font-size: 15px;
@@ -126,6 +129,15 @@ button { font-family: inherit; }
   opacity: .85;
 }
 .topbar.is-scrolled { box-shadow: 0 10px 30px -18px rgba(16, 26, 63, .18); }
+
+/* keep the top bar clear of the iPhone notch / Dynamic Island */
+@supports (padding: env(safe-area-inset-top)) {
+  .topbar { padding-top: env(safe-area-inset-top); }
+  .topbar__inner {
+    padding-left: env(safe-area-inset-left);
+    padding-right: env(safe-area-inset-right);
+  }
+}
 
 .topbar__inner {
   display: flex;
@@ -597,6 +609,55 @@ th.sortable.desc .caret { opacity: 1; }
 }
 .field input::placeholder { color: var(--faint); }
 
+.field__hint { font-size: 10.5px; color: var(--faint); }
+.field select:disabled {
+  opacity: .55;
+  cursor: not-allowed;
+  background-color: var(--bg);
+}
+
+/* clickable team / GM / rep names inside report tables */
+.teamlink {
+  color: var(--azure-deep);
+  font-weight: 600;
+  border-bottom: 1px dashed rgba(0, 149, 228, .4);
+  cursor: pointer;
+  transition: color .15s ease, border-color .15s ease;
+}
+.teamlink:hover { color: var(--azure); border-bottom-style: solid; }
+
+/* active drill-down chip */
+.filterchip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: max-content;
+  max-width: 100%;
+  margin: 0 0 18px;
+  padding: 8px 10px 8px 15px;
+  font-size: 13px;
+  color: var(--ink-2);
+  background: var(--tint-azure-08);
+  border: 1px solid rgba(0, 149, 228, .3);
+  border-radius: 999px;
+  animation: fadeIn .3s var(--ease);
+}
+.filterchip b { color: var(--navy); }
+.filterchip button {
+  display: grid;
+  place-items: center;
+  width: 22px; height: 22px;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(0, 149, 228, .12);
+  color: var(--azure-deep);
+  font-size: 11px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background .2s ease, color .2s ease, transform .15s var(--ease);
+}
+.filterchip button:hover { background: var(--bad-bg); color: var(--bad-text); transform: scale(1.08); }
+
 /* search box with icon */
 .searchbox { position: relative; }
 .searchbox svg {
@@ -748,10 +809,53 @@ th.sortable.desc .caret { opacity: 1; }
    Grid helpers
    ========================================================================== */
 .grid { display: grid; gap: 18px; }
+/* let cells shrink below their tables' intrinsic width — .tblwrap scrolls instead */
+.grid > * { min-width: 0; }
 .grid--dash { grid-template-columns: 1.45fr 1fr; align-items: start; }
 .grid--3 { grid-template-columns: repeat(3, 1fr); }
 .grid--2 { grid-template-columns: repeat(2, 1fr); }
 .stack { display: flex; flex-direction: column; gap: 18px; }
+
+/* ==========================================================================
+   Mobile bottom tab bar (built by wpi.js; shown ≤900px)
+   ========================================================================== */
+.tabbar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 110;
+  display: none;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2px;
+  padding: 7px 10px calc(7px + env(safe-area-inset-bottom, 0px));
+  background: rgba(255, 255, 255, .88);
+  -webkit-backdrop-filter: saturate(1.5) blur(18px);
+  backdrop-filter: saturate(1.5) blur(18px);
+  border-top: 1px solid var(--line-2);
+  box-shadow: 0 -8px 30px -18px rgba(16, 26, 63, .25);
+}
+.tabbar a,
+.tabbar button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 5px 2px 3px;
+  border: 0;
+  background: none;
+  border-radius: 11px;
+  font-family: inherit;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .01em;
+  color: var(--muted);
+  cursor: pointer;
+  transition: color .2s ease, transform .15s var(--ease);
+}
+.tabbar a:active,
+.tabbar button:active { transform: scale(.9); }
+.tabbar svg { width: 22px; height: 22px; }
+.tabbar .is-active { color: var(--azure-deep); }
+.tabbar .is-active svg { filter: drop-shadow(0 3px 6px rgba(0, 149, 228, .35)); }
 
 /* ==========================================================================
    Footer
@@ -797,10 +901,13 @@ th.sortable.desc .caret { opacity: 1; }
   .userchip__meta { display: none; }
 }
 @media (max-width: 900px) {
+  .tabbar { display: grid; }
+  .page { padding-bottom: calc(84px + env(safe-area-inset-bottom, 0px)); }
+  .foot { padding-bottom: calc(96px + env(safe-area-inset-bottom, 0px)); }
   .mainnav {
     display: none;
     position: fixed;
-    top: calc(var(--topbar-h) + 2px);
+    top: calc(var(--topbar-h) + 2px + env(safe-area-inset-top, 0px));
     left: 0; right: 0;
     z-index: 99;
     flex-direction: column;

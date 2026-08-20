@@ -138,7 +138,8 @@
       }
       th.addEventListener("click", function () {
         var tbody = table.querySelector("tbody");
-        var rows = Array.prototype.slice.call(tbody.querySelectorAll("tr"));
+        var rows = Array.prototype.slice.call(tbody.querySelectorAll("tr"))
+          .filter(function (r) { return !r.classList.contains("filter-empty-row"); });
         var dir = th.classList.contains("desc") ? 1 : -1;
         ths.forEach(function (o) { o.classList.remove("asc", "desc"); });
         th.classList.add(dir === 1 ? "asc" : "desc");
@@ -148,36 +149,210 @@
           return String(ka).localeCompare(String(kb)) * dir;
         });
         rows.forEach(function (r) { tbody.appendChild(r); });
+        var er = tbody.querySelector(".filter-empty-row");
+        if (er) tbody.appendChild(er);
       });
     });
   });
 
-  /* ---------------- client-side table filter ----------------
-     <input data-filter="#tableId"> filters rows by substring */
+  /* ==========================================================
+     Live table filtering — a combining filter hub.
+     Controls (selectors may be a comma-separated list of tables):
+       <input  data-filter="#tbl">            substring match
+       <select data-filter-select="#a,#b">    substring match on value
+       <input  data-filter-min="#tbl" data-col="2">   numeric >= value
+       <select data-filter-days="#tbl" data-col="6" data-ref="2026-08-20">
+                                              date in col within N days of ref
+     Team drill-down: <a class="teamlink" href="?team=NAME"> filters every
+     table on the page that mentions NAME; ?team= in the URL deep-links it.
+     All active filters on a table combine with AND.
+     ========================================================== */
+  var filterRegs = []; /* {tables[], fn, control, multi} */
+  var teamQuery = "";
+
+  function tablesFor(sel) {
+    return sel.split(",").map(function (s) {
+      return document.querySelector(s.trim());
+    }).filter(Boolean);
+  }
+  function dataRows(table) {
+    return Array.prototype.slice.call(table.querySelectorAll("tbody tr"))
+      .filter(function (r) { return !r.classList.contains("filter-empty-row"); });
+  }
+  function registerFilter(sel, fn, control) {
+    var tables = tablesFor(sel);
+    if (!tables.length) return;
+    filterRegs.push({ tables: tables, fn: fn, control: control || null, multi: tables.length > 1 });
+  }
+  /* The capture sometimes ships controls pre-set to server state that the
+     fully-populated static tables don't reflect (e.g. a team preselected
+     while every team's row is present). Reset any control whose current
+     value would hide rows, so controls start truthful. */
+  function sanitizeControls() {
+    filterRegs.forEach(function (reg) {
+      if (!reg.control) return;
+      var hides = reg.tables.some(function (t) {
+        return dataRows(t).some(function (tr) { return !reg.fn(tr); });
+      });
+      if (!hides) return;
+      if (reg.control.tagName === "SELECT") {
+        for (var i = 0; i < reg.control.options.length; i++) {
+          var o = reg.control.options[i];
+          if (!o.value.trim() || /^all\b/i.test(o.value.trim()) || /^(all|any)\b/i.test(o.textContent.trim())) {
+            reg.control.selectedIndex = i;
+            return;
+          }
+        }
+        /* no neutral option — suspend this filter until the user touches it */
+        reg.enabled = false;
+        reg.control.addEventListener("change", function () { reg.enabled = true; }, { once: true });
+      } else if (reg.control.tagName === "INPUT") {
+        reg.control.value = "";
+      }
+    });
+  }
+  function ensureEmptyRow(table, show) {
+    var tbody = table.querySelector("tbody");
+    if (!tbody) return;
+    var er = tbody.querySelector(".filter-empty-row");
+    if (!er && show) {
+      er = document.createElement("tr");
+      er.className = "filter-empty-row";
+      var cols = table.querySelectorAll("thead th").length || 1;
+      er.innerHTML = '<td colspan="' + cols + '" style="text-align:center;color:#97A2B6;padding:20px 10px">No rows match the current filter.</td>';
+      tbody.appendChild(er);
+    }
+    if (er) er.style.display = show ? "" : "none";
+  }
+  function refilter() {
+    var all = Array.prototype.slice.call(document.querySelectorAll("table.tbl"));
+    all.forEach(function (table) {
+      var rows = dataRows(table);
+      var fns = [];
+      filterRegs.forEach(function (reg) {
+        if (reg.enabled === false) return;
+        if (reg.tables.indexOf(table) === -1) return;
+        if (reg.multi && !rows.some(reg.fn)) {
+          /* a filter spanning several tables skips tables that lack the
+             dimension entirely (e.g. a team select over a By-GM table),
+             as long as a sibling table does match */
+          var siblingMatches = reg.tables.some(function (t) {
+            return t !== table && dataRows(t).some(reg.fn);
+          });
+          if (siblingMatches) return;
+        }
+        fns.push(reg.fn);
+      });
+      if (teamQuery) {
+        var q = teamQuery.toLowerCase();
+        var teamPred = function (tr) { return tr.textContent.toLowerCase().indexOf(q) !== -1; };
+        /* only constrain tables that actually mention the team — a By-GM
+           table without a team column shouldn't blank out */
+        if (rows.some(teamPred)) fns.push(teamPred);
+      }
+      var any = rows.length === 0;
+      rows.forEach(function (tr) {
+        var show = fns.every(function (f) { return f(tr); });
+        tr.style.display = show ? "" : "none";
+        if (show) any = true;
+      });
+      ensureEmptyRow(table, !any);
+    });
+  }
+
   document.querySelectorAll("[data-filter]").forEach(function (input) {
-    var table = document.querySelector(input.getAttribute("data-filter"));
-    if (!table) return;
-    input.addEventListener("input", function () {
+    registerFilter(input.getAttribute("data-filter"), function (tr) {
       var q = input.value.trim().toLowerCase();
-      table.querySelectorAll("tbody tr").forEach(function (tr) {
-        tr.style.display = !q || tr.textContent.toLowerCase().indexOf(q) !== -1 ? "" : "none";
-      });
-    });
+      return !q || tr.textContent.toLowerCase().indexOf(q) !== -1;
+    }, input);
+    input.addEventListener("input", refilter);
   });
 
-  /* ---------------- select-based row filter ----------------
-     <select data-filter-select="#tableId"> hides rows that don't
-     contain the selected value; empty value shows all rows. */
+  function isAllOption(value, label) {
+    return !value.trim() || /^all\b/i.test(value.trim()) || /^(all|any)\b/i.test(label.trim());
+  }
   document.querySelectorAll("[data-filter-select]").forEach(function (sel) {
-    var table = document.querySelector(sel.getAttribute("data-filter-select"));
-    if (!table) return;
-    sel.addEventListener("change", function () {
-      var q = sel.value.trim().toLowerCase();
-      table.querySelectorAll("tbody tr").forEach(function (tr) {
-        tr.style.display = !q || tr.textContent.toLowerCase().indexOf(q) !== -1 ? "" : "none";
-      });
-    });
+    registerFilter(sel.getAttribute("data-filter-select"), function (tr) {
+      /* "All"-style options show everything; otherwise match on the option's
+         visible label — legacy option values carry prefixes like "** FIRE" */
+      var opt = sel.options[sel.selectedIndex];
+      var label = opt ? opt.textContent : sel.value;
+      if (isAllOption(sel.value, label)) return true;
+      var q = label.trim().toLowerCase();
+      return !q || tr.textContent.toLowerCase().indexOf(q) !== -1;
+    }, sel);
+    sel.addEventListener("change", refilter);
   });
+
+  document.querySelectorAll("[data-filter-min]").forEach(function (input) {
+    var col = parseInt(input.getAttribute("data-col"), 10) || 0;
+    registerFilter(input.getAttribute("data-filter-min"), function (tr) {
+      var min = parseFloat(input.value.replace(/[$,\s]/g, ""));
+      if (isNaN(min)) return true;
+      var td = tr.children[col];
+      if (!td) return true;
+      var v = parseFloat((td.getAttribute("data-sort") || td.textContent).replace(/[$,\s]/g, ""));
+      return isNaN(v) ? true : v >= min;
+    }, input);
+    input.addEventListener("input", refilter);
+  });
+
+  document.querySelectorAll("[data-filter-days]").forEach(function (sel) {
+    var col = parseInt(sel.getAttribute("data-col"), 10) || 0;
+    var ref = new Date(sel.getAttribute("data-ref") + "T12:00:00");
+    registerFilter(sel.getAttribute("data-filter-days"), function (tr) {
+      var days = parseInt(sel.value, 10);
+      if (isNaN(days)) return true;
+      var td = tr.children[col];
+      if (!td) return true;
+      var d = new Date(td.textContent.trim());
+      if (isNaN(d.getTime())) return true;
+      return (ref - d) / 86400000 <= days;
+    }, sel);
+    sel.addEventListener("change", refilter);
+  });
+
+  sanitizeControls();
+
+  /* ----- team drill-down ----- */
+  function setTeam(name, updateUrl) {
+    teamQuery = (name || "").trim();
+    var chip = document.querySelector(".filterchip");
+    if (teamQuery) {
+      if (!chip) {
+        chip = document.createElement("div");
+        chip.className = "filterchip";
+        var head = document.querySelector(".pagehead");
+        if (head && head.parentNode) head.parentNode.insertBefore(chip, head.nextSibling);
+        else document.querySelector(".page .shell").insertBefore(chip, document.querySelector(".page .shell").firstChild);
+      }
+      chip.innerHTML = 'Filtered to <b></b> <button type="button" aria-label="Clear team filter">&#10005;</button>';
+      chip.querySelector("b").textContent = teamQuery;
+      chip.querySelector("button").addEventListener("click", function () { setTeam("", true); });
+    } else if (chip) {
+      chip.remove();
+    }
+    refilter();
+    if (updateUrl && window.history && history.replaceState) {
+      var url = location.pathname + (teamQuery ? "?team=" + encodeURIComponent(teamQuery) : "") + location.hash;
+      history.replaceState(null, "", url);
+    }
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a.teamlink") : null;
+    if (!a) return;
+    e.preventDefault();
+    var name = "";
+    try { name = new URL(a.href, location.href).searchParams.get("team") || ""; } catch (err) {}
+    setTeam(name || a.textContent.trim(), true);
+    var chip = document.querySelector(".filterchip");
+    if (chip) chip.scrollIntoView({ block: "nearest", behavior: reduced ? "auto" : "smooth" });
+  });
+  (function () {
+    var team = "";
+    try { team = new URLSearchParams(location.search).get("team") || ""; } catch (err) {}
+    if (team) setTeam(team, false);
+  })();
 
   /* =========================================================
      SVG charts — self-contained, no libraries.
@@ -434,7 +609,61 @@
     n.textContent = String(new Date().getFullYear());
   });
 
+  /* ---------------- mobile bottom tab bar (PWA) ----------------
+     Built at runtime from the page's data-root prefix; shown ≤900px.
+     Active tab derived from the current path. */
+  function initTabbar() {
+    var root = document.documentElement.getAttribute("data-root");
+    if (root === null) return;
+    var path = location.pathname;
+    var ICONS = {
+      home: '<svg viewBox="0 0 24 24" fill="none"><path d="M4 10.5 12 4l8 6.5V19a1.5 1.5 0 0 1-1.5 1.5h-4V15h-5v5.5h-4A1.5 1.5 0 0 1 4 19v-8.5Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+      trophy: '<svg viewBox="0 0 24 24" fill="none"><path d="M8 4h8v5a4 4 0 0 1-8 0V4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M8 5H5v1.5A3.5 3.5 0 0 0 8.5 10M16 5h3v1.5A3.5 3.5 0 0 1 15.5 10M12 13v4m-3.5 3h7M12 17c-1.2 0-2.3.9-2.9 3h5.8c-.6-2.1-1.7-3-2.9-3Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>',
+      store: '<svg viewBox="0 0 24 24" fill="none"><path d="M4.5 9 6 4.5h12L19.5 9M4.5 9v10.5h15V9M4.5 9h15M10 19.5v-6h4v6" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>',
+      cash: '<svg viewBox="0 0 24 24" fill="none"><rect x="3" y="7" width="18" height="11" rx="2" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12.5" r="2.6" stroke="currentColor" stroke-width="1.8"/><path d="M6.5 10.2v.1m11-.1v.1m-11 4.5v.1m11-.1v.1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>',
+      menu: '<svg viewBox="0 0 24 24" fill="none"><rect x="4" y="4" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="4" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="4" y="13" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.8"/><rect x="13" y="13" width="7" height="7" rx="2" stroke="currentColor" stroke-width="1.8"/></svg>'
+    };
+    var tabs = [
+      { href: root + "index.html", label: "Home", icon: "home",
+        active: /(^|\/)(index\.html)?$/.test(path) },
+      { href: root + "Rankings.html", label: "Rankings", icon: "trophy",
+        active: /\/Rankings\.html$/.test(path) },
+      { href: root + "merchants/search.html", label: "Merchants", icon: "store",
+        active: path.indexOf("/merchants/") !== -1 },
+      { href: root + "payverification/detail.html", label: "Kaching", icon: "cash",
+        active: path.indexOf("/payverification/") !== -1 },
+    ];
+    var bar = document.createElement("nav");
+    bar.className = "tabbar";
+    bar.setAttribute("aria-label", "Quick navigation");
+    bar.innerHTML = tabs.map(function (t) {
+      return '<a href="' + t.href + '"' + (t.active ? ' class="is-active"' : "") + ">" +
+        ICONS[t.icon] + "<span>" + t.label + "</span></a>";
+    }).join("") +
+      '<button type="button" class="tabbar__menu' + (path.indexOf("/reports/") !== -1 ? " is-active" : "") + '">' +
+      ICONS.menu + "<span>Menu</span></button>";
+    document.body.appendChild(bar);
+    bar.querySelector(".tabbar__menu").addEventListener("click", function () {
+      if (mainnav) {
+        var open = mainnav.classList.toggle("is-open");
+        if (burger) burger.setAttribute("aria-expanded", String(open));
+        if (open) window.scrollTo({ top: 0, behavior: reduced ? "auto" : "smooth" });
+      }
+    });
+  }
+
+  /* ---------------- service worker (offline PWA) ---------------- */
+  function initServiceWorker() {
+    if (!("serviceWorker" in navigator)) return;
+    var root = document.documentElement.getAttribute("data-root") || "";
+    navigator.serviceWorker.register(root + "sw.js").catch(function () {
+      /* file:// or unsupported context — the site still works online */
+    });
+  }
+
   /* ---- init order matters: charts first, then the reveal observer ---- */
   renderAllCharts();
   initReveal();
+  initTabbar();
+  initServiceWorker();
 })();

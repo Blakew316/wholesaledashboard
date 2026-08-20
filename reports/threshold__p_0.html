@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Threshold Report — Wholesale Payments</title>
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <meta name="theme-color" content="#F8FAFC">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="WPI Sales">
   <link rel="stylesheet" href="../assets/css/wpi.css">
 </head>
 <body>
@@ -96,11 +103,11 @@
 
     <div class="filters reveal rd-1">
       <div class="field"><label for="paidFlag">Paid status</label>
-        <select id="paidFlag">
+        <select id="paidFlag" disabled title="Static capture — only the captured period is included">
           <option value="0" selected="selected">Not Paid</option>
           <option value="1">Paid</option>
           <option value="2">All</option>
-        </select></div>
+        </select><span class="field__hint">captured period only</span></div>
     </div>
 
     <section class="card card--accent card--lift reveal rd-2">
@@ -131,8 +138,8 @@
             </thead>
             <tbody>
               <tr>
-                <td>SADIE SCOVILLE</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=SADIE%20SCOVILLE">SADIE SCOVILLE</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;554402059805390</td>
                 <td>R1 TOWING</td>
                 <td>Equipment Requested</td>
@@ -147,8 +154,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>JADEN DUFEK</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=JADEN%20DUFEK">JADEN DUFEK</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;554402059816629</td>
                 <td>BRYTNIE&#x27;S BARK BOUTIQUE</td>
                 <td>Equipment Requested</td>
@@ -163,8 +170,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>JADEN DUFEK</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=JADEN%20DUFEK">JADEN DUFEK</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;554402059817239</td>
                 <td>CHEAP THRILLZ</td>
                 <td>Equipment Requested</td>
@@ -179,8 +186,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>GABRIEL CRAFT</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=GABRIEL%20CRAFT">GABRIEL CRAFT</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;554402059824037</td>
                 <td>FIVE CITIES CO BRAND INC</td>
                 <td>Equipment Requested</td>
@@ -195,8 +202,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>GABRIEL CRAFT</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=GABRIEL%20CRAFT">GABRIEL CRAFT</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;554402059837567</td>
                 <td>SUPER MARIO TIRES SHOP</td>
                 <td>Equipment Requested</td>
@@ -211,8 +218,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>JUDAH STEELMAN</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=JUDAH%20STEELMAN">JUDAH STEELMAN</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;554402059838086</td>
                 <td>PRECISION VENDING INC</td>
                 <td>Equipment Requested</td>
@@ -227,8 +234,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>JADEN DUFEK</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=JADEN%20DUFEK">JADEN DUFEK</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;554402059849505</td>
                 <td>MISFIT MAMAS CHAOS &amp; CAFFEINE</td>
                 <td>Equipment Requested</td>
@@ -243,8 +250,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>SADIE SCOVILLE</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=SADIE%20SCOVILLE">SADIE SCOVILLE</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;554402059868182</td>
                 <td>BAZOOKA FOOD TRUCK</td>
                 <td>Equipment Requested</td>
@@ -259,8 +266,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>JASON COUTCHER</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=JASON%20COUTCHER">JASON COUTCHER</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;554402059890509</td>
                 <td>KAPOLEI KOREAN BAR-B-Q</td>
                 <td>Equipment Requested</td>
@@ -275,8 +282,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>TIMOTHY CONSTENIUS</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=TIMOTHY%20CONSTENIUS">TIMOTHY CONSTENIUS</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;719070000049273</td>
                 <td><a class="ent" href="../merchants/detail/719070000049273.html">JJ&#x27;S DRYWALLING</a></td>
                 <td>Equipment Requested</td>
@@ -291,8 +298,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>JUDAH STEELMAN</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=JUDAH%20STEELMAN">JUDAH STEELMAN</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;719070000050487</td>
                 <td><a class="ent" href="../merchants/detail/719070000050487.html">DREAMWORKZ GARAGE</a></td>
                 <td>Equipment Requested</td>
@@ -307,8 +314,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>TIMOTHY CONSTENIUS</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=TIMOTHY%20CONSTENIUS">TIMOTHY CONSTENIUS</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;719070000053861</td>
                 <td><a class="ent" href="../merchants/detail/719070000053861.html">WALDMAN SUBARU SPECIALISTS</a></td>
                 <td>Equipment Requested</td>
@@ -323,8 +330,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>JUDAH STEELMAN</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=JUDAH%20STEELMAN">JUDAH STEELMAN</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;719070000054026</td>
                 <td><a class="ent" href="../merchants/detail/719070000054026.html">JW TRANSMISSIONS</a></td>
                 <td>Equipment Requested</td>
@@ -339,8 +346,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>JUDAH STEELMAN</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=JUDAH%20STEELMAN">JUDAH STEELMAN</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;719070000055577</td>
                 <td><a class="ent" href="../merchants/detail/719070000055577.html">8IGHTY9</a></td>
                 <td>Equipment Requested</td>
@@ -355,8 +362,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>TIMOTHY CONSTENIUS</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=TIMOTHY%20CONSTENIUS">TIMOTHY CONSTENIUS</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;719070000056435</td>
                 <td><a class="ent" href="../merchants/detail/719070000056435.html">PAC MILLWORKS</a></td>
                 <td>Equipment Requested</td>
@@ -371,8 +378,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>TIMOTHY CONSTENIUS</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=TIMOTHY%20CONSTENIUS">TIMOTHY CONSTENIUS</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;719070000056914</td>
                 <td><a class="ent" href="../merchants/detail/719070000056914.html">ELITE AUTO SALES OF MT LLC</a></td>
                 <td>Equipment Requested</td>
@@ -387,8 +394,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>JUDAH STEELMAN</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=JUDAH%20STEELMAN">JUDAH STEELMAN</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;719070000057813</td>
                 <td><a class="ent" href="../merchants/detail/719070000057813.html">JAIMES AUTO SERVICE</a></td>
                 <td>Equipment Requested</td>
@@ -403,8 +410,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>JUDAH STEELMAN</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=JUDAH%20STEELMAN">JUDAH STEELMAN</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;719070000058464</td>
                 <td><a class="ent" href="../merchants/detail/719070000058464.html">TRUCKANICS SERVICE AND INSPECTIONS</a></td>
                 <td>Equipment Requested</td>
@@ -419,8 +426,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>JUDAH STEELMAN</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=JUDAH%20STEELMAN">JUDAH STEELMAN</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;719070000058571</td>
                 <td>ALL AMERICAN MUFFLER</td>
                 <td>Equipment Requested</td>
@@ -435,8 +442,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>Timothy Constenius</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=Timothy%20Constenius">Timothy Constenius</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;719070000058902</td>
                 <td>K&#x2B;K VENTURES, LLC</td>
                 <td>Equipment Requested</td>
@@ -451,8 +458,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>SADIE SCOVILLE</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=SADIE%20SCOVILLE">SADIE SCOVILLE</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;815235117885</td>
                 <td>TARA INTERNATIONAL MARKET</td>
                 <td>Equipment Requested</td>
@@ -467,8 +474,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>HALEY WOODRUFF</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=HALEY%20WOODRUFF">HALEY WOODRUFF</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;815236546884</td>
                 <td>GREEN ACRES BOWL</td>
                 <td>Equipment Requested</td>
@@ -483,8 +490,8 @@
                 <td class="ctr" style="color:var(--faint)">&mdash;</td>
               </tr>
               <tr>
-                <td>KYLE PETTIT</td>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=KYLE%20PETTIT">KYLE PETTIT</a></td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td>&#x27;815236569886</td>
                 <td>PIONEER MEAT MARKET</td>
                 <td>Equipment Requested</td>

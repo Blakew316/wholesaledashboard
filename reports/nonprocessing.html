@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Nonprocessing Report — Wholesale Payments</title>
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <meta name="theme-color" content="#F8FAFC">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="WPI Sales">
   <link rel="stylesheet" href="../assets/css/wpi.css">
 </head>
 <body>
@@ -95,15 +102,15 @@
 
     <div class="filters reveal rd-1">
       <div class="field"><label for="dtFrom">Ranking Date (from)</label>
-        <input type="month" id="dtFrom" name="dtFrom" value="2026-08"></div>
+        <input type="month" id="dtFrom" name="dtFrom" value="2026-08" disabled title="Static capture — only the captured period is included"><span class="field__hint">captured period only</span></div>
       <div class="field"><label for="dtTo">Ranking Date (to)</label>
-        <input type="month" id="dtTo" name="dtTo" value="2026-08"></div>
+        <input type="month" id="dtTo" name="dtTo" value="2026-08" disabled title="Static capture — only the captured period is included"><span class="field__hint">captured period only</span></div>
       <div class="field"><label for="apprFrom">Approved (from)</label>
-        <input type="date" id="apprFrom" name="apprFrom" value=""></div>
+        <input type="date" id="apprFrom" name="apprFrom" value="" disabled title="Static capture — only the captured period is included"><span class="field__hint">captured period only</span></div>
       <div class="field"><label for="apprTo">Approved (to)</label>
-        <input type="date" id="apprTo" name="apprTo" value=""></div>
+        <input type="date" id="apprTo" name="apprTo" value="" disabled title="Static capture — only the captured period is included"><span class="field__hint">captured period only</span></div>
       <div class="field"><label for="salesTeam">Team</label>
-        <select id="salesTeam" name="team">
+        <select id="salesTeam" name="team" data-filter-select="#rs1,#rs2,#rs3">
           <option value="ALL" selected>ALL</option>
           <option value="ALL WITH DETAIL">ALL WITH DETAIL</option>
           <optgroup label="Divisions">
@@ -292,17 +299,17 @@
           </optgroup>
         </select></div>
       <div class="field"><label for="processingFlag">Processing?</label>
-        <select id="processingFlag" name="p">
+        <select id="processingFlag" name="p" disabled title="Static capture — only the captured period is included">
           <option value="ALL" selected>ALL</option>
           <option value="Not Processing">Not Processing</option>
           <option value="Processing">Processing</option>
-        </select></div>
+        </select><span class="field__hint">captured period only</span></div>
       <div class="field"><label for="processor">Processor</label>
-        <select id="processor" name="proc">
+        <select id="processor" name="proc" disabled title="Static capture — only the captured period is included">
           <option value="ALL" selected>ALL</option>
           <option value="TSYS">FSP</option>
           <option value="PPS">PPS</option>
-        </select></div>
+        </select><span class="field__hint">captured period only</span></div>
     </div>
 
     <div class="stack">
@@ -330,7 +337,7 @@
               <tbody>
                 <tr>
                   <td>Lightning</td>
-                  <td>Steel</td>
+                  <td><a class="teamlink" href="?team=Steel">Steel</a></td>
                   <td class="num">39</td>
                   <td class="num">10</td>
                   <td class="num">29</td>
@@ -339,7 +346,7 @@
                 </tr>
                 <tr>
                   <td>Thunder</td>
-                  <td>Sparta</td>
+                  <td><a class="teamlink" href="?team=Sparta">Sparta</a></td>
                   <td class="num">47</td>
                   <td class="num">7</td>
                   <td class="num">40</td>
@@ -348,7 +355,7 @@
                 </tr>
                 <tr>
                   <td>Thunder</td>
-                  <td>Galaxy</td>
+                  <td><a class="teamlink" href="?team=Galaxy">Galaxy</a></td>
                   <td class="num">21</td>
                   <td class="num">3</td>
                   <td class="num">18</td>
@@ -357,7 +364,7 @@
                 </tr>
                 <tr>
                   <td>Lightning</td>
-                  <td>Ice</td>
+                  <td><a class="teamlink" href="?team=Ice">Ice</a></td>
                   <td class="num">67</td>
                   <td class="num">8</td>
                   <td class="num">59</td>
@@ -366,7 +373,7 @@
                 </tr>
                 <tr>
                   <td>Lightning</td>
-                  <td>Olympus</td>
+                  <td><a class="teamlink" href="?team=Olympus">Olympus</a></td>
                   <td class="num">44</td>
                   <td class="num">2</td>
                   <td class="num">42</td>
@@ -375,7 +382,7 @@
                 </tr>
                 <tr>
                   <td>Thunder</td>
-                  <td>Fire</td>
+                  <td><a class="teamlink" href="?team=Fire">Fire</a></td>
                   <td class="num">51</td>
                   <td class="num">2</td>
                   <td class="num">49</td>
@@ -384,7 +391,7 @@
                 </tr>
                 <tr>
                   <td>UNDEFINED</td>
-                  <td>House</td>
+                  <td><a class="teamlink" href="?team=House">House</a></td>
                   <td class="num">5</td>
                   <td class="num">0</td>
                   <td class="num">5</td>
@@ -451,7 +458,7 @@
               </thead>
               <tbody>
                 <tr>
-                  <td>Orion</td>
+                  <td><a class="teamlink" href="?team=Orion">Orion</a></td>
                   <td class="num">7</td>
                   <td class="num">3</td>
                   <td class="num">4</td>
@@ -459,7 +466,7 @@
                   <td><div class="meter"><span class="meter__fill" style="--w:42.9%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Leonidas</td>
+                  <td><a class="teamlink" href="?team=Leonidas">Leonidas</a></td>
                   <td class="num">12</td>
                   <td class="num">5</td>
                   <td class="num">7</td>
@@ -467,7 +474,7 @@
                   <td><div class="meter"><span class="meter__fill" style="--w:41.7%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Palladium</td>
+                  <td><a class="teamlink" href="?team=Palladium">Palladium</a></td>
                   <td class="num">17</td>
                   <td class="num">6</td>
                   <td class="num">11</td>
@@ -475,7 +482,7 @@
                   <td><div class="meter"><span class="meter__fill" style="--w:35.3%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Chrome</td>
+                  <td><a class="teamlink" href="?team=Chrome">Chrome</a></td>
                   <td class="num">6</td>
                   <td class="num">2</td>
                   <td class="num">4</td>
@@ -483,7 +490,7 @@
                   <td><div class="meter"><span class="meter__fill" style="--w:33.3%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Apollo</td>
+                  <td><a class="teamlink" href="?team=Apollo">Apollo</a></td>
                   <td class="num">8</td>
                   <td class="num">2</td>
                   <td class="num">6</td>
@@ -491,7 +498,7 @@
                   <td><div class="meter"><span class="meter__fill" style="--w:25%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Brass</td>
+                  <td><a class="teamlink" href="?team=Brass">Brass</a></td>
                   <td class="num">14</td>
                   <td class="num">3</td>
                   <td class="num">11</td>
@@ -499,7 +506,7 @@
                   <td><div class="meter"><span class="meter__fill" style="--w:21.4%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>FORGED</td>
+                  <td><a class="teamlink" href="?team=FORGED">FORGED</a></td>
                   <td class="num">5</td>
                   <td class="num">1</td>
                   <td class="num">4</td>
@@ -507,7 +514,7 @@
                   <td><div class="meter"><span class="meter__fill" style="--w:20%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>MAVERICK</td>
+                  <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                   <td class="num">5</td>
                   <td class="num">1</td>
                   <td class="num">4</td>
@@ -515,7 +522,7 @@
                   <td><div class="meter"><span class="meter__fill" style="--w:20%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Indigo</td>
+                  <td><a class="teamlink" href="?team=Indigo">Indigo</a></td>
                   <td class="num">30</td>
                   <td class="num">4</td>
                   <td class="num">26</td>
@@ -523,7 +530,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:13.3%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Mahogany</td>
+                  <td><a class="teamlink" href="?team=Mahogany">Mahogany</a></td>
                   <td class="num">9</td>
                   <td class="num">1</td>
                   <td class="num">8</td>
@@ -531,7 +538,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:11.1%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Emerald</td>
+                  <td><a class="teamlink" href="?team=Emerald">Emerald</a></td>
                   <td class="num">11</td>
                   <td class="num">1</td>
                   <td class="num">10</td>
@@ -539,7 +546,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:9.1%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Stelios</td>
+                  <td><a class="teamlink" href="?team=Stelios">Stelios</a></td>
                   <td class="num">32</td>
                   <td class="num">2</td>
                   <td class="num">30</td>
@@ -547,7 +554,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:6.2%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Black</td>
+                  <td><a class="teamlink" href="?team=Black">Black</a></td>
                   <td class="num">22</td>
                   <td class="num">1</td>
                   <td class="num">21</td>
@@ -555,7 +562,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:4.5%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Zeus</td>
+                  <td><a class="teamlink" href="?team=Zeus">Zeus</a></td>
                   <td class="num">15</td>
                   <td class="num">0</td>
                   <td class="num">15</td>
@@ -563,7 +570,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Peach</td>
+                  <td><a class="teamlink" href="?team=Peach">Peach</a></td>
                   <td class="num">11</td>
                   <td class="num">0</td>
                   <td class="num">11</td>
@@ -571,7 +578,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>ARTEMIS</td>
+                  <td><a class="teamlink" href="?team=ARTEMIS">ARTEMIS</a></td>
                   <td class="num">9</td>
                   <td class="num">0</td>
                   <td class="num">9</td>
@@ -579,7 +586,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Athena</td>
+                  <td><a class="teamlink" href="?team=Athena">Athena</a></td>
                   <td class="num">8</td>
                   <td class="num">0</td>
                   <td class="num">8</td>
@@ -587,7 +594,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Shadow</td>
+                  <td><a class="teamlink" href="?team=Shadow">Shadow</a></td>
                   <td class="num">7</td>
                   <td class="num">0</td>
                   <td class="num">7</td>
@@ -595,7 +602,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Mercury</td>
+                  <td><a class="teamlink" href="?team=Mercury">Mercury</a></td>
                   <td class="num">6</td>
                   <td class="num">0</td>
                   <td class="num">6</td>
@@ -603,7 +610,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>House</td>
+                  <td><a class="teamlink" href="?team=House">House</a></td>
                   <td class="num">5</td>
                   <td class="num">0</td>
                   <td class="num">5</td>
@@ -611,7 +618,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Draco</td>
+                  <td><a class="teamlink" href="?team=Draco">Draco</a></td>
                   <td class="num">4</td>
                   <td class="num">0</td>
                   <td class="num">4</td>
@@ -619,7 +626,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>RIGEL</td>
+                  <td><a class="teamlink" href="?team=RIGEL">RIGEL</a></td>
                   <td class="num">4</td>
                   <td class="num">0</td>
                   <td class="num">4</td>
@@ -627,7 +634,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Titan</td>
+                  <td><a class="teamlink" href="?team=Titan">Titan</a></td>
                   <td class="num">4</td>
                   <td class="num">0</td>
                   <td class="num">4</td>
@@ -635,7 +642,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>CRONUS</td>
+                  <td><a class="teamlink" href="?team=CRONUS">CRONUS</a></td>
                   <td class="num">3</td>
                   <td class="num">0</td>
                   <td class="num">3</td>
@@ -643,7 +650,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Platinum</td>
+                  <td><a class="teamlink" href="?team=Platinum">Platinum</a></td>
                   <td class="num">3</td>
                   <td class="num">0</td>
                   <td class="num">3</td>
@@ -651,7 +658,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Aluminum</td>
+                  <td><a class="teamlink" href="?team=Aluminum">Aluminum</a></td>
                   <td class="num">2</td>
                   <td class="num">0</td>
                   <td class="num">2</td>
@@ -659,7 +666,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>DYNAMITE</td>
+                  <td><a class="teamlink" href="?team=DYNAMITE">DYNAMITE</a></td>
                   <td class="num">2</td>
                   <td class="num">0</td>
                   <td class="num">2</td>
@@ -667,7 +674,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Fuchsia</td>
+                  <td><a class="teamlink" href="?team=Fuchsia">Fuchsia</a></td>
                   <td class="num">2</td>
                   <td class="num">0</td>
                   <td class="num">2</td>
@@ -675,7 +682,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Iceberg</td>
+                  <td><a class="teamlink" href="?team=Iceberg">Iceberg</a></td>
                   <td class="num">2</td>
                   <td class="num">0</td>
                   <td class="num">2</td>
@@ -683,7 +690,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Zerogravity</td>
+                  <td><a class="teamlink" href="?team=Zerogravity">Zerogravity</a></td>
                   <td class="num">2</td>
                   <td class="num">0</td>
                   <td class="num">2</td>
@@ -691,7 +698,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>ALCHEMY</td>
+                  <td><a class="teamlink" href="?team=ALCHEMY">ALCHEMY</a></td>
                   <td class="num">1</td>
                   <td class="num">0</td>
                   <td class="num">1</td>
@@ -699,7 +706,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Areus</td>
+                  <td><a class="teamlink" href="?team=Areus">Areus</a></td>
                   <td class="num">1</td>
                   <td class="num">0</td>
                   <td class="num">1</td>
@@ -707,7 +714,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>ICE KANNON</td>
+                  <td><a class="teamlink" href="?team=ICE%20KANNON">ICE KANNON</a></td>
                   <td class="num">1</td>
                   <td class="num">0</td>
                   <td class="num">1</td>
@@ -715,7 +722,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Lithium</td>
+                  <td><a class="teamlink" href="?team=Lithium">Lithium</a></td>
                   <td class="num">1</td>
                   <td class="num">0</td>
                   <td class="num">1</td>
@@ -723,7 +730,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>NIKE</td>
+                  <td><a class="teamlink" href="?team=NIKE">NIKE</a></td>
                   <td class="num">1</td>
                   <td class="num">0</td>
                   <td class="num">1</td>
@@ -731,7 +738,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>ODYSSEUS</td>
+                  <td><a class="teamlink" href="?team=ODYSSEUS">ODYSSEUS</a></td>
                   <td class="num">1</td>
                   <td class="num">0</td>
                   <td class="num">1</td>
@@ -739,7 +746,7 @@
                   <td><div class="meter"><span class="meter__fill meter__fill--low" style="--w:0%"></span></div></td>
                 </tr>
                 <tr>
-                  <td>Xerxes</td>
+                  <td><a class="teamlink" href="?team=Xerxes">Xerxes</a></td>
                   <td class="num">1</td>
                   <td class="num">0</td>
                   <td class="num">1</td>
@@ -784,7 +791,7 @@
               <tbody>
                 <tr>
                   <td>MAVERICK</td>
-                  <td>HALEY WOODRUFF</td>
+                  <td><a class="teamlink" href="?team=HALEY%20WOODRUFF">HALEY WOODRUFF</a></td>
                   <td class="num">1</td>
                   <td class="num">0</td>
                   <td class="num">1</td>
@@ -793,7 +800,7 @@
                 </tr>
                 <tr>
                   <td>MAVERICK</td>
-                  <td>JADEN DEFEK</td>
+                  <td><a class="teamlink" href="?team=JADEN%20DEFEK">JADEN DEFEK</a></td>
                   <td class="num">1</td>
                   <td class="num">1</td>
                   <td class="num">0</td>
@@ -802,7 +809,7 @@
                 </tr>
                 <tr>
                   <td>MAVERICK</td>
-                  <td>JUDAH STEELMAN</td>
+                  <td><a class="teamlink" href="?team=JUDAH%20STEELMAN">JUDAH STEELMAN</a></td>
                   <td class="num">1</td>
                   <td class="num">0</td>
                   <td class="num">1</td>
@@ -811,7 +818,7 @@
                 </tr>
                 <tr>
                   <td>MAVERICK</td>
-                  <td>KYLE PETTIT</td>
+                  <td><a class="teamlink" href="?team=KYLE%20PETTIT">KYLE PETTIT</a></td>
                   <td class="num">1</td>
                   <td class="num">0</td>
                   <td class="num">1</td>
@@ -820,7 +827,7 @@
                 </tr>
                 <tr>
                   <td>MAVERICK</td>
-                  <td>Timothy Constenius</td>
+                  <td><a class="teamlink" href="?team=Timothy%20Constenius">Timothy Constenius</a></td>
                   <td class="num">1</td>
                   <td class="num">0</td>
                   <td class="num">1</td>

@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Gain/Loss Report — Wholesale Payments</title>
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <meta name="theme-color" content="#F8FAFC">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="WPI Sales">
   <link rel="stylesheet" href="../assets/css/wpi.css">
 </head>
 <body>
@@ -96,7 +103,7 @@
 
     <div class="filters reveal rd-1">
       <div class="field"><label for="reportDate">Report date</label>
-        <select id="reportDate" name="dt">
+        <select id="reportDate" name="dt" disabled title="Static capture — only the captured period is included">
           <option value="2026-08" selected>Aug 2026</option>
           <option value="2026-07">Jul 2026</option>
           <option value="2026-06">Jun 2026</option>
@@ -110,9 +117,9 @@
           <option value="2025-10">Oct 2025</option>
           <option value="2025-09">Sep 2025</option>
           <option value="2025-08">Aug 2025</option>
-        </select></div>
+        </select><span class="field__hint">captured period only</span></div>
       <div class="field"><label for="salesTeam">Team</label>
-        <select id="salesTeam" name="team">
+        <select id="salesTeam" name="team" data-filter-select="#rs1,#rs2">
           <option value="ALL" selected>ALL</option>
           <option value="ALL WITH DETAIL">ALL WITH DETAIL</option>
           <optgroup label="Divisions">
@@ -301,13 +308,13 @@
           </optgroup>
         </select></div>
       <div class="field"><label for="processor">Processor</label>
-        <select id="processor" name="proc">
+        <select id="processor" name="proc" disabled title="Static capture — only the captured period is included">
           <option value="ALL" selected>ALL</option>
           <option value="TSYS">FSP</option>
           <option value="PPS">PPS</option>
-        </select></div>
+        </select><span class="field__hint">captured period only</span></div>
       <div class="field"><label for="minNetAmount">Min $</label>
-        <input type="number" min="0" step="1" id="minNetAmount" name="min" value="100"></div>
+        <input type="number" min="0" step="1" id="minNetAmount" name="min" value="100" data-filter-min="#rs1,#rs2" data-col="2"></div>
     </div>
 
     <div class="stack">
@@ -332,37 +339,37 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Galaxy</a></td>
+                  <td><a class="ent teamlink" href="?team=Galaxy">Galaxy</a></td>
                   <td class="num">1,371</td>
                   <td class="num">1,306</td>
                   <td class="num neg">-65</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Sparta</a></td>
+                  <td><a class="ent teamlink" href="?team=Sparta">Sparta</a></td>
                   <td class="num">1,789</td>
                   <td class="num">1,716</td>
                   <td class="num neg">-73</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Steel</a></td>
+                  <td><a class="ent teamlink" href="?team=Steel">Steel</a></td>
                   <td class="num">2,283</td>
                   <td class="num">2,198</td>
                   <td class="num neg">-85</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Olympus</a></td>
+                  <td><a class="ent teamlink" href="?team=Olympus">Olympus</a></td>
                   <td class="num">1,830</td>
                   <td class="num">1,742</td>
                   <td class="num neg">-88</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Fire</a></td>
+                  <td><a class="ent teamlink" href="?team=Fire">Fire</a></td>
                   <td class="num">3,912</td>
                   <td class="num">3,759</td>
                   <td class="num neg">-153</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Ice</a></td>
+                  <td><a class="ent teamlink" href="?team=Ice">Ice</a></td>
                   <td class="num">4,918</td>
                   <td class="num">4,691</td>
                   <td class="num neg">-227</td>
@@ -401,505 +408,505 @@
               </thead>
               <tbody>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Cigar</a></td>
+                  <td><a class="ent teamlink" href="?team=Cigar">Cigar</a></td>
                   <td class="num">5</td>
                   <td class="num">7</td>
                   <td class="num pos">2</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Triton</a></td>
+                  <td><a class="ent teamlink" href="?team=Triton">Triton</a></td>
                   <td class="num">21</td>
                   <td class="num">23</td>
                   <td class="num pos">2</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">ICE KANNON</a></td>
+                  <td><a class="ent teamlink" href="?team=ICE%20KANNON">ICE KANNON</a></td>
                   <td class="num">4</td>
                   <td class="num">6</td>
                   <td class="num pos">2</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">DYNAMITE</a></td>
+                  <td><a class="ent teamlink" href="?team=DYNAMITE">DYNAMITE</a></td>
                   <td class="num">9</td>
                   <td class="num">11</td>
                   <td class="num pos">2</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Atlas</a></td>
+                  <td><a class="ent teamlink" href="?team=Atlas">Atlas</a></td>
                   <td class="num">5</td>
                   <td class="num">7</td>
                   <td class="num pos">2</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">RIGEL</a></td>
+                  <td><a class="ent teamlink" href="?team=RIGEL">RIGEL</a></td>
                   <td class="num">6</td>
                   <td class="num">8</td>
                   <td class="num pos">2</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Lithium</a></td>
+                  <td><a class="ent teamlink" href="?team=Lithium">Lithium</a></td>
                   <td class="num">61</td>
                   <td class="num">63</td>
                   <td class="num pos">2</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Aluminum</a></td>
+                  <td><a class="ent teamlink" href="?team=Aluminum">Aluminum</a></td>
                   <td class="num">317</td>
                   <td class="num">318</td>
                   <td class="num pos">1</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">NIKE</a></td>
+                  <td><a class="ent teamlink" href="?team=NIKE">NIKE</a></td>
                   <td class="num">6</td>
                   <td class="num">7</td>
                   <td class="num pos">1</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">ODYSSEUS</a></td>
+                  <td><a class="ent teamlink" href="?team=ODYSSEUS">ODYSSEUS</a></td>
                   <td class="num">16</td>
                   <td class="num">17</td>
                   <td class="num pos">1</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">ARTEMIS</a></td>
+                  <td><a class="ent teamlink" href="?team=ARTEMIS">ARTEMIS</a></td>
                   <td class="num">40</td>
                   <td class="num">41</td>
                   <td class="num pos">1</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Stainless</a></td>
+                  <td><a class="ent teamlink" href="?team=Stainless">Stainless</a></td>
                   <td class="num">3</td>
                   <td class="num">3</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Milky Way</a></td>
+                  <td><a class="ent teamlink" href="?team=Milky%20Way">Milky Way</a></td>
                   <td class="num">17</td>
                   <td class="num">17</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Capella</a></td>
+                  <td><a class="ent teamlink" href="?team=Capella">Capella</a></td>
                   <td class="num">17</td>
                   <td class="num">17</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Pleistoanax</a></td>
+                  <td><a class="ent teamlink" href="?team=Pleistoanax">Pleistoanax</a></td>
                   <td class="num">7</td>
                   <td class="num">7</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">ECLIPSE</a></td>
+                  <td><a class="ent teamlink" href="?team=ECLIPSE">ECLIPSE</a></td>
                   <td class="num">2</td>
                   <td class="num">2</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">TEAM ASHES</a></td>
+                  <td><a class="ent teamlink" href="?team=TEAM%20ASHES">TEAM ASHES</a></td>
                   <td class="num">14</td>
                   <td class="num">14</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">CHILLY</a></td>
+                  <td><a class="ent teamlink" href="?team=CHILLY">CHILLY</a></td>
                   <td class="num">2</td>
                   <td class="num">2</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Black Eye</a></td>
+                  <td><a class="ent teamlink" href="?team=Black%20Eye">Black Eye</a></td>
                   <td class="num">5</td>
                   <td class="num">5</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Evinos</a></td>
+                  <td><a class="ent teamlink" href="?team=Evinos">Evinos</a></td>
                   <td class="num">11</td>
                   <td class="num">11</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Summit</a></td>
+                  <td><a class="ent teamlink" href="?team=Summit">Summit</a></td>
                   <td class="num">10</td>
                   <td class="num">10</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">ALCHEMY</a></td>
+                  <td><a class="ent teamlink" href="?team=ALCHEMY">ALCHEMY</a></td>
                   <td class="num">19</td>
                   <td class="num">19</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Plutus</a></td>
+                  <td><a class="ent teamlink" href="?team=Plutus">Plutus</a></td>
                   <td class="num">3</td>
                   <td class="num">3</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Hippocratides</a></td>
+                  <td><a class="ent teamlink" href="?team=Hippocratides">Hippocratides</a></td>
                   <td class="num">1</td>
                   <td class="num">1</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Hyperion</a></td>
+                  <td><a class="ent teamlink" href="?team=Hyperion">Hyperion</a></td>
                   <td class="num">1</td>
                   <td class="num">1</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">ORESTES</a></td>
+                  <td><a class="ent teamlink" href="?team=ORESTES">ORESTES</a></td>
                   <td class="num">1</td>
                   <td class="num">1</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">FORGED</a></td>
+                  <td><a class="ent teamlink" href="?team=FORGED">FORGED</a></td>
                   <td class="num">25</td>
                   <td class="num">25</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Nova</a></td>
+                  <td><a class="ent teamlink" href="?team=Nova">Nova</a></td>
                   <td class="num">16</td>
                   <td class="num">16</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Zerogravity</a></td>
+                  <td><a class="ent teamlink" href="?team=Zerogravity">Zerogravity</a></td>
                   <td class="num">9</td>
                   <td class="num">9</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Kyros</a></td>
+                  <td><a class="ent teamlink" href="?team=Kyros">Kyros</a></td>
                   <td class="num">23</td>
                   <td class="num">23</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">MAVERICK</a></td>
+                  <td><a class="ent teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                   <td class="num">46</td>
                   <td class="num">46</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">CHAOS</a></td>
+                  <td><a class="ent teamlink" href="?team=CHAOS">CHAOS</a></td>
                   <td class="num">24</td>
                   <td class="num">24</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Coin</a></td>
+                  <td><a class="ent teamlink" href="?team=Coin">Coin</a></td>
                   <td class="num">10</td>
                   <td class="num">10</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Alkamene</a></td>
+                  <td><a class="ent teamlink" href="?team=Alkamene">Alkamene</a></td>
                   <td class="num">7</td>
                   <td class="num">6</td>
                   <td class="num neg">-1</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">INFERNO</a></td>
+                  <td><a class="ent teamlink" href="?team=INFERNO">INFERNO</a></td>
                   <td class="num">24</td>
                   <td class="num">23</td>
                   <td class="num neg">-1</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Snow</a></td>
+                  <td><a class="ent teamlink" href="?team=Snow">Snow</a></td>
                   <td class="num">32</td>
                   <td class="num">31</td>
                   <td class="num neg">-1</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">NEXSELL</a></td>
+                  <td><a class="ent teamlink" href="?team=NEXSELL">NEXSELL</a></td>
                   <td class="num">1</td>
                   <td class="num">0</td>
                   <td class="num neg">-1</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Dagobah</a></td>
+                  <td><a class="ent teamlink" href="?team=Dagobah">Dagobah</a></td>
                   <td class="num">2</td>
                   <td class="num">1</td>
                   <td class="num neg">-1</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">ODIN</a></td>
+                  <td><a class="ent teamlink" href="?team=ODIN">ODIN</a></td>
                   <td class="num">15</td>
                   <td class="num">13</td>
                   <td class="num neg">-2</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Onyx</a></td>
+                  <td><a class="ent teamlink" href="?team=Onyx">Onyx</a></td>
                   <td class="num">48</td>
                   <td class="num">46</td>
                   <td class="num neg">-2</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Thor</a></td>
+                  <td><a class="ent teamlink" href="?team=Thor">Thor</a></td>
                   <td class="num">9</td>
                   <td class="num">7</td>
                   <td class="num neg">-2</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">ASHES</a></td>
+                  <td><a class="ent teamlink" href="?team=ASHES">ASHES</a></td>
                   <td class="num">6</td>
                   <td class="num">4</td>
                   <td class="num neg">-2</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Zinc</a></td>
+                  <td><a class="ent teamlink" href="?team=Zinc">Zinc</a></td>
                   <td class="num">62</td>
                   <td class="num">60</td>
                   <td class="num neg">-2</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Morpheus</a></td>
+                  <td><a class="ent teamlink" href="?team=Morpheus">Morpheus</a></td>
                   <td class="num">24</td>
                   <td class="num">22</td>
                   <td class="num neg">-2</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Palladium</a></td>
+                  <td><a class="ent teamlink" href="?team=Palladium">Palladium</a></td>
                   <td class="num">140</td>
                   <td class="num">138</td>
                   <td class="num neg">-2</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">IRIDIUM</a></td>
+                  <td><a class="ent teamlink" href="?team=IRIDIUM">IRIDIUM</a></td>
                   <td class="num">16</td>
                   <td class="num">13</td>
                   <td class="num neg">-3</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">AYTCH</a></td>
+                  <td><a class="ent teamlink" href="?team=AYTCH">AYTCH</a></td>
                   <td class="num">11</td>
                   <td class="num">8</td>
                   <td class="num neg">-3</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Draco</a></td>
+                  <td><a class="ent teamlink" href="?team=Draco">Draco</a></td>
                   <td class="num">117</td>
                   <td class="num">114</td>
                   <td class="num neg">-3</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Ares</a></td>
+                  <td><a class="ent teamlink" href="?team=Ares">Ares</a></td>
                   <td class="num">41</td>
                   <td class="num">38</td>
                   <td class="num neg">-3</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Glacier</a></td>
+                  <td><a class="ent teamlink" href="?team=Glacier">Glacier</a></td>
                   <td class="num">42</td>
                   <td class="num">39</td>
                   <td class="num neg">-3</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">ARETE</a></td>
+                  <td><a class="ent teamlink" href="?team=ARETE">ARETE</a></td>
                   <td class="num">55</td>
                   <td class="num">51</td>
                   <td class="num neg">-4</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Agis</a></td>
+                  <td><a class="ent teamlink" href="?team=Agis">Agis</a></td>
                   <td class="num">80</td>
                   <td class="num">76</td>
                   <td class="num neg">-4</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Andromeda</a></td>
+                  <td><a class="ent teamlink" href="?team=Andromeda">Andromeda</a></td>
                   <td class="num">10</td>
                   <td class="num">6</td>
                   <td class="num neg">-4</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">CRONUS</a></td>
+                  <td><a class="ent teamlink" href="?team=CRONUS">CRONUS</a></td>
                   <td class="num">93</td>
                   <td class="num">87</td>
                   <td class="num neg">-6</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Shadow</a></td>
+                  <td><a class="ent teamlink" href="?team=Shadow">Shadow</a></td>
                   <td class="num">369</td>
                   <td class="num">360</td>
                   <td class="num neg">-9</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Striker</a></td>
+                  <td><a class="ent teamlink" href="?team=Striker">Striker</a></td>
                   <td class="num">242</td>
                   <td class="num">233</td>
                   <td class="num neg">-9</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Xerxes</a></td>
+                  <td><a class="ent teamlink" href="?team=Xerxes">Xerxes</a></td>
                   <td class="num">153</td>
                   <td class="num">143</td>
                   <td class="num neg">-10</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Purple</a></td>
+                  <td><a class="ent teamlink" href="?team=Purple">Purple</a></td>
                   <td class="num">78</td>
                   <td class="num">68</td>
                   <td class="num neg">-10</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Mercury</a></td>
+                  <td><a class="ent teamlink" href="?team=Mercury">Mercury</a></td>
                   <td class="num">319</td>
                   <td class="num">307</td>
                   <td class="num neg">-12</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Titan</a></td>
+                  <td><a class="ent teamlink" href="?team=Titan">Titan</a></td>
                   <td class="num">142</td>
                   <td class="num">129</td>
                   <td class="num neg">-13</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Emerald</a></td>
+                  <td><a class="ent teamlink" href="?team=Emerald">Emerald</a></td>
                   <td class="num">677</td>
                   <td class="num">664</td>
                   <td class="num neg">-13</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Tungsten</a></td>
+                  <td><a class="ent teamlink" href="?team=Tungsten">Tungsten</a></td>
                   <td class="num">331</td>
                   <td class="num">317</td>
                   <td class="num neg">-14</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Fuchsia</a></td>
+                  <td><a class="ent teamlink" href="?team=Fuchsia">Fuchsia</a></td>
                   <td class="num">129</td>
                   <td class="num">114</td>
                   <td class="num neg">-15</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Areus</a></td>
+                  <td><a class="ent teamlink" href="?team=Areus">Areus</a></td>
                   <td class="num">154</td>
                   <td class="num">139</td>
                   <td class="num neg">-15</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Athena</a></td>
+                  <td><a class="ent teamlink" href="?team=Athena">Athena</a></td>
                   <td class="num">274</td>
                   <td class="num">258</td>
                   <td class="num neg">-16</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Stelios</a></td>
+                  <td><a class="ent teamlink" href="?team=Stelios">Stelios</a></td>
                   <td class="num">683</td>
                   <td class="num">665</td>
                   <td class="num neg">-18</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Pluto</a></td>
+                  <td><a class="ent teamlink" href="?team=Pluto">Pluto</a></td>
                   <td class="num">333</td>
                   <td class="num">314</td>
                   <td class="num neg">-19</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Cobalt</a></td>
+                  <td><a class="ent teamlink" href="?team=Cobalt">Cobalt</a></td>
                   <td class="num">398</td>
                   <td class="num">378</td>
                   <td class="num neg">-20</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Iron</a></td>
+                  <td><a class="ent teamlink" href="?team=Iron">Iron</a></td>
                   <td class="num">346</td>
                   <td class="num">326</td>
                   <td class="num neg">-20</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Apollo</a></td>
+                  <td><a class="ent teamlink" href="?team=Apollo">Apollo</a></td>
                   <td class="num">302</td>
                   <td class="num">282</td>
                   <td class="num neg">-20</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Coral</a></td>
+                  <td><a class="ent teamlink" href="?team=Coral">Coral</a></td>
                   <td class="num">538</td>
                   <td class="num">516</td>
                   <td class="num neg">-22</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Green</a></td>
+                  <td><a class="ent teamlink" href="?team=Green">Green</a></td>
                   <td class="num">287</td>
                   <td class="num">265</td>
                   <td class="num neg">-22</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Platinum</a></td>
+                  <td><a class="ent teamlink" href="?team=Platinum">Platinum</a></td>
                   <td class="num">635</td>
                   <td class="num">612</td>
                   <td class="num neg">-23</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Iceberg</a></td>
+                  <td><a class="ent teamlink" href="?team=Iceberg">Iceberg</a></td>
                   <td class="num">279</td>
                   <td class="num">256</td>
                   <td class="num neg">-23</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Aqua</a></td>
+                  <td><a class="ent teamlink" href="?team=Aqua">Aqua</a></td>
                   <td class="num">237</td>
                   <td class="num">214</td>
                   <td class="num neg">-23</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Peach</a></td>
+                  <td><a class="ent teamlink" href="?team=Peach">Peach</a></td>
                   <td class="num">821</td>
                   <td class="num">795</td>
                   <td class="num neg">-26</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Leonidas</a></td>
+                  <td><a class="ent teamlink" href="?team=Leonidas">Leonidas</a></td>
                   <td class="num">660</td>
                   <td class="num">634</td>
                   <td class="num neg">-26</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Brass</a></td>
+                  <td><a class="ent teamlink" href="?team=Brass">Brass</a></td>
                   <td class="num">625</td>
                   <td class="num">599</td>
                   <td class="num neg">-26</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Chrome</a></td>
+                  <td><a class="ent teamlink" href="?team=Chrome">Chrome</a></td>
                   <td class="num">705</td>
                   <td class="num">676</td>
                   <td class="num neg">-29</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Orion</a></td>
+                  <td><a class="ent teamlink" href="?team=Orion">Orion</a></td>
                   <td class="num">678</td>
                   <td class="num">647</td>
                   <td class="num neg">-31</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Mahogany</a></td>
+                  <td><a class="ent teamlink" href="?team=Mahogany">Mahogany</a></td>
                   <td class="num">682</td>
                   <td class="num">646</td>
                   <td class="num neg">-36</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Zeus</a></td>
+                  <td><a class="ent teamlink" href="?team=Zeus">Zeus</a></td>
                   <td class="num">922</td>
                   <td class="num">885</td>
                   <td class="num neg">-37</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Black</a></td>
+                  <td><a class="ent teamlink" href="?team=Black">Black</a></td>
                   <td class="num">871</td>
                   <td class="num">832</td>
                   <td class="num neg">-39</td>
                 </tr>
                 <tr>
-                  <td><a class="ent" href="gainloss.html">Indigo</a></td>
+                  <td><a class="ent teamlink" href="?team=Indigo">Indigo</a></td>
                   <td class="num">1,642</td>
                   <td class="num">1,581</td>
                   <td class="num neg">-61</td>

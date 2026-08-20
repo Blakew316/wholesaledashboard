@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-root="../">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Average Merchant Processing Volume Report — Wholesale Payments</title>
   <link rel="icon" type="image/svg+xml" href="../assets/img/favicon.svg">
+  <link rel="manifest" href="../manifest.webmanifest">
+  <link rel="apple-touch-icon" href="../assets/img/apple-touch-icon.png">
+  <meta name="theme-color" content="#F8FAFC">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="WPI Sales">
   <link rel="stylesheet" href="../assets/css/wpi.css">
 </head>
 <body>
@@ -95,7 +102,7 @@
 
     <div class="filters reveal rd-1">
       <div class="field"><label for="reportDate">Report date</label>
-        <select id="reportDate">
+        <select id="reportDate" disabled title="Static capture — only the captured period is included">
             <option value="2026-08" selected="selected">Aug 2026</option>
             <option value="2026-07">Jul 2026</option>
             <option value="2026-06">Jun 2026</option>
@@ -109,9 +116,9 @@
             <option value="2025-10">Oct 2025</option>
             <option value="2025-09">Sep 2025</option>
             <option value="2025-08">Aug 2025</option>
-        </select></div>
+        </select><span class="field__hint">captured period only</span></div>
       <div class="field"><label for="salesTeam">Team</label>
-        <select id="salesTeam" data-filter-select="#rs2">
+        <select id="salesTeam" data-filter-select="#rs1,#rs2">
             <option value="ALL" selected="selected">ALL</option>
             <optgroup label="Divisions">
             <option value="*** Lightning">Lightning</option>
@@ -299,11 +306,11 @@
             </optgroup>
         </select></div>
       <div class="field"><label for="processor">Processor</label>
-        <select id="processor">
+        <select id="processor" disabled title="Static capture — only the captured period is included">
             <option value="ALL" selected="selected">ALL</option>
             <option value="TSYS">FSP</option>
             <option value="PPS">PPS</option>
-        </select></div>
+        </select><span class="field__hint">captured period only</span></div>
     </div>
 
     <section class="card card--accent card--lift reveal rd-1">
@@ -324,56 +331,56 @@
             </thead>
             <tbody>
               <tr>
-                <td>Fire</td>
+                <td><a class="teamlink" href="?team=Fire">Fire</a></td>
                 <td class="num">$ 58,477,719</td>
                 <td class="num">12,554</td>
                 <td class="num">3,759</td>
                 <td class="num">$ 15,557</td>
               </tr>
               <tr>
-                <td>Galaxy</td>
+                <td><a class="teamlink" href="?team=Galaxy">Galaxy</a></td>
                 <td class="num">$ 16,818,997</td>
                 <td class="num">4,192</td>
                 <td class="num">1,306</td>
                 <td class="num">$ 12,878</td>
               </tr>
               <tr>
-                <td>House</td>
+                <td><a class="teamlink" href="?team=House">House</a></td>
                 <td class="num">$ 756,067</td>
                 <td class="num">80</td>
                 <td class="num">36</td>
                 <td class="num">$ 21,002</td>
               </tr>
               <tr>
-                <td>Ice</td>
+                <td><a class="teamlink" href="?team=Ice">Ice</a></td>
                 <td class="num">$ 78,088,714</td>
                 <td class="num">12,406</td>
                 <td class="num">4,691</td>
                 <td class="num">$ 16,646</td>
               </tr>
               <tr>
-                <td>Olympus</td>
+                <td><a class="teamlink" href="?team=Olympus">Olympus</a></td>
                 <td class="num">$ 27,239,526</td>
                 <td class="num">4,440</td>
                 <td class="num">1,743</td>
                 <td class="num">$ 15,628</td>
               </tr>
               <tr>
-                <td>Sparta</td>
+                <td><a class="teamlink" href="?team=Sparta">Sparta</a></td>
                 <td class="num">$ 24,018,394</td>
                 <td class="num">4,350</td>
                 <td class="num">1,716</td>
                 <td class="num">$ 13,997</td>
               </tr>
               <tr>
-                <td>Steel</td>
+                <td><a class="teamlink" href="?team=Steel">Steel</a></td>
                 <td class="num">$ 32,671,332</td>
                 <td class="num">5,852</td>
                 <td class="num">2,198</td>
                 <td class="num">$ 14,864</td>
               </tr>
               <tr>
-                <td>UNDEFINED</td>
+                <td><a class="teamlink" href="?team=UNDEFINED">UNDEFINED</a></td>
                 <td class="num">$ 19,099,168</td>
                 <td class="num">7,658</td>
                 <td class="num">1,061</td>
@@ -412,1001 +419,1001 @@
             </thead>
             <tbody>
               <tr>
-                <td>Achilles</td>
+                <td><a class="teamlink" href="?team=Achilles">Achilles</a></td>
                 <td class="num">$ 593,467</td>
                 <td class="num">22</td>
                 <td class="num">36</td>
                 <td class="num">$ 16,485</td>
               </tr>
               <tr>
-                <td>Affiliated Distributors</td>
+                <td><a class="teamlink" href="?team=Affiliated%20Distributors">Affiliated Distributors</a></td>
                 <td class="num">$ 162,487</td>
                 <td class="num">23</td>
                 <td class="num">7</td>
                 <td class="num">$ 23,212</td>
               </tr>
               <tr>
-                <td>Agis</td>
+                <td><a class="teamlink" href="?team=Agis">Agis</a></td>
                 <td class="num">$ 1,126,562</td>
                 <td class="num">239</td>
                 <td class="num">76</td>
                 <td class="num">$ 14,823</td>
               </tr>
               <tr>
-                <td>Ajax</td>
+                <td><a class="teamlink" href="?team=Ajax">Ajax</a></td>
                 <td class="num">$ 49,110</td>
                 <td class="num">0</td>
                 <td class="num">3</td>
                 <td class="num">$ 16,370</td>
               </tr>
               <tr>
-                <td>ALCHEMY</td>
+                <td><a class="teamlink" href="?team=ALCHEMY">ALCHEMY</a></td>
                 <td class="num">$ 281,941</td>
                 <td class="num">60</td>
                 <td class="num">19</td>
                 <td class="num">$ 14,839</td>
               </tr>
               <tr>
-                <td>Alkamene</td>
+                <td><a class="teamlink" href="?team=Alkamene">Alkamene</a></td>
                 <td class="num">$ 30,674</td>
                 <td class="num">17</td>
                 <td class="num">6</td>
                 <td class="num">$ 5,112</td>
               </tr>
               <tr>
-                <td>Aluminum</td>
+                <td><a class="teamlink" href="?team=Aluminum">Aluminum</a></td>
                 <td class="num">$ 4,564,792</td>
                 <td class="num">668</td>
                 <td class="num">318</td>
                 <td class="num">$ 14,355</td>
               </tr>
               <tr>
-                <td>Amethyst</td>
+                <td><a class="teamlink" href="?team=Amethyst">Amethyst</a></td>
                 <td class="num">$ 249,362</td>
                 <td class="num">59</td>
                 <td class="num">20</td>
                 <td class="num">$ 12,468</td>
               </tr>
               <tr>
-                <td>AMS</td>
+                <td><a class="teamlink" href="?team=AMS">AMS</a></td>
                 <td class="num">$ 4,030,689</td>
                 <td class="num">385</td>
                 <td class="num">110</td>
                 <td class="num">$ 36,643</td>
               </tr>
               <tr>
-                <td>Andromeda</td>
+                <td><a class="teamlink" href="?team=Andromeda">Andromeda</a></td>
                 <td class="num">$ 35,384</td>
                 <td class="num">30</td>
                 <td class="num">6</td>
                 <td class="num">$ 5,897</td>
               </tr>
               <tr>
-                <td>Apollo</td>
+                <td><a class="teamlink" href="?team=Apollo">Apollo</a></td>
                 <td class="num">$ 3,426,001</td>
                 <td class="num">769</td>
                 <td class="num">282</td>
                 <td class="num">$ 12,149</td>
               </tr>
               <tr>
-                <td>Aqua</td>
+                <td><a class="teamlink" href="?team=Aqua">Aqua</a></td>
                 <td class="num">$ 2,624,969</td>
                 <td class="num">746</td>
                 <td class="num">214</td>
                 <td class="num">$ 12,266</td>
               </tr>
               <tr>
-                <td>Archidamus</td>
+                <td><a class="teamlink" href="?team=Archidamus">Archidamus</a></td>
                 <td class="num">$ 124,420</td>
                 <td class="num">14</td>
                 <td class="num">5</td>
                 <td class="num">$ 24,884</td>
               </tr>
               <tr>
-                <td>Ares</td>
+                <td><a class="teamlink" href="?team=Ares">Ares</a></td>
                 <td class="num">$ 696,926</td>
                 <td class="num">125</td>
                 <td class="num">38</td>
                 <td class="num">$ 18,340</td>
               </tr>
               <tr>
-                <td>ARETE</td>
+                <td><a class="teamlink" href="?team=ARETE">ARETE</a></td>
                 <td class="num">$ 725,458</td>
                 <td class="num">82</td>
                 <td class="num">51</td>
                 <td class="num">$ 14,225</td>
               </tr>
               <tr>
-                <td>Areus</td>
+                <td><a class="teamlink" href="?team=Areus">Areus</a></td>
                 <td class="num">$ 2,542,643</td>
                 <td class="num">306</td>
                 <td class="num">139</td>
                 <td class="num">$ 18,292</td>
               </tr>
               <tr>
-                <td>ARTEMIS</td>
+                <td><a class="teamlink" href="?team=ARTEMIS">ARTEMIS</a></td>
                 <td class="num">$ 571,529</td>
                 <td class="num">76</td>
                 <td class="num">41</td>
                 <td class="num">$ 13,940</td>
               </tr>
               <tr>
-                <td>ASHES</td>
+                <td><a class="teamlink" href="?team=ASHES">ASHES</a></td>
                 <td class="num">$ 34,030</td>
                 <td class="num">11</td>
                 <td class="num">4</td>
                 <td class="num">$ 8,508</td>
               </tr>
               <tr>
-                <td>Athena</td>
+                <td><a class="teamlink" href="?team=Athena">Athena</a></td>
                 <td class="num">$ 3,334,519</td>
                 <td class="num">648</td>
                 <td class="num">258</td>
                 <td class="num">$ 12,924</td>
               </tr>
               <tr>
-                <td>Atlas</td>
+                <td><a class="teamlink" href="?team=Atlas">Atlas</a></td>
                 <td class="num">$ 104,536</td>
                 <td class="num">35</td>
                 <td class="num">7</td>
                 <td class="num">$ 14,934</td>
               </tr>
               <tr>
-                <td>Authotrans</td>
+                <td><a class="teamlink" href="?team=Authotrans">Authotrans</a></td>
                 <td class="num">$ 280,801</td>
                 <td class="num">0</td>
                 <td class="num">6</td>
                 <td class="num">$ 46,800</td>
               </tr>
               <tr>
-                <td>AYTCH</td>
+                <td><a class="teamlink" href="?team=AYTCH">AYTCH</a></td>
                 <td class="num">$ 20,055</td>
                 <td class="num">27</td>
                 <td class="num">8</td>
                 <td class="num">$ 2,507</td>
               </tr>
               <tr>
-                <td>BCG</td>
+                <td><a class="teamlink" href="?team=BCG">BCG</a></td>
                 <td class="num">$ 2,354,186</td>
                 <td class="num">302</td>
                 <td class="num">127</td>
                 <td class="num">$ 18,537</td>
               </tr>
               <tr>
-                <td>Black</td>
+                <td><a class="teamlink" href="?team=Black">Black</a></td>
                 <td class="num">$ 13,676,344</td>
                 <td class="num">2,576</td>
                 <td class="num">832</td>
                 <td class="num">$ 16,438</td>
               </tr>
               <tr>
-                <td>Black Eye</td>
+                <td><a class="teamlink" href="?team=Black%20Eye">Black Eye</a></td>
                 <td class="num">$ 60,932</td>
                 <td class="num">6</td>
                 <td class="num">5</td>
                 <td class="num">$ 12,186</td>
               </tr>
               <tr>
-                <td>Blue Diamond</td>
+                <td><a class="teamlink" href="?team=Blue%20Diamond">Blue Diamond</a></td>
                 <td class="num">$ 32,073</td>
                 <td class="num">19</td>
                 <td class="num">4</td>
                 <td class="num">$ 8,018</td>
               </tr>
               <tr>
-                <td>Brass</td>
+                <td><a class="teamlink" href="?team=Brass">Brass</a></td>
                 <td class="num">$ 8,494,856</td>
                 <td class="num">1,138</td>
                 <td class="num">599</td>
                 <td class="num">$ 14,182</td>
               </tr>
               <tr>
-                <td>Brown</td>
+                <td><a class="teamlink" href="?team=Brown">Brown</a></td>
                 <td class="num">$ 1,513,845</td>
                 <td class="num">363</td>
                 <td class="num">97</td>
                 <td class="num">$ 15,607</td>
               </tr>
               <tr>
-                <td>Capella</td>
+                <td><a class="teamlink" href="?team=Capella">Capella</a></td>
                 <td class="num">$ 189,739</td>
                 <td class="num">61</td>
                 <td class="num">17</td>
                 <td class="num">$ 11,161</td>
               </tr>
               <tr>
-                <td>CHAOS</td>
+                <td><a class="teamlink" href="?team=CHAOS">CHAOS</a></td>
                 <td class="num">$ 305,955</td>
                 <td class="num">49</td>
                 <td class="num">24</td>
                 <td class="num">$ 12,748</td>
               </tr>
               <tr>
-                <td>Cheddar</td>
+                <td><a class="teamlink" href="?team=Cheddar">Cheddar</a></td>
                 <td class="num">$ 274,014</td>
                 <td class="num">112</td>
                 <td class="num">12</td>
                 <td class="num">$ 22,835</td>
               </tr>
               <tr>
-                <td>CHILLY</td>
+                <td><a class="teamlink" href="?team=CHILLY">CHILLY</a></td>
                 <td class="num">$ 44,828</td>
                 <td class="num">2</td>
                 <td class="num">2</td>
                 <td class="num">$ 22,414</td>
               </tr>
               <tr>
-                <td>Chrome</td>
+                <td><a class="teamlink" href="?team=Chrome">Chrome</a></td>
                 <td class="num">$ 10,800,592</td>
                 <td class="num">1,577</td>
                 <td class="num">676</td>
                 <td class="num">$ 15,977</td>
               </tr>
               <tr>
-                <td>Cigar</td>
+                <td><a class="teamlink" href="?team=Cigar">Cigar</a></td>
                 <td class="num">$ 43,703</td>
                 <td class="num">17</td>
                 <td class="num">7</td>
                 <td class="num">$ 6,243</td>
               </tr>
               <tr>
-                <td>Cobalt</td>
+                <td><a class="teamlink" href="?team=Cobalt">Cobalt</a></td>
                 <td class="num">$ 6,212,598</td>
                 <td class="num">1,256</td>
                 <td class="num">378</td>
                 <td class="num">$ 16,435</td>
               </tr>
               <tr>
-                <td>Coin</td>
+                <td><a class="teamlink" href="?team=Coin">Coin</a></td>
                 <td class="num">$ 148,877</td>
                 <td class="num">56</td>
                 <td class="num">10</td>
                 <td class="num">$ 14,888</td>
               </tr>
               <tr>
-                <td>Copper</td>
+                <td><a class="teamlink" href="?team=Copper">Copper</a></td>
                 <td class="num">$ 48,996</td>
                 <td class="num">6</td>
                 <td class="num">3</td>
                 <td class="num">$ 16,332</td>
               </tr>
               <tr>
-                <td>Coral</td>
+                <td><a class="teamlink" href="?team=Coral">Coral</a></td>
                 <td class="num">$ 7,622,576</td>
                 <td class="num">1,152</td>
                 <td class="num">516</td>
                 <td class="num">$ 14,772</td>
               </tr>
               <tr>
-                <td>Crimson</td>
+                <td><a class="teamlink" href="?team=Crimson">Crimson</a></td>
                 <td class="num">$ 194,387</td>
                 <td class="num">271</td>
                 <td class="num">30</td>
                 <td class="num">$ 6,480</td>
               </tr>
               <tr>
-                <td>CRONUS</td>
+                <td><a class="teamlink" href="?team=CRONUS">CRONUS</a></td>
                 <td class="num">$ 958,306</td>
                 <td class="num">145</td>
                 <td class="num">87</td>
                 <td class="num">$ 11,015</td>
               </tr>
               <tr>
-                <td>Cyan</td>
+                <td><a class="teamlink" href="?team=Cyan">Cyan</a></td>
                 <td class="num">$ 23,794</td>
                 <td class="num">20</td>
                 <td class="num">3</td>
                 <td class="num">$ 7,931</td>
               </tr>
               <tr>
-                <td>Dagobah</td>
+                <td><a class="teamlink" href="?team=Dagobah">Dagobah</a></td>
                 <td class="num">$ 100</td>
                 <td class="num">7</td>
                 <td class="num">1</td>
                 <td class="num">$ 100</td>
               </tr>
               <tr>
-                <td>Diamond</td>
+                <td><a class="teamlink" href="?team=Diamond">Diamond</a></td>
                 <td class="num">$ 63,950</td>
                 <td class="num">25</td>
                 <td class="num">6</td>
                 <td class="num">$ 10,658</td>
               </tr>
               <tr>
-                <td>Draco</td>
+                <td><a class="teamlink" href="?team=Draco">Draco</a></td>
                 <td class="num">$ 1,166,312</td>
                 <td class="num">230</td>
                 <td class="num">114</td>
                 <td class="num">$ 10,231</td>
               </tr>
               <tr>
-                <td>DYNAMITE</td>
+                <td><a class="teamlink" href="?team=DYNAMITE">DYNAMITE</a></td>
                 <td class="num">$ 134,763</td>
                 <td class="num">20</td>
                 <td class="num">11</td>
                 <td class="num">$ 12,251</td>
               </tr>
               <tr>
-                <td>ECLIPSE</td>
+                <td><a class="teamlink" href="?team=ECLIPSE">ECLIPSE</a></td>
                 <td class="num">$ 9,151</td>
                 <td class="num">2</td>
                 <td class="num">2</td>
                 <td class="num">$ 4,575</td>
               </tr>
               <tr>
-                <td>Emerald</td>
+                <td><a class="teamlink" href="?team=Emerald">Emerald</a></td>
                 <td class="num">$ 9,044,824</td>
                 <td class="num">2,753</td>
                 <td class="num">664</td>
                 <td class="num">$ 13,622</td>
               </tr>
               <tr>
-                <td>Evinos</td>
+                <td><a class="teamlink" href="?team=Evinos">Evinos</a></td>
                 <td class="num">$ 126,825</td>
                 <td class="num">27</td>
                 <td class="num">11</td>
                 <td class="num">$ 11,530</td>
               </tr>
               <tr>
-                <td>FORGED</td>
+                <td><a class="teamlink" href="?team=FORGED">FORGED</a></td>
                 <td class="num">$ 606,015</td>
                 <td class="num">52</td>
                 <td class="num">25</td>
                 <td class="num">$ 24,241</td>
               </tr>
               <tr>
-                <td>Frost</td>
+                <td><a class="teamlink" href="?team=Frost">Frost</a></td>
                 <td class="num">$ 45,938</td>
                 <td class="num">13</td>
                 <td class="num">7</td>
                 <td class="num">$ 6,563</td>
               </tr>
               <tr>
-                <td>Fuchsia</td>
+                <td><a class="teamlink" href="?team=Fuchsia">Fuchsia</a></td>
                 <td class="num">$ 1,517,733</td>
                 <td class="num">240</td>
                 <td class="num">114</td>
                 <td class="num">$ 13,313</td>
               </tr>
               <tr>
-                <td>Glacier</td>
+                <td><a class="teamlink" href="?team=Glacier">Glacier</a></td>
                 <td class="num">$ 645,721</td>
                 <td class="num">119</td>
                 <td class="num">39</td>
                 <td class="num">$ 16,557</td>
               </tr>
               <tr>
-                <td>Gold</td>
+                <td><a class="teamlink" href="?team=Gold">Gold</a></td>
                 <td class="num">$ 472,712</td>
                 <td class="num">284</td>
                 <td class="num">24</td>
                 <td class="num">$ 19,696</td>
               </tr>
               <tr>
-                <td>Green</td>
+                <td><a class="teamlink" href="?team=Green">Green</a></td>
                 <td class="num">$ 10,771,835</td>
                 <td class="num">1,206</td>
                 <td class="num">265</td>
                 <td class="num">$ 40,648</td>
               </tr>
               <tr>
-                <td>Grey</td>
+                <td><a class="teamlink" href="?team=Grey">Grey</a></td>
                 <td class="num">$ 235,794</td>
                 <td class="num">1,112</td>
                 <td class="num">25</td>
                 <td class="num">$ 9,432</td>
               </tr>
               <tr>
-                <td>Hazel</td>
+                <td><a class="teamlink" href="?team=Hazel">Hazel</a></td>
                 <td class="num">$ 913,464</td>
                 <td class="num">266</td>
                 <td class="num">29</td>
                 <td class="num">$ 31,499</td>
               </tr>
               <tr>
-                <td>Helios</td>
+                <td><a class="teamlink" href="?team=Helios">Helios</a></td>
                 <td class="num">$ 18,989</td>
                 <td class="num">20</td>
                 <td class="num">3</td>
                 <td class="num">$ 6,330</td>
               </tr>
               <tr>
-                <td>Hercules</td>
+                <td><a class="teamlink" href="?team=Hercules">Hercules</a></td>
                 <td class="num">$ 543,004</td>
                 <td class="num">89</td>
                 <td class="num">29</td>
                 <td class="num">$ 18,724</td>
               </tr>
               <tr>
-                <td>Hermes</td>
+                <td><a class="teamlink" href="?team=Hermes">Hermes</a></td>
                 <td class="num">$ 363,294</td>
                 <td class="num">83</td>
                 <td class="num">27</td>
                 <td class="num">$ 13,455</td>
               </tr>
               <tr>
-                <td>Hippocratides</td>
+                <td><a class="teamlink" href="?team=Hippocratides">Hippocratides</a></td>
                 <td class="num">$ 126,673</td>
                 <td class="num">11</td>
                 <td class="num">1</td>
                 <td class="num">$ 126,673</td>
               </tr>
               <tr>
-                <td>House</td>
+                <td><a class="teamlink" href="?team=House">House</a></td>
                 <td class="num">$ 756,067</td>
                 <td class="num">80</td>
                 <td class="num">36</td>
                 <td class="num">$ 21,002</td>
               </tr>
               <tr>
-                <td>Hyperion</td>
+                <td><a class="teamlink" href="?team=Hyperion">Hyperion</a></td>
                 <td class="num">$ 7,217</td>
                 <td class="num">5</td>
                 <td class="num">1</td>
                 <td class="num">$ 7,217</td>
               </tr>
               <tr>
-                <td>ICE KANNON</td>
+                <td><a class="teamlink" href="?team=ICE%20KANNON">ICE KANNON</a></td>
                 <td class="num">$ 25,388</td>
                 <td class="num">10</td>
                 <td class="num">6</td>
                 <td class="num">$ 4,231</td>
               </tr>
               <tr>
-                <td>Iceberg</td>
+                <td><a class="teamlink" href="?team=Iceberg">Iceberg</a></td>
                 <td class="num">$ 2,637,421</td>
                 <td class="num">675</td>
                 <td class="num">256</td>
                 <td class="num">$ 10,302</td>
               </tr>
               <tr>
-                <td>Indigo</td>
+                <td><a class="teamlink" href="?team=Indigo">Indigo</a></td>
                 <td class="num">$ 25,308,617</td>
                 <td class="num">4,113</td>
                 <td class="num">1,581</td>
                 <td class="num">$ 16,008</td>
               </tr>
               <tr>
-                <td>INFERNO</td>
+                <td><a class="teamlink" href="?team=INFERNO">INFERNO</a></td>
                 <td class="num">$ 508,457</td>
                 <td class="num">43</td>
                 <td class="num">23</td>
                 <td class="num">$ 22,107</td>
               </tr>
               <tr>
-                <td>IRIDIUM</td>
+                <td><a class="teamlink" href="?team=IRIDIUM">IRIDIUM</a></td>
                 <td class="num">$ 59,104</td>
                 <td class="num">31</td>
                 <td class="num">13</td>
                 <td class="num">$ 4,546</td>
               </tr>
               <tr>
-                <td>Iron</td>
+                <td><a class="teamlink" href="?team=Iron">Iron</a></td>
                 <td class="num">$ 4,505,559</td>
                 <td class="num">1,286</td>
                 <td class="num">326</td>
                 <td class="num">$ 13,821</td>
               </tr>
               <tr>
-                <td>Ivory</td>
+                <td><a class="teamlink" href="?team=Ivory">Ivory</a></td>
                 <td class="num">$ 149,369</td>
                 <td class="num">73</td>
                 <td class="num">15</td>
                 <td class="num">$ 9,958</td>
               </tr>
               <tr>
-                <td>Kyros</td>
+                <td><a class="teamlink" href="?team=Kyros">Kyros</a></td>
                 <td class="num">$ 331,467</td>
                 <td class="num">45</td>
                 <td class="num">23</td>
                 <td class="num">$ 14,412</td>
               </tr>
               <tr>
-                <td>Lavender</td>
+                <td><a class="teamlink" href="?team=Lavender">Lavender</a></td>
                 <td class="num">$ 204,401</td>
                 <td class="num">123</td>
                 <td class="num">15</td>
                 <td class="num">$ 13,627</td>
               </tr>
               <tr>
-                <td>Lead</td>
+                <td><a class="teamlink" href="?team=Lead">Lead</a></td>
                 <td class="num">$ 41,591</td>
                 <td class="num">9</td>
                 <td class="num">3</td>
                 <td class="num">$ 13,864</td>
               </tr>
               <tr>
-                <td>Leo</td>
+                <td><a class="teamlink" href="?team=Leo">Leo</a></td>
                 <td class="num">$ 38,446</td>
                 <td class="num">21</td>
                 <td class="num">2</td>
                 <td class="num">$ 19,223</td>
               </tr>
               <tr>
-                <td>Leon</td>
+                <td><a class="teamlink" href="?team=Leon">Leon</a></td>
                 <td class="num">$ 14,205</td>
                 <td class="num">4</td>
                 <td class="num">2</td>
                 <td class="num">$ 7,102</td>
               </tr>
               <tr>
-                <td>Leonidas</td>
+                <td><a class="teamlink" href="?team=Leonidas">Leonidas</a></td>
                 <td class="num">$ 8,897,117</td>
                 <td class="num">1,414</td>
                 <td class="num">634</td>
                 <td class="num">$ 14,033</td>
               </tr>
               <tr>
-                <td>Lime</td>
+                <td><a class="teamlink" href="?team=Lime">Lime</a></td>
                 <td class="num">$ 295,076</td>
                 <td class="num">153</td>
                 <td class="num">24</td>
                 <td class="num">$ 12,295</td>
               </tr>
               <tr>
-                <td>Lithium</td>
+                <td><a class="teamlink" href="?team=Lithium">Lithium</a></td>
                 <td class="num">$ 925,886</td>
                 <td class="num">101</td>
                 <td class="num">63</td>
                 <td class="num">$ 14,697</td>
               </tr>
               <tr>
-                <td>Mahogany</td>
+                <td><a class="teamlink" href="?team=Mahogany">Mahogany</a></td>
                 <td class="num">$ 11,548,799</td>
                 <td class="num">1,572</td>
                 <td class="num">646</td>
                 <td class="num">$ 17,877</td>
               </tr>
               <tr>
-                <td>Mars</td>
+                <td><a class="teamlink" href="?team=Mars">Mars</a></td>
                 <td class="num">$ 1,264</td>
                 <td class="num">4</td>
                 <td class="num">1</td>
                 <td class="num">$ 1,264</td>
               </tr>
               <tr>
-                <td>MAVERICK</td>
+                <td><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                 <td class="num">$ 454,530</td>
                 <td class="num">88</td>
                 <td class="num">46</td>
                 <td class="num">$ 9,881</td>
               </tr>
               <tr>
-                <td>Mercury</td>
+                <td><a class="teamlink" href="?team=Mercury">Mercury</a></td>
                 <td class="num">$ 4,047,225</td>
                 <td class="num">850</td>
                 <td class="num">307</td>
                 <td class="num">$ 13,183</td>
               </tr>
               <tr>
-                <td>Milky Way</td>
+                <td><a class="teamlink" href="?team=Milky%20Way">Milky Way</a></td>
                 <td class="num">$ 224,406</td>
                 <td class="num">75</td>
                 <td class="num">17</td>
                 <td class="num">$ 13,200</td>
               </tr>
               <tr>
-                <td>Morpheus</td>
+                <td><a class="teamlink" href="?team=Morpheus">Morpheus</a></td>
                 <td class="num">$ 352,487</td>
                 <td class="num">50</td>
                 <td class="num">22</td>
                 <td class="num">$ 16,022</td>
               </tr>
               <tr>
-                <td>Mystic</td>
+                <td><a class="teamlink" href="?team=Mystic">Mystic</a></td>
                 <td class="num">$ 191,555</td>
                 <td class="num">29</td>
                 <td class="num">14</td>
                 <td class="num">$ 13,683</td>
               </tr>
               <tr>
-                <td>Navy</td>
+                <td><a class="teamlink" href="?team=Navy">Navy</a></td>
                 <td class="num">$ 110,226</td>
                 <td class="num">27</td>
                 <td class="num">8</td>
                 <td class="num">$ 13,778</td>
               </tr>
               <tr>
-                <td>Nebula</td>
+                <td><a class="teamlink" href="?team=Nebula">Nebula</a></td>
                 <td class="num">$ 46,748</td>
                 <td class="num">25</td>
                 <td class="num">9</td>
                 <td class="num">$ 5,194</td>
               </tr>
               <tr>
-                <td>NIKE</td>
+                <td><a class="teamlink" href="?team=NIKE">NIKE</a></td>
                 <td class="num">$ 39,060</td>
                 <td class="num">13</td>
                 <td class="num">7</td>
                 <td class="num">$ 5,580</td>
               </tr>
               <tr>
-                <td>Nomad</td>
+                <td><a class="teamlink" href="?team=Nomad">Nomad</a></td>
                 <td class="num">$ 210,231</td>
                 <td class="num">43</td>
                 <td class="num">11</td>
                 <td class="num">$ 19,112</td>
               </tr>
               <tr>
-                <td>Nova</td>
+                <td><a class="teamlink" href="?team=Nova">Nova</a></td>
                 <td class="num">$ 153,471</td>
                 <td class="num">64</td>
                 <td class="num">16</td>
                 <td class="num">$ 9,592</td>
               </tr>
               <tr>
-                <td>Oceanus</td>
+                <td><a class="teamlink" href="?team=Oceanus">Oceanus</a></td>
                 <td class="num">$ 11,130</td>
                 <td class="num">25</td>
                 <td class="num">1</td>
                 <td class="num">$ 11,130</td>
               </tr>
               <tr>
-                <td>ODIN</td>
+                <td><a class="teamlink" href="?team=ODIN">ODIN</a></td>
                 <td class="num">$ 215,040</td>
                 <td class="num">34</td>
                 <td class="num">13</td>
                 <td class="num">$ 16,542</td>
               </tr>
               <tr>
-                <td>ODYSSEUS</td>
+                <td><a class="teamlink" href="?team=ODYSSEUS">ODYSSEUS</a></td>
                 <td class="num">$ 274,603</td>
                 <td class="num">37</td>
                 <td class="num">17</td>
                 <td class="num">$ 16,153</td>
               </tr>
               <tr>
-                <td>Old Blue</td>
+                <td><a class="teamlink" href="?team=Old%20Blue">Old Blue</a></td>
                 <td class="num">$ 978,737</td>
                 <td class="num">1,443</td>
                 <td class="num">49</td>
                 <td class="num">$ 19,974</td>
               </tr>
               <tr>
-                <td>Old Titanium</td>
+                <td><a class="teamlink" href="?team=Old%20Titanium">Old Titanium</a></td>
                 <td class="num">$ 38,010</td>
                 <td class="num">37</td>
                 <td class="num">4</td>
                 <td class="num">$ 9,503</td>
               </tr>
               <tr>
-                <td>Old Yellow</td>
+                <td><a class="teamlink" href="?team=Old%20Yellow">Old Yellow</a></td>
                 <td class="num">$ 169,455</td>
                 <td class="num">443</td>
                 <td class="num">13</td>
                 <td class="num">$ 13,035</td>
               </tr>
               <tr>
-                <td>Olive</td>
+                <td><a class="teamlink" href="?team=Olive">Olive</a></td>
                 <td class="num">$ 28,278</td>
                 <td class="num">17</td>
                 <td class="num">2</td>
                 <td class="num">$ 14,139</td>
               </tr>
               <tr>
-                <td>Onyx</td>
+                <td><a class="teamlink" href="?team=Onyx">Onyx</a></td>
                 <td class="num">$ 655,643</td>
                 <td class="num">81</td>
                 <td class="num">46</td>
                 <td class="num">$ 14,253</td>
               </tr>
               <tr>
-                <td>Opal</td>
+                <td><a class="teamlink" href="?team=Opal">Opal</a></td>
                 <td class="num">$ 17,767</td>
                 <td class="num">16</td>
                 <td class="num">2</td>
                 <td class="num">$ 8,883</td>
               </tr>
               <tr>
-                <td>Orange</td>
+                <td><a class="teamlink" href="?team=Orange">Orange</a></td>
                 <td class="num">$ 86,150</td>
                 <td class="num">127</td>
                 <td class="num">10</td>
                 <td class="num">$ 8,615</td>
               </tr>
               <tr>
-                <td>ORESTES</td>
+                <td><a class="teamlink" href="?team=ORESTES">ORESTES</a></td>
                 <td class="num">$ 34,979</td>
                 <td class="num">2</td>
                 <td class="num">1</td>
                 <td class="num">$ 34,979</td>
               </tr>
               <tr>
-                <td>Orion</td>
+                <td><a class="teamlink" href="?team=Orion">Orion</a></td>
                 <td class="num">$ 8,567,604</td>
                 <td class="num">2,512</td>
                 <td class="num">647</td>
                 <td class="num">$ 13,242</td>
               </tr>
               <tr>
-                <td>Palladium</td>
+                <td><a class="teamlink" href="?team=Palladium">Palladium</a></td>
                 <td class="num">$ 1,238,064</td>
                 <td class="num">264</td>
                 <td class="num">138</td>
                 <td class="num">$ 8,971</td>
               </tr>
               <tr>
-                <td>Peach</td>
+                <td><a class="teamlink" href="?team=Peach">Peach</a></td>
                 <td class="num">$ 9,953,950</td>
                 <td class="num">2,370</td>
                 <td class="num">795</td>
                 <td class="num">$ 12,521</td>
               </tr>
               <tr>
-                <td>Pegasus</td>
+                <td><a class="teamlink" href="?team=Pegasus">Pegasus</a></td>
                 <td class="num">$ 72,147</td>
                 <td class="num">38</td>
                 <td class="num">11</td>
                 <td class="num">$ 6,559</td>
               </tr>
               <tr>
-                <td>Pink</td>
+                <td><a class="teamlink" href="?team=Pink">Pink</a></td>
                 <td class="num">$ 24,895</td>
                 <td class="num">110</td>
                 <td class="num">7</td>
                 <td class="num">$ 3,556</td>
               </tr>
               <tr>
-                <td>Platinum</td>
+                <td><a class="teamlink" href="?team=Platinum">Platinum</a></td>
                 <td class="num">$ 12,550,938</td>
                 <td class="num">2,388</td>
                 <td class="num">612</td>
                 <td class="num">$ 20,508</td>
               </tr>
               <tr>
-                <td>Pleistoanax</td>
+                <td><a class="teamlink" href="?team=Pleistoanax">Pleistoanax</a></td>
                 <td class="num">$ 98,512</td>
                 <td class="num">11</td>
                 <td class="num">7</td>
                 <td class="num">$ 14,073</td>
               </tr>
               <tr>
-                <td>Pluto</td>
+                <td><a class="teamlink" href="?team=Pluto">Pluto</a></td>
                 <td class="num">$ 4,637,354</td>
                 <td class="num">851</td>
                 <td class="num">314</td>
                 <td class="num">$ 14,769</td>
               </tr>
               <tr>
-                <td>Plutus</td>
+                <td><a class="teamlink" href="?team=Plutus">Plutus</a></td>
                 <td class="num">$ 36,988</td>
                 <td class="num">19</td>
                 <td class="num">3</td>
                 <td class="num">$ 12,329</td>
               </tr>
               <tr>
-                <td>Poseidon</td>
+                <td><a class="teamlink" href="?team=Poseidon">Poseidon</a></td>
                 <td class="num">$ 8,406</td>
                 <td class="num">3</td>
                 <td class="num">1</td>
                 <td class="num">$ 8,406</td>
               </tr>
               <tr>
-                <td>Purple</td>
+                <td><a class="teamlink" href="?team=Purple">Purple</a></td>
                 <td class="num">$ 1,272,868</td>
                 <td class="num">778</td>
                 <td class="num">68</td>
                 <td class="num">$ 18,719</td>
               </tr>
               <tr>
-                <td>Quasar</td>
+                <td><a class="teamlink" href="?team=Quasar">Quasar</a></td>
                 <td class="num">$ 18,250</td>
                 <td class="num">17</td>
                 <td class="num">3</td>
                 <td class="num">$ 6,083</td>
               </tr>
               <tr>
-                <td>Radium</td>
+                <td><a class="teamlink" href="?team=Radium">Radium</a></td>
                 <td class="num">$ 41,195</td>
                 <td class="num">7</td>
                 <td class="num">3</td>
                 <td class="num">$ 13,732</td>
               </tr>
               <tr>
-                <td>RIGEL</td>
+                <td><a class="teamlink" href="?team=RIGEL">RIGEL</a></td>
                 <td class="num">$ 38,780</td>
                 <td class="num">15</td>
                 <td class="num">8</td>
                 <td class="num">$ 4,848</td>
               </tr>
               <tr>
-                <td>Royal</td>
+                <td><a class="teamlink" href="?team=Royal">Royal</a></td>
                 <td class="num">$ 43,528</td>
                 <td class="num">3</td>
                 <td class="num">1</td>
                 <td class="num">$ 43,528</td>
               </tr>
               <tr>
-                <td>Ruby</td>
+                <td><a class="teamlink" href="?team=Ruby">Ruby</a></td>
                 <td class="num">$ 72,692</td>
                 <td class="num">9</td>
                 <td class="num">3</td>
                 <td class="num">$ 24,231</td>
               </tr>
               <tr>
-                <td>Shadow</td>
+                <td><a class="teamlink" href="?team=Shadow">Shadow</a></td>
                 <td class="num">$ 4,681,733</td>
                 <td class="num">798</td>
                 <td class="num">360</td>
                 <td class="num">$ 13,005</td>
               </tr>
               <tr>
-                <td>Silver</td>
+                <td><a class="teamlink" href="?team=Silver">Silver</a></td>
                 <td class="num">$ 320,803</td>
                 <td class="num">70</td>
                 <td class="num">16</td>
                 <td class="num">$ 20,050</td>
               </tr>
               <tr>
-                <td>Sky</td>
+                <td><a class="teamlink" href="?team=Sky">Sky</a></td>
                 <td class="num">$ 31,303</td>
                 <td class="num">14</td>
                 <td class="num">4</td>
                 <td class="num">$ 7,826</td>
               </tr>
               <tr>
-                <td>Snow</td>
+                <td><a class="teamlink" href="?team=Snow">Snow</a></td>
                 <td class="num">$ 332,483</td>
                 <td class="num">62</td>
                 <td class="num">31</td>
                 <td class="num">$ 10,725</td>
               </tr>
               <tr>
-                <td>Stainless</td>
+                <td><a class="teamlink" href="?team=Stainless">Stainless</a></td>
                 <td class="num">$ 21,741</td>
                 <td class="num">11</td>
                 <td class="num">3</td>
                 <td class="num">$ 7,247</td>
               </tr>
               <tr>
-                <td>Stelios</td>
+                <td><a class="teamlink" href="?team=Stelios">Stelios</a></td>
                 <td class="num">$ 8,257,511</td>
                 <td class="num">1,681</td>
                 <td class="num">665</td>
                 <td class="num">$ 12,417</td>
               </tr>
               <tr>
-                <td>Striker</td>
+                <td><a class="teamlink" href="?team=Striker">Striker</a></td>
                 <td class="num">$ 3,716,210</td>
                 <td class="num">503</td>
                 <td class="num">233</td>
                 <td class="num">$ 15,949</td>
               </tr>
               <tr>
-                <td>Subzero</td>
+                <td><a class="teamlink" href="?team=Subzero">Subzero</a></td>
                 <td class="num">$ 489,863</td>
                 <td class="num">40</td>
                 <td class="num">14</td>
                 <td class="num">$ 34,990</td>
               </tr>
               <tr>
-                <td>Summit</td>
+                <td><a class="teamlink" href="?team=Summit">Summit</a></td>
                 <td class="num">$ 166,421</td>
                 <td class="num">21</td>
                 <td class="num">10</td>
                 <td class="num">$ 16,642</td>
               </tr>
               <tr>
-                <td>Taurus</td>
+                <td><a class="teamlink" href="?team=Taurus">Taurus</a></td>
                 <td class="num">$ 45,423</td>
                 <td class="num">15</td>
                 <td class="num">5</td>
                 <td class="num">$ 9,085</td>
               </tr>
               <tr>
-                <td>Teal</td>
+                <td><a class="teamlink" href="?team=Teal">Teal</a></td>
                 <td class="num">$ 12,508</td>
                 <td class="num">4</td>
                 <td class="num">2</td>
                 <td class="num">$ 6,254</td>
               </tr>
               <tr>
-                <td>TEAM ASHES</td>
+                <td><a class="teamlink" href="?team=TEAM%20ASHES">TEAM ASHES</a></td>
                 <td class="num">$ 131,134</td>
                 <td class="num">21</td>
                 <td class="num">14</td>
                 <td class="num">$ 9,367</td>
               </tr>
               <tr>
-                <td>Thor</td>
+                <td><a class="teamlink" href="?team=Thor">Thor</a></td>
                 <td class="num">$ 42,795</td>
                 <td class="num">20</td>
                 <td class="num">7</td>
                 <td class="num">$ 6,114</td>
               </tr>
               <tr>
-                <td>Tiger Eye</td>
+                <td><a class="teamlink" href="?team=Tiger%20Eye">Tiger Eye</a></td>
                 <td class="num">$ 2,962</td>
                 <td class="num">24</td>
                 <td class="num">2</td>
                 <td class="num">$ 1,481</td>
               </tr>
               <tr>
-                <td>Titan</td>
+                <td><a class="teamlink" href="?team=Titan">Titan</a></td>
                 <td class="num">$ 1,380,703</td>
                 <td class="num">261</td>
                 <td class="num">129</td>
                 <td class="num">$ 10,703</td>
               </tr>
               <tr>
-                <td>Titanium</td>
+                <td><a class="teamlink" href="?team=Titanium">Titanium</a></td>
                 <td class="num">$ 357,966</td>
                 <td class="num">90</td>
                 <td class="num">38</td>
                 <td class="num">$ 9,420</td>
               </tr>
               <tr>
-                <td>Triton</td>
+                <td><a class="teamlink" href="?team=Triton">Triton</a></td>
                 <td class="num">$ 123,891</td>
                 <td class="num">98</td>
                 <td class="num">23</td>
                 <td class="num">$ 5,387</td>
               </tr>
               <tr>
-                <td>Tungsten</td>
+                <td><a class="teamlink" href="?team=Tungsten">Tungsten</a></td>
                 <td class="num">$ 5,873,784</td>
                 <td class="num">956</td>
                 <td class="num">317</td>
                 <td class="num">$ 18,529</td>
               </tr>
               <tr>
-                <td>Turquoise</td>
+                <td><a class="teamlink" href="?team=Turquoise">Turquoise</a></td>
                 <td class="num">$ 2,659</td>
                 <td class="num">66</td>
                 <td class="num">1</td>
                 <td class="num">$ 2,659</td>
               </tr>
               <tr>
-                <td>Ultra</td>
+                <td><a class="teamlink" href="?team=Ultra">Ultra</a></td>
                 <td class="num">$ 304,221</td>
                 <td class="num">10</td>
                 <td class="num">1</td>
                 <td class="num">$ 304,221</td>
               </tr>
               <tr>
-                <td>White</td>
+                <td><a class="teamlink" href="?team=White">White</a></td>
                 <td class="num">$ 1,751,452</td>
                 <td class="num">866</td>
                 <td class="num">127</td>
                 <td class="num">$ 13,791</td>
               </tr>
               <tr>
-                <td>Xerxes</td>
+                <td><a class="teamlink" href="?team=Xerxes">Xerxes</a></td>
                 <td class="num">$ 2,269,339</td>
                 <td class="num">571</td>
                 <td class="num">143</td>
                 <td class="num">$ 15,870</td>
               </tr>
               <tr>
-                <td>Yellow</td>
+                <td><a class="teamlink" href="?team=Yellow">Yellow</a></td>
                 <td class="num">$ 157,941</td>
                 <td class="num">69</td>
                 <td class="num">15</td>
                 <td class="num">$ 10,529</td>
               </tr>
               <tr>
-                <td>Zenith</td>
+                <td><a class="teamlink" href="?team=Zenith">Zenith</a></td>
                 <td class="num">$ 119,540</td>
                 <td class="num">36</td>
                 <td class="num">9</td>
                 <td class="num">$ 13,282</td>
               </tr>
               <tr>
-                <td>Zerogravity</td>
+                <td><a class="teamlink" href="?team=Zerogravity">Zerogravity</a></td>
                 <td class="num">$ 108,312</td>
                 <td class="num">14</td>
                 <td class="num">9</td>
                 <td class="num">$ 12,035</td>
               </tr>
               <tr>
-                <td>Zeus</td>
+                <td><a class="teamlink" href="?team=Zeus">Zeus</a></td>
                 <td class="num">$ 16,403,355</td>
                 <td class="num">2,306</td>
                 <td class="num">886</td>
                 <td class="num">$ 18,514</td>
               </tr>
               <tr>
-                <td>Zinc</td>
+                <td><a class="teamlink" href="?team=Zinc">Zinc</a></td>
                 <td class="num">$ 1,374,458</td>
                 <td class="num">121</td>
                 <td class="num">60</td>

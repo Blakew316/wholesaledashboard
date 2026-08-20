@@ -1,10 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-root="">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>Rankings — Wholesale Payments</title>
   <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png">
+  <meta name="theme-color" content="#F8FAFC">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="WPI Sales">
   <link rel="stylesheet" href="assets/css/wpi.css">
 </head>
 <body>
@@ -101,7 +108,7 @@
           <div class="card__side">
             <div class="field">
               <label for="reportDate">Period</label>
-              <select id="reportDate" name="dt">
+              <select id="reportDate" name="dt" disabled title="Static capture — only the captured period is included">
                 <option value="2026-08" selected="selected">Aug 2026</option>
                 <option value="2026-07">Jul 2026</option>
                 <option value="2026-06">Jun 2026</option>
@@ -116,6 +123,7 @@
                 <option value="2025-09">Sep 2025</option>
                 <option value="2025-08">Aug 2025</option>
               </select>
+              <span class="field__hint">captured period only</span>
             </div>
           </div>
         </div>
@@ -134,140 +142,140 @@
               <tbody>
                 <tr>
                   <td data-sort="1"><span class="badge badge--ok">1st</span></td>
-                  <td data-sort="Stelios">Stelios</td>
+                  <td data-sort="Stelios"><a class="teamlink" href="?team=Stelios">Stelios</a></td>
                   <td class="num">0</td>
                   <td class="num">38</td>
                   <td class="num">9</td>
                 </tr>
                 <tr>
                   <td data-sort="2"><span class="badge badge--info">2nd</span></td>
-                  <td data-sort="Indigo">Indigo</td>
+                  <td data-sort="Indigo"><a class="teamlink" href="?team=Indigo">Indigo</a></td>
                   <td class="num">0</td>
                   <td class="num">34</td>
                   <td class="num">4</td>
                 </tr>
                 <tr>
                   <td data-sort="3"><span class="badge badge--warn">3rd</span></td>
-                  <td data-sort="Black">Black</td>
+                  <td data-sort="Black"><a class="teamlink" href="?team=Black">Black</a></td>
                   <td class="num">0</td>
                   <td class="num">29</td>
                   <td class="num">8</td>
                 </tr>
                 <tr>
                   <td data-sort="4">4th</td>
-                  <td data-sort="Palladium">Palladium</td>
+                  <td data-sort="Palladium"><a class="teamlink" href="?team=Palladium">Palladium</a></td>
                   <td class="num">0</td>
                   <td class="num">25</td>
                   <td class="num">4</td>
                 </tr>
                 <tr>
                   <td data-sort="5">5th</td>
-                  <td data-sort="Zeus">Zeus</td>
+                  <td data-sort="Zeus"><a class="teamlink" href="?team=Zeus">Zeus</a></td>
                   <td class="num">0</td>
                   <td class="num">22</td>
                   <td class="num">10</td>
                 </tr>
                 <tr>
                   <td data-sort="6">6th</td>
-                  <td data-sort="Leonidas">Leonidas</td>
+                  <td data-sort="Leonidas"><a class="teamlink" href="?team=Leonidas">Leonidas</a></td>
                   <td class="num">0</td>
                   <td class="num">20</td>
                   <td class="num">10</td>
                 </tr>
                 <tr>
                   <td data-sort="7">7th</td>
-                  <td data-sort="Brass">Brass</td>
+                  <td data-sort="Brass"><a class="teamlink" href="?team=Brass">Brass</a></td>
                   <td class="num">0</td>
                   <td class="num">15</td>
                   <td class="num">2</td>
                 </tr>
                 <tr>
                   <td data-sort="8">8th</td>
-                  <td data-sort="Emerald">Emerald</td>
+                  <td data-sort="Emerald"><a class="teamlink" href="?team=Emerald">Emerald</a></td>
                   <td class="num">0</td>
                   <td class="num">13</td>
                   <td class="num">3</td>
                 </tr>
                 <tr>
                   <td data-sort="9">9th</td>
-                  <td data-sort="Peach">Peach</td>
+                  <td data-sort="Peach"><a class="teamlink" href="?team=Peach">Peach</a></td>
                   <td class="num">0</td>
                   <td class="num">13</td>
                   <td class="num">6</td>
                 </tr>
                 <tr>
                   <td data-sort="10">10th</td>
-                  <td data-sort="MAVERICK">MAVERICK</td>
+                  <td data-sort="MAVERICK"><a class="teamlink" href="?team=MAVERICK">MAVERICK</a></td>
                   <td class="num">0</td>
                   <td class="num">12</td>
                   <td class="num">3</td>
                 </tr>
                 <tr>
                   <td data-sort="11">11th</td>
-                  <td data-sort="Shadow">Shadow</td>
+                  <td data-sort="Shadow"><a class="teamlink" href="?team=Shadow">Shadow</a></td>
                   <td class="num">0</td>
                   <td class="num">12</td>
                   <td class="num">6</td>
                 </tr>
                 <tr>
                   <td data-sort="12">12th</td>
-                  <td data-sort="Orion">Orion</td>
+                  <td data-sort="Orion"><a class="teamlink" href="?team=Orion">Orion</a></td>
                   <td class="num">0</td>
                   <td class="num">12</td>
                   <td class="num">3</td>
                 </tr>
                 <tr>
                   <td data-sort="13">13th</td>
-                  <td data-sort="Mahogany">Mahogany</td>
+                  <td data-sort="Mahogany"><a class="teamlink" href="?team=Mahogany">Mahogany</a></td>
                   <td class="num">0</td>
                   <td class="num">11</td>
                   <td class="num">1</td>
                 </tr>
                 <tr>
                   <td data-sort="14">14th</td>
-                  <td data-sort="ARTEMIS">ARTEMIS</td>
+                  <td data-sort="ARTEMIS"><a class="teamlink" href="?team=ARTEMIS">ARTEMIS</a></td>
                   <td class="num">0</td>
                   <td class="num">11</td>
                   <td class="num">3</td>
                 </tr>
                 <tr>
                   <td data-sort="15">15th</td>
-                  <td data-sort="Athena">Athena</td>
+                  <td data-sort="Athena"><a class="teamlink" href="?team=Athena">Athena</a></td>
                   <td class="num">0</td>
                   <td class="num">9</td>
                   <td class="num">3</td>
                 </tr>
                 <tr>
                   <td data-sort="16">16th</td>
-                  <td data-sort="Chrome">Chrome</td>
+                  <td data-sort="Chrome"><a class="teamlink" href="?team=Chrome">Chrome</a></td>
                   <td class="num">0</td>
                   <td class="num">9</td>
                   <td class="num">1</td>
                 </tr>
                 <tr>
                   <td data-sort="17">17th</td>
-                  <td data-sort="House">House</td>
+                  <td data-sort="House"><a class="teamlink" href="?team=House">House</a></td>
                   <td class="num">0</td>
                   <td class="num">8</td>
                   <td class="num">5</td>
                 </tr>
                 <tr>
                   <td data-sort="18">18th</td>
-                  <td data-sort="Apollo">Apollo</td>
+                  <td data-sort="Apollo"><a class="teamlink" href="?team=Apollo">Apollo</a></td>
                   <td class="num">0</td>
                   <td class="num">8</td>
                   <td class="num">3</td>
                 </tr>
                 <tr>
                   <td data-sort="19">19th</td>
-                  <td data-sort="Mercury">Mercury</td>
+                  <td data-sort="Mercury"><a class="teamlink" href="?team=Mercury">Mercury</a></td>
                   <td class="num">0</td>
                   <td class="num">7</td>
                   <td class="num">1</td>
                 </tr>
                 <tr>
                   <td data-sort="20">20th</td>
-                  <td data-sort="FORGED">FORGED</td>
+                  <td data-sort="FORGED"><a class="teamlink" href="?team=FORGED">FORGED</a></td>
                   <td class="num">0</td>
                   <td class="num">6</td>
                   <td class="num">1</td>
@@ -297,91 +305,91 @@
               <tbody>
                 <tr>
                   <td data-sort="1"><span class="badge badge--ok">1st</span></td>
-                  <td>Michael Lynn Holmes <span class="sub">- Leonidas</span></td>
+                  <td><a class="teamlink" href="?team=Michael%20Lynn%20Holmes">Michael Lynn Holmes</a> <span class="sub">- <a class="teamlink" href="?team=Leonidas">Leonidas</a></span></td>
                   <td class="num">10</td>
                   <td class="num">3</td>
                 </tr>
                 <tr>
                   <td data-sort="2"><span class="badge badge--info">2nd</span></td>
-                  <td>Mathias Thomas <span class="sub">- Indigo</span></td>
+                  <td><a class="teamlink" href="?team=Mathias%20Thomas">Mathias Thomas</a> <span class="sub">- <a class="teamlink" href="?team=Indigo">Indigo</a></span></td>
                   <td class="num">9</td>
                   <td class="num">1</td>
                 </tr>
                 <tr>
                   <td data-sort="3"><span class="badge badge--warn">3rd</span></td>
-                  <td>Brogan Landreneau <span class="sub">- Palladium</span></td>
+                  <td><a class="teamlink" href="?team=Brogan%20Landreneau">Brogan Landreneau</a> <span class="sub">- <a class="teamlink" href="?team=Palladium">Palladium</a></span></td>
                   <td class="num">9</td>
                   <td class="num">4</td>
                 </tr>
                 <tr>
                   <td data-sort="4">4th</td>
-                  <td>Andrew Anderson <span class="sub">- Zeus</span></td>
+                  <td><a class="teamlink" href="?team=Andrew%20Anderson">Andrew Anderson</a> <span class="sub">- <a class="teamlink" href="?team=Zeus">Zeus</a></span></td>
                   <td class="num">6</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
                   <td data-sort="5">5th</td>
-                  <td>David Hamlin <span class="sub">- Stelios</span></td>
+                  <td><a class="teamlink" href="?team=David%20Hamlin">David Hamlin</a> <span class="sub">- <a class="teamlink" href="?team=Stelios">Stelios</a></span></td>
                   <td class="num">6</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
                   <td data-sort="6">6th</td>
-                  <td>Moses Forde <span class="sub">- Athena</span></td>
+                  <td><a class="teamlink" href="?team=Moses%20Forde">Moses Forde</a> <span class="sub">- <a class="teamlink" href="?team=Athena">Athena</a></span></td>
                   <td class="num">6</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
                   <td data-sort="7">7th</td>
-                  <td>Jamie Singleton <span class="sub">- Indigo</span></td>
+                  <td><a class="teamlink" href="?team=Jamie%20Singleton">Jamie Singleton</a> <span class="sub">- <a class="teamlink" href="?team=Indigo">Indigo</a></span></td>
                   <td class="num">6</td>
                   <td class="num">1</td>
                 </tr>
                 <tr>
                   <td data-sort="8">8th</td>
-                  <td>Kirby Pate <span class="sub">- Stelios</span></td>
+                  <td><a class="teamlink" href="?team=Kirby%20Pate">Kirby Pate</a> <span class="sub">- <a class="teamlink" href="?team=Stelios">Stelios</a></span></td>
                   <td class="num">5</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
                   <td data-sort="9">9th</td>
-                  <td>Enrique Jimenez <span class="sub">- Emerald</span></td>
+                  <td><a class="teamlink" href="?team=Enrique%20Jimenez">Enrique Jimenez</a> <span class="sub">- <a class="teamlink" href="?team=Emerald">Emerald</a></span></td>
                   <td class="num">5</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
                   <td data-sort="10">10th</td>
-                  <td>Bob Dupor <span class="sub">- Indigo</span></td>
+                  <td><a class="teamlink" href="?team=Bob%20Dupor">Bob Dupor</a> <span class="sub">- <a class="teamlink" href="?team=Indigo">Indigo</a></span></td>
                   <td class="num">5</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
                   <td data-sort="11">11th</td>
-                  <td>Andres Martinez <span class="sub">- Stelios</span></td>
+                  <td><a class="teamlink" href="?team=Andres%20Martinez">Andres Martinez</a> <span class="sub">- <a class="teamlink" href="?team=Stelios">Stelios</a></span></td>
                   <td class="num">4</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
                   <td data-sort="12">12th</td>
-                  <td>Brandon Creasy <span class="sub">- FORGED</span></td>
+                  <td><a class="teamlink" href="?team=Brandon%20Creasy">Brandon Creasy</a> <span class="sub">- <a class="teamlink" href="?team=FORGED">FORGED</a></span></td>
                   <td class="num">4</td>
                   <td class="num">1</td>
                 </tr>
                 <tr>
                   <td data-sort="13">13th</td>
-                  <td>Amber Riley <span class="sub">- Black</span></td>
+                  <td><a class="teamlink" href="?team=Amber%20Riley">Amber Riley</a> <span class="sub">- <a class="teamlink" href="?team=Black">Black</a></span></td>
                   <td class="num">4</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
                   <td data-sort="14">14th</td>
-                  <td>Avery Fennell <span class="sub">- Mahogany</span></td>
+                  <td><a class="teamlink" href="?team=Avery%20Fennell">Avery Fennell</a> <span class="sub">- <a class="teamlink" href="?team=Mahogany">Mahogany</a></span></td>
                   <td class="num">4</td>
                   <td class="num">0</td>
                 </tr>
                 <tr>
                   <td data-sort="15">15th</td>
-                  <td>Michael Colgan <span class="sub">- Orion</span></td>
+                  <td><a class="teamlink" href="?team=Michael%20Colgan">Michael Colgan</a> <span class="sub">- <a class="teamlink" href="?team=Orion">Orion</a></span></td>
                   <td class="num">4</td>
                   <td class="num">0</td>
                 </tr>
