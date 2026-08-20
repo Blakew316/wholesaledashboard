@@ -456,10 +456,19 @@
   }
   var PALETTE = [AZURE, GREEN, NAVY, AMBER, ROSE, SPRING, DEEP, GRAY];
 
+  /* charts render 1:1 at the container's real pixel width — a stretched
+     viewBox distorts text/dots and breaks the dash-based line animation */
+  function chartWidth(root) {
+    var w = root.clientWidth;
+    if (!w && root.parentNode) w = root.parentNode.clientWidth;
+    return Math.max(w || 640, 300);
+  }
+
   function drawCombo(root, cfg) {
-    var W = 640, H = 200, padL = 36, padR = 36, padB = 22, padT = 10;
-    var svg = el("svg", { viewBox: "0 0 " + W + " " + H, preserveAspectRatio: "none" });
-    svg.style.height = (cfg.height || 200) + "px";
+    var W = chartWidth(root), H = cfg.height || 200,
+        padL = 42, padR = cfg.line ? 46 : 14, padB = 22, padT = 10;
+    var svg = el("svg", { viewBox: "0 0 " + W + " " + H });
+    svg.style.height = H + "px";
     var labels = cfg.labels || [];
     var bars = cfg.bars || [];
     var line = cfg.line;
@@ -535,8 +544,7 @@
       }).join("");
       var path = el("path", {
         d: d, fill: "none", stroke: line.color || NAVY,
-        "stroke-width": 2.2, "stroke-linecap": "round", "class": "line-path",
-        "vector-effect": "non-scaling-stroke"
+        "stroke-width": 2.2, "stroke-linecap": "round", "class": "line-path"
       });
       svg.appendChild(path);
       pts.forEach(function (p, pi) {
@@ -563,11 +571,11 @@
   }
 
   function drawArea(root, cfg) {
-    var W = 640, H = cfg.axes === false ? 90 : 180;
-    var padL = cfg.axes === false ? 4 : 34, padR = 8,
+    var W = chartWidth(root), H = cfg.height || (cfg.axes === false ? 90 : 180);
+    var padL = cfg.axes === false ? 4 : 40, padR = 8,
         padB = cfg.axes === false ? 4 : 20, padT = 8;
-    var svg = el("svg", { viewBox: "0 0 " + W + " " + H, preserveAspectRatio: "none" });
-    svg.style.height = (cfg.height || H) + "px";
+    var svg = el("svg", { viewBox: "0 0 " + W + " " + H });
+    svg.style.height = H + "px";
     var vals = cfg.values || [];
     var n = vals.length;
     if (!n) { root.appendChild(svg); return; }
@@ -605,7 +613,7 @@
     svg.appendChild(area);
     var path = el("path", {
       d: d, fill: "none", stroke: color, "stroke-width": 2.2,
-      "stroke-linecap": "round", "class": "line-path", "vector-effect": "non-scaling-stroke"
+      "stroke-linecap": "round", "class": "line-path"
     });
     svg.appendChild(path);
     if (cfg.labels && cfg.axes !== false) {
@@ -621,6 +629,7 @@
   }
 
   function drawDonut(root, cfg) {
+    root.classList.add("chart-donut"); /* fixed-size; exempt from resize redraws */
     var size = cfg.size || 168, sw = cfg.thickness || 17;
     var svg = el("svg", { viewBox: "0 0 " + size + " " + size });
     svg.style.height = size + "px";
@@ -664,17 +673,32 @@
     root.appendChild(svg);
   }
 
-  function renderAllCharts() {
-    document.querySelectorAll("[data-chart]").forEach(function (node) {
-      var cfg;
-      try { cfg = JSON.parse(node.getAttribute("data-chart")); } catch (e) { return; }
-      node.classList.add("chart");
-      if (cfg.kind === "combo") drawCombo(node, cfg);
-      else if (cfg.kind === "bars") drawBars(node, cfg);
-      else if (cfg.kind === "area" || cfg.kind === "spark") drawArea(node, cfg);
-      else if (cfg.kind === "donut") drawDonut(node, cfg);
-    });
+  function renderChart(node) {
+    var cfg;
+    try { cfg = JSON.parse(node.getAttribute("data-chart")); } catch (e) { return; }
+    node.classList.add("chart");
+    node.innerHTML = "";
+    if (cfg.kind === "combo") drawCombo(node, cfg);
+    else if (cfg.kind === "bars") drawBars(node, cfg);
+    else if (cfg.kind === "area" || cfg.kind === "spark") drawArea(node, cfg);
+    else if (cfg.kind === "donut") drawDonut(node, cfg);
   }
+  function renderAllCharts() {
+    document.querySelectorAll("[data-chart]").forEach(renderChart);
+  }
+  /* charts are drawn at true pixel width — redraw when the layout changes */
+  var resizeTimer = null;
+  window.addEventListener("resize", function () {
+    if (resizeTimer) clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function () {
+      document.querySelectorAll("[data-chart]").forEach(function (node) {
+        var svg = node.querySelector("svg");
+        if (!svg || node.classList.contains("chart-donut")) return;
+        var vb = (svg.getAttribute("viewBox") || "").split(" ");
+        if (Math.abs((parseFloat(vb[2]) || 0) - chartWidth(node)) > 8) renderChart(node);
+      });
+    }, 180);
+  });
 
   /* footer year */
   document.querySelectorAll("[data-year]").forEach(function (n) {
