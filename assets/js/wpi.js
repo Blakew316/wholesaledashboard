@@ -972,7 +972,7 @@
       if (!m) return;
       var s = m.summary;
       document.getElementById("mavKpis").innerHTML = [
-        ["Approved", s.approved], ["Processing", s.processing], ["Not processing", s.notProcessing],
+        ["Approved", s.approved], ["Processing", s.processing], ["Not Processing", s.notProcessing],
         ["Ratio", pct(s.ratio)], ["Installed", s.installed],
         ["Commission", money(s.commission)], ["Volume", money(s.volume)],
         ["Transactions", s.transactions.toLocaleString("en-US")]

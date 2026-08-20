@@ -390,25 +390,41 @@ button { font-family: inherit; }
 
 /* KPI strip (period-filtered team section) */
 .kpirow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 36px;
-  padding: 2px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(104px, 1fr));
+  gap: 18px 20px;
+  padding: 8px 0 20px;
+  border-bottom: 1px solid var(--line-2);
+  margin-bottom: 18px;
 }
+.mavkpi { min-width: 0; }
 .mavkpi b {
   display: block;
-  font-size: clamp(1.15rem, 1.8vw, 1.5rem);
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
   font-weight: 700;
   letter-spacing: -.02em;
+  line-height: 1.15;
   color: var(--navy);
   font-variant-numeric: tabular-nums;
 }
 .mavkpi span {
+  display: block;
+  margin-top: 3px;
   font-size: 10.5px;
   font-weight: 650;
-  letter-spacing: .08em;
+  letter-spacing: .07em;
   text-transform: uppercase;
   color: var(--muted);
+  white-space: nowrap;
+}
+
+/* chart header row: subheader left, legend right */
+.chartbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin: 0 0 4px;
 }
 
 /* KPI */
@@ -814,7 +830,7 @@ th.sortable.desc .caret { opacity: 1; }
    ========================================================================== */
 .chart { width: 100%; }
 .chart svg { width: 100%; height: auto; }
-.chart .axis-label { font-size: 10px; fill: var(--faint); font-family: var(--font); }
+.chart .axis-label { font-size: 11px; fill: var(--muted); font-family: var(--font); }
 .chart .grid-line { stroke: var(--line-2); }
 
 .legend { display: flex; flex-wrap: wrap; gap: 14px; font-size: 12px; color: var(--muted); }
