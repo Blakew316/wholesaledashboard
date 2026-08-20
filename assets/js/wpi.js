@@ -225,6 +225,7 @@
     if (er) er.style.display = show ? "" : "none";
   }
   function refilter() {
+    var teamRe = teamQuery ? entityRe(teamQuery) : null;
     var all = Array.prototype.slice.call(document.querySelectorAll("table.tbl"));
     all.forEach(function (table) {
       var rows = dataRows(table);
@@ -243,9 +244,8 @@
         }
         fns.push(reg.fn);
       });
-      if (teamQuery) {
-        var q = teamQuery.toLowerCase();
-        var teamPred = function (tr) { return tr.textContent.toLowerCase().indexOf(q) !== -1; };
+      if (teamRe) {
+        var teamPred = function (tr) { return teamRe.test(tr.textContent); };
         /* only constrain tables that actually mention the team — a By-GM
            table without a team column shouldn't blank out */
         if (rows.some(teamPred)) fns.push(teamPred);
@@ -271,15 +271,87 @@
   function isAllOption(value, label) {
     return !value.trim() || /^all\b/i.test(value.trim()) || /^(all|any)\b/i.test(label.trim());
   }
+  /* entity matching: whole-word, so "Ice" never matches "Service" */
+  function escRe(s) { return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"); }
+  function entityRe(q) {
+    return new RegExp("(^|[^A-Za-z0-9])" + escRe(q.trim()).replace(/\s+/g, "\\s+") + "($|[^A-Za-z0-9])", "i");
+  }
+
+  /* Rebuild a filter select's options from the data actually present in its
+     target tables, so every option is guaranteed to match rows. The source
+     column is data-col if given, else the column whose header matches the
+     field's label. Returns false (leaving options untouched) when no column
+     can be identified. */
+  function rebuildSelectOptions(sel, tables) {
+    var field = sel.closest ? sel.closest(".field") : null;
+    var labEl = field ? field.querySelector("label") : null;
+    var label = labEl ? labEl.textContent.trim().toLowerCase().replace(/[?:]/g, "") : "";
+    var dataCol = sel.getAttribute("data-col");
+    var values = [], seen = {};
+    tables.forEach(function (t) {
+      var col = -1;
+      if (dataCol) {
+        col = parseInt(dataCol, 10);
+      } else if (label) {
+        var ths = t.querySelectorAll("thead th");
+        for (var i = 0; i < ths.length; i++) {
+          var h = ths[i].textContent.trim().toLowerCase().replace(/[▾▴]/g, "").trim();
+          if (!h) continue;
+          if (h === label || h.indexOf(label) !== -1 || label.indexOf(h) !== -1 ||
+              (h.length >= 5 && label.length >= 5 && h.slice(0, 5) === label.slice(0, 5))) {
+            col = i;
+            break;
+          }
+        }
+      }
+      if (col < 0) return;
+      dataRows(t).forEach(function (tr) {
+        var td = tr.children[col];
+        if (!td) return;
+        var link = td.querySelector(".teamlink, .ent");
+        var v;
+        if (link) {
+          v = link.textContent;
+        } else {
+          var clone = td.cloneNode(true);
+          clone.querySelectorAll(".sub").forEach(function (s) { s.remove(); });
+          v = clone.textContent;
+        }
+        v = v.trim().replace(/\s+/g, " ");
+        if (!v || v === "—" || v === "-") return;
+        var k = v.toLowerCase();
+        if (!seen[k]) { seen[k] = true; values.push(v); }
+      });
+    });
+    if (!values.length) return false;
+    values.sort(function (a, b) { return a.toLowerCase().localeCompare(b.toLowerCase()); });
+    sel.innerHTML = "";
+    var all = document.createElement("option");
+    all.value = "";
+    all.textContent = "All (" + values.length + ")";
+    sel.appendChild(all);
+    values.forEach(function (v) {
+      var o = document.createElement("option");
+      o.value = v;
+      o.textContent = v;
+      sel.appendChild(o);
+    });
+    sel.selectedIndex = 0;
+    return true;
+  }
+
   document.querySelectorAll("[data-filter-select]").forEach(function (sel) {
+    var tables = tablesFor(sel.getAttribute("data-filter-select"));
+    rebuildSelectOptions(sel, tables);
+    var cached = { q: null, re: null };
     registerFilter(sel.getAttribute("data-filter-select"), function (tr) {
-      /* "All"-style options show everything; otherwise match on the option's
-         visible label — legacy option values carry prefixes like "** FIRE" */
       var opt = sel.options[sel.selectedIndex];
       var label = opt ? opt.textContent : sel.value;
       if (isAllOption(sel.value, label)) return true;
-      var q = label.trim().toLowerCase();
-      return !q || tr.textContent.toLowerCase().indexOf(q) !== -1;
+      var q = label.trim();
+      if (!q) return true;
+      if (cached.q !== q) { cached.q = q; cached.re = entityRe(q); }
+      return cached.re.test(tr.textContent);
     }, sel);
     sel.addEventListener("change", refilter);
   });

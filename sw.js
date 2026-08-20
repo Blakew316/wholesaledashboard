@@ -3,7 +3,7 @@
    (installed-to-home-screen on iOS included). */
 "use strict";
 
-var VERSION = "wpi-dash-v1";
+var VERSION = "wpi-dash-v2";
 
 var PRECACHE = ["./","./Rankings.html","./index.html","./merchants/detail/719070000047137.html","./merchants/detail/719070000047178.html","./merchants/detail/719070000047897.html","./merchants/detail/719070000048788.html","./merchants/detail/719070000048911.html","./merchants/detail/719070000049273.html","./merchants/detail/719070000049638.html","./merchants/detail/719070000050487.html","./merchants/detail/719070000051139.html","./merchants/detail/719070000053143.html","./merchants/detail/719070000053283.html","./merchants/detail/719070000053861.html","./merchants/detail/719070000054026.html","./merchants/detail/719070000054380.html","./merchants/detail/719070000055577.html","./merchants/detail/719070000056435.html","./merchants/detail/719070000056567.html","./merchants/detail/719070000056914.html","./merchants/detail/719070000057813.html","./merchants/detail/719070000058464.html","./merchants/search.html","./payverification/detail.html","./payverification/roster.html","./reports/carcontest2025.html","./reports/gainloss.html","./reports/hpar.html","./reports/nonprocessing.html","./reports/pendingdeals.html","./reports/threshold__p_0.html","./reports/volume.html","./reports/volumeavg.html","./reports/weeklyprocessing.html","./assets/css/wpi.css","./assets/js/wpi.js","./assets/img/favicon.svg","./assets/img/icon-192.png","./assets/img/icon-512.png","./assets/img/icon-512-maskable.png","./assets/img/apple-touch-icon.png","./manifest.webmanifest"];
 

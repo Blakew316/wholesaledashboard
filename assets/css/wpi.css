@@ -570,8 +570,8 @@ th.sortable.desc .caret { opacity: 1; }
 .filters {
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
-  gap: 10px;
+  align-items: flex-start; /* hints below a control must not push its neighbors out of line */
+  gap: 12px 14px;
   margin-bottom: 20px;
 }
 .field { display: flex; flex-direction: column; gap: 5px; }
@@ -589,6 +589,8 @@ th.sortable.desc .caret { opacity: 1; }
   color: var(--ink);
   padding: 8px 12px;
   min-width: 130px;
+  max-width: 250px;
+  height: 38px;
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 10px;
@@ -662,8 +664,8 @@ th.sortable.desc .caret { opacity: 1; }
 .searchbox { position: relative; }
 .searchbox svg {
   position: absolute;
-  left: 11px; top: 50%;
-  translate: 0 -50%;
+  left: 11px;
+  bottom: 11.5px; /* anchored to the input, not the whole field (label sits above) */
   width: 15px; height: 15px;
   color: var(--faint);
   pointer-events: none;
