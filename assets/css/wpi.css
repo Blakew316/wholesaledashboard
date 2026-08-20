@@ -629,7 +629,9 @@ th.sortable.desc .caret { opacity: 1; }
   color: var(--muted);
 }
 .field input,
-.field select {
+.field select,
+.fieldu input,
+.fieldu select {
   font-family: inherit;
   font-size: 13.5px;
   color: var(--ink);
@@ -651,7 +653,9 @@ th.sortable.desc .caret { opacity: 1; }
   padding-right: 30px;
 }
 .field input:focus,
-.field select:focus {
+.field select:focus,
+.fieldu input:focus,
+.fieldu select:focus {
   border-color: var(--azure);
   box-shadow: 0 0 0 3px var(--tint-azure-14);
 }
@@ -705,6 +709,93 @@ th.sortable.desc .caret { opacity: 1; }
   transition: background .2s ease, color .2s ease, transform .15s var(--ease);
 }
 .filterchip button:hover { background: var(--bad-bg); color: var(--bad-text); transform: scale(1.08); }
+
+/* ---- production-style filter controls: month picker + date range ---- */
+.fieldu { display: flex; flex-direction: column; gap: 5px; position: relative; }
+.fieldu__label { order: 2; font-size: 11.5px; color: var(--muted); }
+
+.pick__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  min-width: 128px;
+  height: 38px;
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 13.5px;
+  color: var(--ink);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+.pick__btn:hover, .pick.is-open .pick__btn {
+  border-color: var(--azure);
+  box-shadow: 0 0 0 3px var(--tint-azure-14);
+}
+.pick__btn svg { width: 11px; height: 11px; color: var(--muted); flex-shrink: 0; }
+
+.pick__pop {
+  position: absolute;
+  top: calc(38px + 8px);
+  left: 0;
+  z-index: 70;
+  min-width: 264px;
+  padding: 14px;
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  box-shadow: var(--shadow-2);
+  display: none;
+}
+.pick.is-open .pick__pop { display: block; animation: fadeIn .18s var(--ease); }
+
+.pick__ytd { display: flex; gap: 22px; margin-bottom: 10px; }
+.pick__ytd button {
+  border: 0; background: none; padding: 2px 0;
+  font-family: inherit; font-size: 14px; font-weight: 600;
+  color: var(--azure-deep); cursor: pointer;
+}
+.pick__ytd button:hover { text-decoration: underline; }
+.pick__ytd button.is-sel { color: var(--navy); text-decoration: underline; }
+.pick__ytd button.is-off { color: var(--faint); cursor: default; pointer-events: none; }
+
+.pick__year {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 8px;
+}
+.pick__year b { font-size: 14.5px; color: var(--ink); }
+.pick__year button {
+  width: 26px; height: 26px; border: 0; background: none;
+  font-size: 15px; color: var(--muted); cursor: pointer; border-radius: 7px;
+}
+.pick__year button:hover { background: var(--tint-azure-08); color: var(--ink); }
+.pick__year button:disabled { opacity: .3; cursor: default; }
+
+.pick__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 4px; }
+.pick__m {
+  border: 0; background: none; padding: 8px 4px;
+  font-family: inherit; font-size: 13.5px; color: var(--ink-2);
+  border-radius: 9px; cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+.pick__m:hover { background: var(--tint-azure-08); color: var(--navy); }
+.pick__m.is-sel { background: var(--azure); color: #fff; font-weight: 600; }
+.pick__m.is-off { color: var(--faint); pointer-events: none; }
+
+.range__row { margin-bottom: 10px; }
+.range__row label { display: block; font-size: 12.5px; font-weight: 600; color: var(--ink); margin-bottom: 5px; }
+.range__row input {
+  width: 100%; height: 36px; padding: 7px 10px;
+  font-family: inherit; font-size: 13.5px; color: var(--ink);
+  border: 1px solid var(--line); border-radius: 9px; outline: none;
+}
+.range__row input:focus { border-color: var(--azure); box-shadow: 0 0 0 3px var(--tint-azure-14); }
+.range__actions { display: flex; gap: 8px; }
+.range__actions .btn--primary { flex: 1; justify-content: center; border-radius: 9px; }
+.range__actions .btn { border-radius: 9px; }
 
 /* search box with icon */
 .searchbox { position: relative; }

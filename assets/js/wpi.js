@@ -386,6 +386,192 @@
 
   sanitizeControls();
 
+  /* ---------------- processing-status filter ----------------
+     <select data-filter-proc="#tbl" data-col="10">
+       options: value "" = all, "yes" = processing, "no" = not processing */
+  document.querySelectorAll("[data-filter-proc]").forEach(function (sel) {
+    var col = parseInt(sel.getAttribute("data-col"), 10) || 0;
+    registerFilter(sel.getAttribute("data-filter-proc"), function (tr) {
+      var v = sel.value.trim().toLowerCase();
+      if (!v || v === "all") return true;
+      var td = tr.children[col];
+      if (!td) return true;
+      if (v === "yes") return !!td.querySelector(".badge--ok");
+      if (v === "no") return !!td.querySelector(".badge--off");
+      return true;
+    }, sel);
+    sel.addEventListener("change", refilter);
+  });
+
+  /* ---------------- date-range popover filter ----------------
+     <div class="pick" data-daterange="#tbl" data-col="2"> — filters rows
+     by the yyyymmdd data-sort key in the given column. */
+  function closePickers(except) {
+    document.querySelectorAll(".pick.is-open").forEach(function (p) {
+      if (p !== except) p.classList.remove("is-open");
+    });
+  }
+  document.addEventListener("click", function () { closePickers(null); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") closePickers(null); });
+
+  document.querySelectorAll("[data-daterange]").forEach(function (root) {
+    var col = parseInt(root.getAttribute("data-col"), 10) || 0;
+    var state = { from: 0, to: 0 };
+    root.classList.add("pick");
+    root.innerHTML =
+      '<button type="button" class="pick__btn"><span>All Dates</span>' +
+      '<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' +
+      '<div class="pick__pop" style="min-width:230px">' +
+      '<div class="range__row"><label>From</label><input type="date"></div>' +
+      '<div class="range__row"><label>To</label><input type="date"></div>' +
+      '<div class="range__actions"><button type="button" class="btn btn--primary btn--sm">Apply</button>' +
+      '<button type="button" class="btn btn--sm">Clear</button></div></div>';
+    var btn = root.querySelector(".pick__btn");
+    var label = btn.querySelector("span");
+    var pop = root.querySelector(".pick__pop");
+    var inputs = root.querySelectorAll("input");
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var open = root.classList.contains("is-open");
+      closePickers(null);
+      if (!open) root.classList.add("is-open");
+    });
+    pop.addEventListener("click", function (e) { e.stopPropagation(); });
+    function key(v) { return v ? parseInt(v.replace(/-/g, ""), 10) : 0; }
+    function fmt(v) { var p = v.split("-"); return parseInt(p[1], 10) + "/" + parseInt(p[2], 10); }
+    root.querySelector(".btn--primary").addEventListener("click", function () {
+      state.from = key(inputs[0].value);
+      state.to = key(inputs[1].value);
+      if (state.from || state.to) {
+        label.textContent = (inputs[0].value ? fmt(inputs[0].value) : "…") + " – " +
+                            (inputs[1].value ? fmt(inputs[1].value) : "…");
+      } else {
+        label.textContent = "All Dates";
+      }
+      root.classList.remove("is-open");
+      refilter();
+    });
+    root.querySelector(".btn:not(.btn--primary)").addEventListener("click", function () {
+      inputs[0].value = ""; inputs[1].value = "";
+      state.from = 0; state.to = 0;
+      label.textContent = "All Dates";
+      root.classList.remove("is-open");
+      refilter();
+    });
+    registerFilter(root.getAttribute("data-daterange"), function (tr) {
+      if (!state.from && !state.to) return true;
+      var td = tr.children[col];
+      if (!td) return true;
+      var k = parseInt(td.getAttribute("data-sort") || "0", 10);
+      if (!k) return false;
+      if (state.from && k < state.from) return false;
+      if (state.to && k > state.to) return false;
+      return true;
+    });
+  });
+
+  /* ---------------- month / YTD picker ----------------
+     <div class="pick" data-monthpick='{"value":"2026-08","enabled":[...],"target":"#sel"}'>
+     Keys: "YYYY-MM" and "YTD-YYYY". With a target select (the period state
+     holder), picking an enabled key sets it; without one, only display. */
+  var MONTHS_ABBR = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  function pickKeyToOption(k) {
+    if (k.indexOf("YTD-") === 0) return k.slice(4) + " YTD";
+    var p = k.split("-");
+    return MONTHS_ABBR[parseInt(p[1], 10) - 1] + " " + p[0];
+  }
+  function pickKeyLabel(k) {
+    if (k.indexOf("YTD-") === 0) return "YTD " + k.slice(4);
+    var p = k.split("-");
+    return MONTHS_ABBR[parseInt(p[1], 10) - 1] + " " + p[0];
+  }
+  document.querySelectorAll("[data-monthpick]").forEach(function (root) {
+    var cfg;
+    try { cfg = JSON.parse(root.getAttribute("data-monthpick")); } catch (e) { return; }
+    var enabled = {};
+    (cfg.enabled || []).forEach(function (k) { enabled[k] = true; });
+    var value = cfg.value;
+    var target = cfg.target ? document.querySelector(cfg.target) : null;
+    var year = parseInt((value || "2026-08").slice(value.indexOf("YTD-") === 0 ? 4 : 0, value.indexOf("YTD-") === 0 ? 8 : 4), 10) || 2026;
+    var MINY = 2025, MAXY = 2026;
+    root.classList.add("pick");
+    root.innerHTML =
+      '<button type="button" class="pick__btn"><span></span>' +
+      '<svg viewBox="0 0 12 12" fill="none"><path d="M2.5 4.5 6 8l3.5-3.5" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>' +
+      '<div class="pick__pop"></div>';
+    var btn = root.querySelector(".pick__btn");
+    var label = btn.querySelector("span");
+    var pop = root.querySelector(".pick__pop");
+    function setValue(k) {
+      if (!enabled[k]) return;
+      value = k;
+      label.textContent = pickKeyLabel(k);
+      if (target) {
+        target.value = pickKeyToOption(k);
+        var ev = document.createEvent("HTMLEvents");
+        ev.initEvent("change", true, false);
+        target.dispatchEvent(ev);
+      }
+      root.classList.remove("is-open");
+      renderPop();
+    }
+    function renderPop() {
+      var html = '<div class="pick__ytd">';
+      [MAXY, MINY].forEach(function (y) {
+        var k = "YTD-" + y;
+        html += '<button type="button" data-k="' + k + '" class="' +
+          (value === k ? "is-sel " : "") + (enabled[k] ? "" : "is-off") +
+          '"' + (enabled[k] ? "" : ' title="Not in this snapshot"') + ">YTD " + y + "</button>";
+      });
+      html += "</div>";
+      html += '<div class="pick__year">' +
+        '<button type="button" data-nav="-1"' + (year <= MINY ? " disabled" : "") + '>&lsaquo;</button>' +
+        "<b>" + year + "</b>" +
+        '<button type="button" data-nav="1"' + (year >= MAXY ? " disabled" : "") + '>&rsaquo;</button></div>';
+      html += '<div class="pick__grid">';
+      for (var m = 1; m <= 12; m++) {
+        var k2 = year + "-" + (m < 10 ? "0" + m : m);
+        html += '<button type="button" data-k="' + k2 + '" class="pick__m ' +
+          (value === k2 ? "is-sel " : "") + (enabled[k2] ? "" : "is-off") +
+          '"' + (enabled[k2] ? "" : ' title="Not in this snapshot"') + ">" + MONTHS_ABBR[m - 1] + "</button>";
+      }
+      html += "</div>";
+      pop.innerHTML = html;
+    }
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var open = root.classList.contains("is-open");
+      closePickers(null);
+      if (!open) { renderPop(); root.classList.add("is-open"); }
+    });
+    pop.addEventListener("click", function (e) {
+      e.stopPropagation();
+      var t = e.target.closest ? e.target.closest("button") : null;
+      if (!t) return;
+      if (t.getAttribute("data-nav")) {
+        year += parseInt(t.getAttribute("data-nav"), 10);
+        renderPop();
+        return;
+      }
+      var k = t.getAttribute("data-k");
+      if (k) setValue(k);
+    });
+    label.textContent = pickKeyLabel(value);
+    /* stay in sync when the target changes some other way (deep links) */
+    if (target) {
+      target.addEventListener("change", function () {
+        var tv = target.value;
+        var found = null;
+        (cfg.enabled || []).forEach(function (k) { if (pickKeyToOption(k) === tv) found = k; });
+        if (found) { value = found; label.textContent = pickKeyLabel(found); }
+      });
+      var tv0 = target.value;
+      (cfg.enabled || []).forEach(function (k) {
+        if (pickKeyToOption(k) === tv0) { value = k; label.textContent = pickKeyLabel(k); }
+      });
+    }
+  });
+
   /* ----- team drill-down ----- */
   function setTeam(name, updateUrl) {
     teamQuery = (name || "").trim();
@@ -838,6 +1024,10 @@
     if (p && data.months[p]) {
       sel.value = p;
       render(p);
+      /* let linked controls (month picker) sync their labels */
+      var ev = document.createEvent("HTMLEvents");
+      ev.initEvent("change", true, false);
+      sel.dispatchEvent(ev);
     }
   }
 

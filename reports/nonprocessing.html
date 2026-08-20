@@ -100,85 +100,16 @@
       </div>
     </div>
 
-        <!-- ===== Team MAVERICK — period-filtered (spreadsheet data) ===== -->
-    <section class="card card--accent reveal rd-1" style="margin-bottom:18px">
-      <div class="card__head">
-        <h2 class="card__title">Team MAVERICK <span class="card__hint">Nonprocessing &middot; 2026</span></h2>
-        <div class="card__side">
-          <div class="field" style="flex-direction:row;align-items:center;gap:8px">
-            <label style="margin:0">Period</label>
-            <select id="mavPeriod"><option value="Jan 2026">January 2026</option><option value="Feb 2026">February 2026</option><option value="Mar 2026">March 2026</option><option value="Apr 2026">April 2026</option><option value="May 2026">May 2026</option><option value="Jun 2026">June 2026</option><option value="Jul 2026">July 2026</option><option value="Aug 2026" selected>August 2026</option><option value="2026 YTD">2026 Year to Date</option></select>
-          </div>
-        </div>
+        <div class="filters reveal" style="align-items:flex-start">
+      <div class="fieldu">
+        <div data-monthpick='{"value":"2026-08","target":"#mavPeriod","enabled":["2026-01","2026-02","2026-03","2026-04","2026-05","2026-06","2026-07","2026-08","YTD-2026"]}'></div>
+        <span class="fieldu__label">Ranking Date</span>
       </div>
-      <div class="card__body">
-        <div class="kpirow" id="mavKpis"><div class="mavkpi"><b>5</b><span>Approved</span></div><div class="mavkpi"><b>1</b><span>Processing</span></div><div class="mavkpi"><b>4</b><span>Not processing</span></div><div class="mavkpi"><b>20.0%</b><span>Ratio</span></div><div class="mavkpi"><b>1</b><span>Installed</span></div><div class="mavkpi"><b>$400</b><span>Commission</span></div><div class="mavkpi"><b>$1,349</b><span>Volume</span></div><div class="mavkpi"><b>29</b><span>Transactions</span></div></div>
-        <div style="margin-top:14px" data-chart='{"kind":"combo","height":170,"labels":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"],"bars":[{"name":"Processing","values":[0,0,0,7,6,29,11,1],"color":"#00C878"},{"name":"Not proc.","values":[0,0,0,3,6,14,7,4],"color":"#E3A21A"}],"line":{"name":"Volume","values":[0.0,0.0,0.0,104260.0,572370.0,626460.0,151711.0,1349.0],"color":"#00115F"}}'></div>
+      <div class="fieldu">
+        <div data-daterange="#mavMerch" data-col="2"></div>
+        <span class="fieldu__label">Approved</span>
       </div>
-    </section>
-
-    <div class="grid grid--2" style="margin-bottom:18px">
-      <section class="card card--lift reveal rd-2">
-        <div class="card__head"><h2 class="card__title">By Sales Rep</h2><div class="card__side"><span class="card__hint" id="mavPeriodTag1">Aug 2026</span></div></div>
-        <div class="card__body card__body--flush"><div class="tblwrap">
-          <table class="tbl sortable" id="mavByRep">
-            <thead><tr><th>Rep</th><th class="num">Approved</th><th class="num">Processing</th><th class="num">Not Proc.</th><th class="num">Ratio</th><th class="num">Commission</th><th class="num">Volume</th></tr></thead>
-            <tbody>
-<tr><td><a class="teamlink" href="?team=HALEY%20WOODRUFF">HALEY WOODRUFF</a></td><td class="num">1</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$0</td><td class="num">$0</td></tr>
-<tr><td><a class="teamlink" href="?team=JADEN%20DEFEK">JADEN DEFEK</a></td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">100.0%</td><td class="num">$400</td><td class="num">$1,349</td></tr>
-<tr><td><a class="teamlink" href="?team=JUDAH%20STEELMAN">JUDAH STEELMAN</a></td><td class="num">1</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$0</td><td class="num">$0</td></tr>
-<tr><td><a class="teamlink" href="?team=KYLE%20PETTIT">KYLE PETTIT</a></td><td class="num">1</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$0</td><td class="num">$0</td></tr>
-<tr><td><a class="teamlink" href="?team=Timothy%20Constenius">Timothy Constenius</a></td><td class="num">1</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$0</td><td class="num">$0</td></tr>
-            </tbody>
-          </table>
-        </div></div>
-      </section>
-      <section class="card card--lift reveal rd-3">
-        <div class="card__head"><h2 class="card__title">By Payment Type</h2><div class="card__side"><span class="card__hint" id="mavPeriodTag2">Aug 2026</span></div></div>
-        <div class="card__body card__body--flush"><div class="tblwrap">
-          <table class="tbl sortable" id="mavByPay">
-            <thead><tr><th>Payment Type</th><th class="num">Deals</th><th class="num">Processing</th><th class="num">Commission</th><th class="num">Volume</th></tr></thead>
-            <tbody>
-<tr><td>Free</td><td class="num">2</td><td class="num">0</td><td class="num">$0</td><td class="num">$0</td></tr>
-<tr><td>Purchase</td><td class="num">2</td><td class="num">1</td><td class="num">$400</td><td class="num">$1,349</td></tr>
-<tr><td>Existing</td><td class="num">2</td><td class="num">1</td><td class="num">$400</td><td class="num">$1,349</td></tr>
-            </tbody>
-          </table>
-        </div></div>
-      </section>
-    </div>
-
-    <section class="card card--lift reveal rd-3" style="margin-bottom:26px">
-      <div class="card__head">
-        <h2 class="card__title">Merchant Detail <span class="card__hint" id="mavMerchCount">5 deals</span></h2>
-        <div class="card__side">
-          <div class="field searchbox">
-            <svg viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m13.5 13.5 3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-            <input type="search" placeholder="Search deals&hellip;" data-filter="#mavMerch">
-          </div>
-        </div>
-      </div>
-      <div class="card__body card__body--flush"><div class="tblwrap">
-        <table class="tbl sortable" id="mavMerch">
-          <thead><tr><th>Rep</th><th>Merchant</th><th class="num">Approved</th><th class="num">Delivered</th><th class="num">Installed</th><th class="num">Days</th><th>Payment</th><th class="num">Commission</th><th class="num">Volume</th><th class="num">Txns</th><th class="ctr" data-nosort>Processing</th><th class="num">Last Batch</th></tr></thead>
-          <tbody>
-<tr><td><a class="teamlink" href="?team=HALEY%20WOODRUFF">HALEY WOODRUFF</a></td><td><span style="font-weight:600">GREEN ACRES BOWL</span><span class="sub">815236546884</span></td><td class="num" data-sort="20260813">8/13</td><td class="num" data-sort="0">&mdash;</td><td class="num" data-sort="0">&mdash;</td><td class="num" data-sort="0">&mdash;</td><td>Purchase</td><td class="num">&mdash;</td><td class="num">$0</td><td class="num">0</td><td class="ctr"><span class="badge badge--off">No</span></td><td class="num" data-sort="0">&mdash;</td></tr>
-<tr><td><a class="teamlink" href="?team=JADEN%20DEFEK">JADEN DEFEK</a></td><td><span style="font-weight:600">FILIPINO FUSION</span><span class="sub">554402059863860</span></td><td class="num" data-sort="20260810">8/10</td><td class="num" data-sort="20260818">8/18</td><td class="num" data-sort="20260818">8/18</td><td class="num" data-sort="0">0</td><td>Purchase, Existing</td><td class="num">$400</td><td class="num">$1,349</td><td class="num">29</td><td class="ctr"><span class="badge badge--ok">Yes</span></td><td class="num" data-sort="20260819">8/19</td></tr>
-<tr><td><a class="teamlink" href="?team=JUDAH%20STEELMAN">JUDAH STEELMAN</a></td><td><span style="font-weight:600">ALL AMERICAN MUFFLER</span><span class="sub">719070000058571</span></td><td class="num" data-sort="20260817">8/17</td><td class="num" data-sort="20260819">8/19</td><td class="num" data-sort="0">&mdash;</td><td class="num" data-sort="1">1</td><td>Free</td><td class="num">&mdash;</td><td class="num">$0</td><td class="num">0</td><td class="ctr"><span class="badge badge--off">No</span></td><td class="num" data-sort="0">&mdash;</td></tr>
-<tr><td><a class="teamlink" href="?team=KYLE%20PETTIT">KYLE PETTIT</a></td><td><span style="font-weight:600">PIONEER MEAT MARKET</span><span class="sub">815236569886</span></td><td class="num" data-sort="20260814">8/14</td><td class="num" data-sort="20260823">8/23</td><td class="num" data-sort="0">&mdash;</td><td class="num" data-sort="-3">-3</td><td>Existing</td><td class="num">&mdash;</td><td class="num">$0</td><td class="num">0</td><td class="ctr"><span class="badge badge--off">No</span></td><td class="num" data-sort="0">&mdash;</td></tr>
-<tr><td><a class="teamlink" href="?team=Timothy%20Constenius">Timothy Constenius</a></td><td><span style="font-weight:600">K+K VENTURES, LLC</span><span class="sub">719070000058902</span></td><td class="num" data-sort="20260818">8/18</td><td class="num" data-sort="20260820">8/20</td><td class="num" data-sort="0">&mdash;</td><td class="num" data-sort="0">0</td><td>Free</td><td class="num">&mdash;</td><td class="num">$0</td><td class="num">0</td><td class="ctr"><span class="badge badge--off">No</span></td><td class="num" data-sort="0">&mdash;</td></tr>
-          </tbody>
-        </table>
-      </div></div>
-    </section>
-
-    <div class="pagehead reveal" style="margin-top:8px;margin-bottom:14px">
-      <div><div class="pagehead__pre">Org-wide</div>
-      <div class="pagehead__sub">All divisions and teams &mdash; August 2026 capture</div></div>
-    </div>
-
-    <div class="filters reveal rd-1">
-      <div class="field"><label for="salesTeam">Team</label>
+      <div class="fieldu">
         <select id="salesTeam" name="team" data-filter-select="#rs1,#rs2,#rs3">
           <option value="ALL" selected>ALL</option>
           <option value="ALL WITH DETAIL">ALL WITH DETAIL</option>
@@ -366,11 +297,102 @@
             <option value="Zeus">Zeus</option>
             <option value="Zinc">Zinc</option>
           </optgroup>
-        </select></div>
-      <div class="field"><label for="processingFlag">Processing?</label>
-        <select id="processingFlag" name="p" title="August 2026 capture"><option value="ALL" selected>ALL</option></select></div>
-      <div class="field"><label for="processor">Processor</label>
-        <select id="processor" name="proc" title="August 2026 capture"><option value="ALL" selected>ALL</option></select></div>
+        </select>
+        <span class="fieldu__label">Team</span>
+      </div>
+      <div class="fieldu">
+        <select id="processingFlag" name="p" data-filter-proc="#mavMerch" data-col="10">
+          <option value="" selected>ALL</option>
+          <option value="no">Not Processing</option>
+          <option value="yes">Processing</option>
+        </select>
+        <span class="fieldu__label">Processing?</span>
+      </div>
+      <div class="fieldu">
+        <select id="processor" name="proc" data-filter-select="#mavMerch">
+          <option value="" selected>ALL</option>
+          <option value="FSP">FSP</option>
+          <option value="PPS">PPS</option>
+        </select>
+        <span class="fieldu__label">Processor</span>
+      </div>
+    </div>
+
+    <!-- ===== Team MAVERICK — period-filtered (spreadsheet data) ===== -->
+    <section class="card card--accent reveal rd-1" style="margin-bottom:18px">
+      <div class="card__head">
+        <h2 class="card__title">Team MAVERICK <span class="card__hint">Nonprocessing &middot; 2026</span></h2>
+        <div class="card__side">
+          <div class="field" style="display:none">
+            <label style="margin:0">Period</label>
+            <select id="mavPeriod"><option value="Jan 2026">January 2026</option><option value="Feb 2026">February 2026</option><option value="Mar 2026">March 2026</option><option value="Apr 2026">April 2026</option><option value="May 2026">May 2026</option><option value="Jun 2026">June 2026</option><option value="Jul 2026">July 2026</option><option value="Aug 2026" selected>August 2026</option><option value="2026 YTD">2026 Year to Date</option></select>
+          </div>
+        </div>
+      </div>
+      <div class="card__body">
+        <div class="kpirow" id="mavKpis"><div class="mavkpi"><b>5</b><span>Approved</span></div><div class="mavkpi"><b>1</b><span>Processing</span></div><div class="mavkpi"><b>4</b><span>Not processing</span></div><div class="mavkpi"><b>20.0%</b><span>Ratio</span></div><div class="mavkpi"><b>1</b><span>Installed</span></div><div class="mavkpi"><b>$400</b><span>Commission</span></div><div class="mavkpi"><b>$1,349</b><span>Volume</span></div><div class="mavkpi"><b>29</b><span>Transactions</span></div></div>
+        <div style="margin-top:14px" data-chart='{"kind":"combo","height":170,"labels":["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug"],"bars":[{"name":"Processing","values":[0,0,0,7,6,29,11,1],"color":"#00C878"},{"name":"Not proc.","values":[0,0,0,3,6,14,7,4],"color":"#E3A21A"}],"line":{"name":"Volume","values":[0.0,0.0,0.0,104260.0,572370.0,626460.0,151711.0,1349.0],"color":"#00115F"}}'></div>
+      </div>
+    </section>
+
+    <div class="grid grid--2" style="margin-bottom:18px">
+      <section class="card card--lift reveal rd-2">
+        <div class="card__head"><h2 class="card__title">By Sales Rep</h2><div class="card__side"><span class="card__hint" id="mavPeriodTag1">Aug 2026</span></div></div>
+        <div class="card__body card__body--flush"><div class="tblwrap">
+          <table class="tbl sortable" id="mavByRep">
+            <thead><tr><th>Rep</th><th class="num">Approved</th><th class="num">Processing</th><th class="num">Not Proc.</th><th class="num">Ratio</th><th class="num">Commission</th><th class="num">Volume</th></tr></thead>
+            <tbody>
+<tr><td><a class="teamlink" href="?team=HALEY%20WOODRUFF">HALEY WOODRUFF</a></td><td class="num">1</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$0</td><td class="num">$0</td></tr>
+<tr><td><a class="teamlink" href="?team=JADEN%20DEFEK">JADEN DEFEK</a></td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td class="num">100.0%</td><td class="num">$400</td><td class="num">$1,349</td></tr>
+<tr><td><a class="teamlink" href="?team=JUDAH%20STEELMAN">JUDAH STEELMAN</a></td><td class="num">1</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$0</td><td class="num">$0</td></tr>
+<tr><td><a class="teamlink" href="?team=KYLE%20PETTIT">KYLE PETTIT</a></td><td class="num">1</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$0</td><td class="num">$0</td></tr>
+<tr><td><a class="teamlink" href="?team=Timothy%20Constenius">Timothy Constenius</a></td><td class="num">1</td><td class="num">0</td><td class="num">1</td><td class="num">0.0%</td><td class="num">$0</td><td class="num">$0</td></tr>
+            </tbody>
+          </table>
+        </div></div>
+      </section>
+      <section class="card card--lift reveal rd-3">
+        <div class="card__head"><h2 class="card__title">By Payment Type</h2><div class="card__side"><span class="card__hint" id="mavPeriodTag2">Aug 2026</span></div></div>
+        <div class="card__body card__body--flush"><div class="tblwrap">
+          <table class="tbl sortable" id="mavByPay">
+            <thead><tr><th>Payment Type</th><th class="num">Deals</th><th class="num">Processing</th><th class="num">Commission</th><th class="num">Volume</th></tr></thead>
+            <tbody>
+<tr><td>Free</td><td class="num">2</td><td class="num">0</td><td class="num">$0</td><td class="num">$0</td></tr>
+<tr><td>Purchase</td><td class="num">2</td><td class="num">1</td><td class="num">$400</td><td class="num">$1,349</td></tr>
+<tr><td>Existing</td><td class="num">2</td><td class="num">1</td><td class="num">$400</td><td class="num">$1,349</td></tr>
+            </tbody>
+          </table>
+        </div></div>
+      </section>
+    </div>
+
+    <section class="card card--lift reveal rd-3" style="margin-bottom:26px">
+      <div class="card__head">
+        <h2 class="card__title">Merchant Detail <span class="card__hint" id="mavMerchCount">5 deals</span></h2>
+        <div class="card__side">
+          <div class="field searchbox">
+            <svg viewBox="0 0 20 20" fill="none"><circle cx="9" cy="9" r="6" stroke="currentColor" stroke-width="1.8"/><path d="m13.5 13.5 3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+            <input type="search" placeholder="Search deals&hellip;" data-filter="#mavMerch">
+          </div>
+        </div>
+      </div>
+      <div class="card__body card__body--flush"><div class="tblwrap">
+        <table class="tbl sortable" id="mavMerch">
+          <thead><tr><th>Rep</th><th>Merchant</th><th class="num">Approved</th><th class="num">Delivered</th><th class="num">Installed</th><th class="num">Days</th><th>Payment</th><th class="num">Commission</th><th class="num">Volume</th><th class="num">Txns</th><th class="ctr" data-nosort>Processing</th><th class="num">Last Batch</th></tr></thead>
+          <tbody>
+<tr><td><a class="teamlink" href="?team=HALEY%20WOODRUFF">HALEY WOODRUFF</a></td><td><span style="font-weight:600">GREEN ACRES BOWL</span><span class="sub">815236546884</span></td><td class="num" data-sort="20260813">8/13</td><td class="num" data-sort="0">&mdash;</td><td class="num" data-sort="0">&mdash;</td><td class="num" data-sort="0">&mdash;</td><td>Purchase</td><td class="num">&mdash;</td><td class="num">$0</td><td class="num">0</td><td class="ctr"><span class="badge badge--off">No</span></td><td class="num" data-sort="0">&mdash;</td></tr>
+<tr><td><a class="teamlink" href="?team=JADEN%20DEFEK">JADEN DEFEK</a></td><td><span style="font-weight:600">FILIPINO FUSION</span><span class="sub">554402059863860</span></td><td class="num" data-sort="20260810">8/10</td><td class="num" data-sort="20260818">8/18</td><td class="num" data-sort="20260818">8/18</td><td class="num" data-sort="0">0</td><td>Purchase, Existing</td><td class="num">$400</td><td class="num">$1,349</td><td class="num">29</td><td class="ctr"><span class="badge badge--ok">Yes</span></td><td class="num" data-sort="20260819">8/19</td></tr>
+<tr><td><a class="teamlink" href="?team=JUDAH%20STEELMAN">JUDAH STEELMAN</a></td><td><span style="font-weight:600">ALL AMERICAN MUFFLER</span><span class="sub">719070000058571</span></td><td class="num" data-sort="20260817">8/17</td><td class="num" data-sort="20260819">8/19</td><td class="num" data-sort="0">&mdash;</td><td class="num" data-sort="1">1</td><td>Free</td><td class="num">&mdash;</td><td class="num">$0</td><td class="num">0</td><td class="ctr"><span class="badge badge--off">No</span></td><td class="num" data-sort="0">&mdash;</td></tr>
+<tr><td><a class="teamlink" href="?team=KYLE%20PETTIT">KYLE PETTIT</a></td><td><span style="font-weight:600">PIONEER MEAT MARKET</span><span class="sub">815236569886</span></td><td class="num" data-sort="20260814">8/14</td><td class="num" data-sort="20260823">8/23</td><td class="num" data-sort="0">&mdash;</td><td class="num" data-sort="-3">-3</td><td>Existing</td><td class="num">&mdash;</td><td class="num">$0</td><td class="num">0</td><td class="ctr"><span class="badge badge--off">No</span></td><td class="num" data-sort="0">&mdash;</td></tr>
+<tr><td><a class="teamlink" href="?team=Timothy%20Constenius">Timothy Constenius</a></td><td><span style="font-weight:600">K+K VENTURES, LLC</span><span class="sub">719070000058902</span></td><td class="num" data-sort="20260818">8/18</td><td class="num" data-sort="20260820">8/20</td><td class="num" data-sort="0">&mdash;</td><td class="num" data-sort="0">0</td><td>Free</td><td class="num">&mdash;</td><td class="num">$0</td><td class="num">0</td><td class="ctr"><span class="badge badge--off">No</span></td><td class="num" data-sort="0">&mdash;</td></tr>
+          </tbody>
+        </table>
+      </div></div>
+    </section>
+
+    <div class="pagehead reveal" style="margin-top:8px;margin-bottom:14px">
+      <div><div class="pagehead__pre">Org-wide</div>
+      <div class="pagehead__sub">All divisions and teams &mdash; August 2026 capture</div></div>
     </div>
 
     <div class="stack">
