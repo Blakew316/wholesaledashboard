@@ -650,9 +650,22 @@
     return Math.max(w || 640, 300);
   }
 
+  /* how many labels can we draw before they collide? */
+  function labelStep(labels, slotPx, fontPx) {
+    var longest = 0;
+    labels.forEach(function (l) { longest = Math.max(longest, String(l).length); });
+    var needed = longest * fontPx * 0.6 + 10;
+    return Math.max(1, Math.ceil(needed / Math.max(slotPx, 1)));
+  }
+
   function drawCombo(root, cfg) {
-    var W = chartWidth(root), H = cfg.height || 200,
-        padL = 42, padR = cfg.line ? 46 : 14, padB = 22, padT = 10;
+    var W = chartWidth(root);
+    var narrow = W < 520;
+    var H = cfg.height || 200;
+    if (narrow) H = Math.round(H * 0.86);
+    var padL = narrow ? 30 : 42,
+        padR = cfg.line ? (narrow ? 34 : 46) : 14,
+        padB = 22, padT = 10;
     var svg = el("svg", { viewBox: "0 0 " + W + " " + H });
     svg.style.height = H + "px";
     var labels = cfg.labels || [];
@@ -680,17 +693,20 @@
       var gy = padT + (H - padT - padB) * g / 2;
       var lv = maxBar * (1 - g / 2);
       var t = el("text", { x: padL - 5, y: gy + 3, "text-anchor": "end", "class": "axis-label" });
+      if (narrow) t.setAttribute("font-size", "9.5");
       t.textContent = shortNum(lv);
       svg.appendChild(t);
       if (line) {
         var rv = maxLine * (1 - g / 2);
         var t2 = el("text", { x: W - padR + 5, y: gy + 3, "text-anchor": "start", "class": "axis-label" });
+        if (narrow) t2.setAttribute("font-size", "9.5");
         t2.textContent = "$" + shortNum(rv);
         svg.appendChild(t2);
       }
     });
 
     /* stacked bars */
+    var xStep = labelStep(labels, iw, narrow ? 9.5 : 11);
     var bw = Math.min(iw * 0.42, 18);
     for (var i2 = 0; i2 < n; i2++) {
       var x = padL + iw * i2 + iw / 2 - bw / 2;
@@ -708,8 +724,9 @@
           yCursor -= h;
         }
       });
-      if (i2 % Math.ceil(n / 10) === 0 || n <= 12) {
+      if (i2 % xStep === 0) {
         var lt = el("text", { x: padL + iw * i2 + iw / 2, y: H - 6, "text-anchor": "middle", "class": "axis-label" });
+        if (narrow) lt.setAttribute("font-size", "9.5");
         lt.textContent = labels[i2];
         svg.appendChild(lt);
       }
@@ -758,7 +775,8 @@
 
   function drawArea(root, cfg) {
     var W = chartWidth(root), H = cfg.height || (cfg.axes === false ? 90 : 180);
-    var padL = cfg.axes === false ? 4 : 40, padR = 8,
+    var narrow = W < 520;
+    var padL = cfg.axes === false ? 4 : (narrow ? 30 : 40), padR = 8,
         padB = cfg.axes === false ? 4 : 20, padT = 8;
     var svg = el("svg", { viewBox: "0 0 " + W + " " + H });
     svg.style.height = H + "px";
@@ -779,6 +797,7 @@
         var gy = padT + (H - padT - padB) * g / 2;
         svg.appendChild(el("line", { x1: padL, x2: W - padR, y1: gy, y2: gy, "class": "grid-line", "stroke-width": 1 }));
         var t = el("text", { x: padL - 5, y: gy + 3, "text-anchor": "end", "class": "axis-label" });
+        if (narrow) t.setAttribute("font-size", "9.5");
         t.textContent = "$" + shortNum(mx * (1 - g / 2));
         svg.appendChild(t);
       }
@@ -803,9 +822,11 @@
     });
     svg.appendChild(path);
     if (cfg.labels && cfg.axes !== false) {
+      var aStep = labelStep(cfg.labels, iw, narrow ? 9.5 : 11);
       cfg.labels.forEach(function (lb, i) {
-        if (n > 12 && i % Math.ceil(n / 10) !== 0) return;
+        if (i % aStep !== 0) return;
         var t = el("text", { x: padL + iw * i, y: H - 5, "text-anchor": "middle", "class": "axis-label" });
+        if (narrow) t.setAttribute("font-size", "9.5");
         t.textContent = lb;
         svg.appendChild(t);
       });

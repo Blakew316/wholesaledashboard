@@ -905,6 +905,25 @@ th.sortable.desc .caret { opacity: 1; }
 .rowlist > li:last-child { border-bottom: 0; }
 .rowlist > li:hover { background: var(--tint-azure-04); }
 
+
+/* nonprocessing merchant rows (dashboard widget) */
+.nprow__main { flex: 1; min-width: 0; }
+.nprow__name { font-size: 13.5px; font-weight: 600; }
+.nprow__meta { display: block; font-size: 11.5px; color: var(--faint); }
+.nprow__rep { color: var(--azure-deep); font-weight: 600; }
+.nprow__dates { display: flex; gap: 16px; text-align: center; font-size: 12px; }
+.nprow__k { color: var(--faint); }
+.nprow__v { font-weight: 600; }
+.nprow__v--none { font-weight: 600; color: var(--faint); }
+.nprow__pipe { width: 74px; }
+
+/* month-comparison rows */
+.mrow__main { flex: 1; min-width: 0; }
+.mrow__side { text-align: right; flex-shrink: 0; }
+.mrow__title { font-weight: 600; font-size: 13.5px; }
+.mrow__badges { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 4px; }
+.mrow__hint { font-size: 11.5px; color: var(--faint); margin-top: 4px; }
+
 /* days-waiting chip */
 .dayschip {
   min-width: 52px;
@@ -1096,14 +1115,86 @@ th.sortable.desc .caret { opacity: 1; }
   }
   .drop.is-open .drop__menu { display: block; }
   .topbar__burger { display: flex; }
-  .grid--2 { grid-template-columns: 1fr; }
+  .grid--2 { grid-template-columns: 1fr !important; }
   .userchip { display: none; }
 }
 @media (max-width: 640px) {
-  .shell { width: calc(100% - 28px); }
-  .page { padding-top: 22px; }
-  .card__head, .card__body { padding-left: 16px; padding-right: 16px; }
-  .rowlist > li { padding-left: 16px; padding-right: 16px; flex-wrap: wrap; }
+  .shell { width: calc(100% - 24px); }
+  .page { padding-top: 18px; }
+
+  /* card headers stack so titles and their side content never collide */
+  .card__head {
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 16px 16px 0;
+  }
+  .card__side { margin-left: 0; width: 100%; }
+  .card__body { padding-left: 16px; padding-right: 16px; }
+  .card__title { font-size: 15px; }
+  .legend { gap: 10px 14px; font-size: 11.5px; }
+
+  .kpi { flex-wrap: wrap; row-gap: 2px; }
+  .kpi__meta { font-size: 12px; }
+
+  /* nonprocessing rows: name + days on top, dates spread underneath */
+  .rowlist > li { padding: 12px 16px; }
+  .rowlist > li.nprow {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-areas: "main days" "dates dates";
+    align-items: start;
+    column-gap: 12px;
+    row-gap: 10px;
+  }
+  .nprow > .nprow__main { grid-area: main; }
+  .nprow > .dayschip { grid-area: days; text-align: right; min-width: 0; }
+  .nprow > .nprow__dates {
+    grid-area: dates;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+  }
+  .nprow > .nprow__pipe { display: none; }
+
+  .mrow__side .kpi__num { font-size: 1.35rem !important; }
+
+  /* filters sit two-up so they don't push the data off the first screen */
+  .filters {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 10px;
+  }
+  .field, .fieldu { width: 100%; min-width: 0; }
+  .field input, .field select,
+  .fieldu input, .fieldu select,
+  .pick__btn, .searchbox input { width: 100%; max-width: none; }
+  /* a search field is more useful spanning the full width */
+  .filters .field.searchbox { grid-column: 1 / -1; }
+  /* popovers keep a usable width and stay inside the viewport */
+  .pick__pop { min-width: 264px; }
+  .filters > *:nth-child(even) .pick__pop { left: auto; right: 0; }
+
+  .pagehead__title { font-size: 1.55rem; }
+  .kpirow { gap: 14px 12px; }
+
+  /* chart header stacks: title on one line, legend beneath */
+  .chartbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  /* tab strips scroll rather than pushing the page wide */
+  .tabs {
+    padding: 0 10px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tabs button { padding: 12px 11px; font-size: 13px; white-space: nowrap; }
 }
 
 /* ==========================================================================
